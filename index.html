@@ -49,11 +49,18 @@
       <div id="topbar">
         <div class="container top-section">
           <div class="marquee-text">
-            <p>
-              But I must explain to you how all this mistaken idea of denouncing
-              pleasure and praising pain was born and I will give you a complete
-              account of the system
-            </p>
+            <a href="">
+              <marquee
+                behavior="scroll"
+                direction="left"
+                onmouseover="this.stop();"
+                onmouseout="this.start();"
+                ><span>**</span> But I must explain to you how all this mistaken
+                idea of denouncing pleasure and praising pain was born and I
+                will give you a complete account of the system
+                <span>**</span></marquee
+              >
+            </a>
           </div>
           <div class="social-links">
             <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
@@ -68,12 +75,13 @@
         <div class="logo float-left">
           <!-- Uncomment below if you prefer to use an image logo -->
           <h1 class="text-light">
-            <a href="#intro" class="scrollto"><span>Rapid</span></a>
+            <a href="#intro" class="scrollto"><span>AGMM Soft</span></a>
           </h1>
+
           <!-- <a href="#header" class="scrollto"><img src="img/logo.png" alt="" class="img-fluid"></a> -->
         </div>
 
-        <nav class="main-nav float-right d-none d-lg-block">
+        <nav class="main-nav float-right d-none d-lg-block stroke">
           <ul>
             <li class="active"><a href="#intro">Home</a></li>
             <li><a href="#about">About Us</a></li>
@@ -114,7 +122,16 @@
       <div class="container d-flex h-100">
         <div class="row justify-content-center align-self-center">
           <div class="col-md-6 intro-info order-md-first order-last">
-            <h2>Rapid Solutions<br />for Your <span>Business!</span></h2>
+            <h2 class="banner-title">AGMM Soft Solutions for Your</h2>
+            <div class="word-carousel">
+              <div>
+                <ul class="moving-words">
+                  <li>Business</li>
+                  <li>Growth</li>
+                  <li>Development</li>
+                </ul>
+              </div>
+            </div>
             <div>
               <a href="#about" class="btn-get-started scrollto">Get Started</a>
             </div>
@@ -1306,6 +1323,31 @@
     <!-- <div id="preloader"></div> -->
 
     <!-- JavaScript Libraries -->
+    <script>
+      var spanText = function spanText(text) {
+        var string = text.innerText;
+        var spaned = "";
+        for (var i = 0; i < string.length; i++) {
+          if (string.substring(i, i + 1) === " ")
+            spaned += string.substring(i, i + 1);
+          else spaned += "<span>" + string.substring(i, i + 1) + "</span>";
+        }
+        text.innerHTML = spaned;
+      };
+
+      var headline = document.querySelector("h2");
+
+      spanText(headline);
+
+      let animations = document.querySelectorAll(".banner-title");
+
+      animations.forEach((animation) => {
+        let letters = animation.querySelectorAll("span");
+        letters.forEach((letter, i) => {
+          letter.style.animationDelay = i * 0.04 + "s";
+        });
+      });
+    </script>
     <script src="lib/jquery/jquery.min.js"></script>
     <script src="lib/jquery/jquery-migrate.min.js"></script>
     <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>

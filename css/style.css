@@ -232,26 +232,76 @@ h6 {
   font-weight: 700;
 }
 
+.get-started-btn-div {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
 #intro .intro-info .btn-get-started,
 #intro .intro-info .btn-services {
   font-family: "Montserrat", sans-serif;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1px;
   display: inline-block;
-  padding: 10px 32px;
   border-radius: 4px;
   transition: 0.5s;
-  color: #fff;
   background: #1bb1dc;
   color: #fff;
   margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #intro .intro-info .btn-get-started:hover,
 #intro .intro-info .btn-services:hover {
-  background: #0a98c0;
+  background: #1bb1dc;
+}
+
+.custom-btn {
+  width: 180px;
+  height: 40px;
+  padding: 10px 25px;
+  border: 2px solid #1bb1dc;
+  font-family: "Lato", sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+}
+.btn-16 {
+  background: #1bb1dc;
+  color: #fff;
+  z-index: 1;
+}
+.btn-16:after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background: #fff;
+  direction: rtl;
+  transition: all 0.25s ease;
+}
+.btn-16:hover {
+  color: #1bb1dc !important;
+}
+.btn-16:hover:after {
+  /* left: 0; */
+  left: 0;
+  width: 100%;
+  /* direction: ltr; */
+}
+.btn-16:active {
+  top: 2px;
 }
 
 .word-carousel-body {
@@ -311,9 +361,6 @@ h6 {
   100% {
     margin-top: -270px;
   }
-}
-
-.banner-title {
 }
 
 h2 span {

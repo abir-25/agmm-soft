@@ -930,6 +930,40 @@ nav.stroke ul li a:hover:after,
   margin-top: 0px;
 }
 
+#about_page {
+  width: 100%;
+  height: 80vh;
+  /* opacity: 0.2; */
+  position: relative;
+  background: #f5f8fd url("../img/intro-bg.jpg") center top no-repeat;
+  background-size: cover;
+}
+
+#about_page .intro-info h2 {
+  color: #413e66;
+  /* margin-bottom: 40px; */
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.intro-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.intro-title h2::after {
+  content: "";
+  display: block;
+  margin-top: 8px;
+  margin-bottom: 30px;
+  background: url(../img/title-border.png);
+  height: 40px;
+  width: 200px;
+  margin: auto;
+  margin-top: -8px;
+}
+
 /* Services Section
 --------------------------------*/
 

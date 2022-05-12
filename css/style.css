@@ -1901,6 +1901,149 @@ nav.stroke ul li a:hover:after,
 }
 
 /*--------------------------------------------------------------
+# Technology
+--------------------------------------------------------------*/
+
+.language-details {
+  /* width: 300px; */
+  height: 115px;
+  padding: 10px 10px;
+  overflow: hidden;
+  -webkit-transition: all 0.4s linear;
+  -moz-transition: all 0.4s linear;
+  -o-transition: all 0.4s linear;
+  transition: all 0.4s linear;
+  position: absolute;
+  background-color: #000;
+  font-size: 15px;
+  line-height: 18px;
+  color: #fff;
+  bottom: 0%;
+  left: 0;
+  opacity: 0.8;
+  text-align: right;
+  border-right: solid 4px #459fcd;
+}
+
+.language-details h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.language-details p {
+  font-size: 13px;
+  text-align: justify;
+}
+.language-details .link-div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.language-div {
+  background-color: #fff;
+  /* width: 300px; */
+  height: 300px;
+  position: relative;
+  overflow: hidden;
+  padding: 5px;
+  box-shadow: 0 0 5px rgb(0 0 0 / 30%);
+}
+
+.language-div img {
+  width: 100%;
+  height: 100%;
+}
+
+.language-div:hover .language-details {
+  margin-top: 0px;
+  height: 300px;
+  padding-top: 70px;
+  border-radius: 0px 0 14px 0;
+}
+
+/* CSS */
+.button-read-more {
+  align-items: center;
+  background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
+  border: 0;
+  border-radius: 4px;
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  box-sizing: border-box;
+  color: #ffffff !important;
+  display: flex;
+  font-size: 20px;
+  justify-content: center;
+  padding: 3px;
+  width: 140px;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.button-read-more:active,
+.button-read-more:hover {
+  outline: 0;
+}
+
+.button-read-more span {
+  background-color: rgb(5, 6, 45);
+  padding: 8px 20px;
+  border-radius: 6px;
+  width: 140px;
+  height: 100%;
+  transition: 300ms;
+}
+
+.button-read-more:hover span {
+  background: none;
+}
+
+@media (min-width: 768px) {
+  .button-read-more {
+    font-size: 14px;
+  }
+}
+
+/* CSS */
+/* .button-read-more {
+  margin: 10px;
+  padding: 8px 20px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  border-radius: 4px;
+  border: 0px;
+  box-shadow: 0px 0px 14px -7px #42a5f5;
+  background-image: linear-gradient(
+    45deg,
+    #0d47a1 0%,
+    #64b5f6 51%,
+    #0d47a1 100%
+  );
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  font-size: 14px;
+}
+
+.button-read-more:hover {
+  background-position: right center;
+  color: #fff;
+  text-decoration: none;
+}
+
+.button-read-more:active {
+  transform: scale(0.95);
+} */
+
+/*--------------------------------------------------------------
 # Responsive Media Queries
 --------------------------------------------------------------*/
 

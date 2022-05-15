@@ -1,5 +1,5 @@
 
-        <div class="page-content d-flex align-items-stretch">
+    <div class="page-content d-flex align-items-stretch">
             <!-- Side Navbar -->
             <nav class="side-navbar">
                 <!-- Sidebar Header-->
@@ -14,7 +14,7 @@
                 <div class="sidebar-header d-flex align-items-center">
                     <div class="avatar"><img src="<?php echo $result['logo'];?>" alt="..." class="img-fluid rounded-circle"></div>
                     <div class="title">
-                        <h1 class="h4"><?php echo $result['nickname'];?></h1>
+                        <h1 class="h4"><?php echo $result['name'];?></h1>
                     </div>
                 </div>
 <?php } } ?>
@@ -25,30 +25,26 @@
                         <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
                             <li><a href="editdashboard.php">Admin Dashboard</a></li>       
                             <li><a href="titlelogo.php">Basic Information</a></li>
-                            <li><a href="updatebio.php">Update Bio</a></li>
                             <li><a href="social.php">Social Media</a></li>
-                            <li><a href="skilllist.php">Best Skills</a></li>
-                            <li><a href="changepassword.php">Change Admin Password</a></li>
+<?php 
+    if($_SESSION['role']==0){
+?>
+                            <li><a href="changepassword.php">Change Password</a></li>
+<?php } ?>
                         </ul>
                     </li>
-                    <li><a href="#exampledropdownDropdown2" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-cogs"></i>Section Title Option</a>
+                    
+					<li><a href="#exampledropdownDropdown2" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-user"></i>Editor Option</a>
                         <ul id="exampledropdownDropdown2" class="collapse list-unstyled ">
-                            <li><a href="feature.php">Feature Section</a></li>
-                            <li><a href="portfolio.php">Portfolio Section</a></li>  
-                            <li><a href="resume.php">Resume Section</a></li>            
-                            <li><a href="testimonial.php">Testimonial Section</a></li>            
-                            <li><a href="client.php">Clients Section</a></li>            
-                            <li><a href="pricing.php">Pricing Section</a></li>            
-                            <li><a href="blog.php">Blog Section</a></li>            
-                            <li><a href="contact.php">Contact Section</a></li>            
+<?php 
+    if($_SESSION['role']==0){
+?>
+                            <li><a href="addeditor.php">Add Editor</a></li>
+<?php } ?>
+                            <li><a href="editorlist.php">Editor List</a></li>            
                         </ul>
                     </li>
-					<li><a href="#exampledropdownDropdown3" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-list-alt"></i>Feature Option</a>
-                        <ul id="exampledropdownDropdown3" class="collapse list-unstyled ">
-                            <li><a href="addfeature.php">Add Feature</a></li>
-                            <li><a href="featurelist.php">Feature List</a></li>            
-                        </ul>
-                    </li>
+
                     <li><a href="#exampledropdownDropdown10" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-briefcase"></i>Profession Option</a>
                         <ul id="exampledropdownDropdown10" class="collapse list-unstyled ">
                             <li><a href="addprofession.php">Add Profession </a></li>

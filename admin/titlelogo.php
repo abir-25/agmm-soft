@@ -25,12 +25,12 @@
                   <div class="card">
                     <div class="card-close">
                       <div class="dropdown">
-                        <button type="button" id="closeCard5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
-                        <div aria-labelledby="closeCard5" class="dropdown-menu dropdown-menu-right has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><!--<a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a>--></div>
+                        <button type="button" id="closeCard5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"></button>
+                        <div aria-labelledby="closeCard5" class="dropdown-menu dropdown-menu-right has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a></div>
                       </div>
                     </div>
                     <div class="card-header d-flex align-items-center">
-                      <h3 class="h4">Enter Information</h3>
+                      <h3 class="h4">Update Information</h3>
                     </div>
                     <div class="card-body">
                       <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
@@ -38,7 +38,7 @@
 	if($_SERVER['REQUEST_METHOD'] == 'POST')
 	{
 		$name  = mysqli_real_escape_string($db->link1, $_POST['name']);
-		$nickname  = mysqli_real_escape_string($db->link1, $_POST['nickname']);
+		$slogan  = mysqli_real_escape_string($db->link1, $_POST['slogan']);
 		$copyright = $_POST['copyright'];
 		 
 		$permitted  = array('jpg', 'jpeg', 'png', 'gif');
@@ -70,14 +70,14 @@
 		if(!$getpost)
 		{
 			if(empty($file_name)){
-				echo "<span class='error'>Please enter your Logo!!</span>";
+				echo "<span class='error'>Please upload your Logo!!</span>";
 			}
 			else if(empty($file_name2)){
-				echo "<span class='error'>Please enter your Favicon!!</span>";
+				echo "<span class='error'>Please upload your Favicon!!</span>";
 			}
 			else{
 				
-				$query = "INSERT INTO tbl_basic_info(name, nickname, logo, favicon, copyright) VALUES('$name','$nickname','$uploaded_image','$uploaded_image2','$copyright')";
+				$query = "INSERT INTO tbl_basic_info(name, slogan, logo, favicon, copyright) VALUES('$name','$slogan','$uploaded_image','$uploaded_image2','$copyright')";
 				$inserted_rows = $db->insert($query);
 				if ($inserted_rows) 
 				{
@@ -113,7 +113,7 @@
 					$query = "UPDATE tbl_basic_info 
 							  SET 
 							  name = '$name',
-							  nickname = '$nickname',
+							  slogan = '$slogan',
 							  logo = '$uploaded_image',
 							  favicon = '$uploaded_image2',
 							  copyright = '$copyright'";
@@ -143,7 +143,7 @@
 					$query = "UPDATE tbl_basic_info 
 							  SET 
 							  name = '$name',
-							  nickname = '$nickname',
+							  slogan = '$slogan',
 							  logo = '$uploaded_image',
 							  copyright = '$copyright'";
 					
@@ -172,7 +172,7 @@
 					$query = "UPDATE tbl_basic_info 
 							  SET 
 							  name = '$name',
-							  nickname = '$nickname',
+							  slogan = '$slogan',
 							  favicon = '$uploaded_image2',
 							  copyright = '$copyright'";
 					
@@ -192,7 +192,7 @@
 				$query = "UPDATE tbl_basic_info 
 							  SET 
 							  name = '$name',
-							  nickname = '$nickname',
+							  slogan = '$slogan',
 							  copyright = '$copyright'";
 					
 					$updated_rows = $db->update($query);
@@ -229,14 +229,14 @@
                         </div>
 						<div class="line"></div>
 						<div class="form-group row">
-                          <label class="col-sm-3 form-control-label">Nick Name</label>
+                          <label class="col-sm-3 form-control-label">Slogan</label>
                           <div class="col-sm-9">
-                            <input type="text" name="nickname" class="form-control" required value="<?php echo $postresult['nickname']; ?>">
+                            <input type="text" name="slogan" class="form-control" required value="<?php echo $postresult['slogan']; ?>">
                           </div>
                         </div>
 						<div class="line"></div>
 						<div class="form-group row">
-                          <label class="col-sm-3 form-control-label">Upload Image</label>
+                          <label class="col-sm-3 form-control-label">Upload Logo</label>
                           <div class="col-sm-9" style="text-align:center">
 						  <img src="<?php echo $postresult['logo'];?>" height="200px" width="200px"/><br/>
                             <input type="file" name="logo" class="form-control">
@@ -244,7 +244,7 @@
                         </div>  
 						<div class="line"></div>
 						<div class="form-group row">
-                          <label class="col-sm-3 form-control-label">Favicon</label>
+                          <label class="col-sm-3 form-control-label">Upload Favicon</label>
                           <div class="col-sm-9" style="text-align:center">
 						  <img src="<?php echo $postresult['favicon'];?>" height="100px" width="100px"/><br/>
                             <input type="file" name="favicon" class="form-control">
@@ -266,26 +266,26 @@
 						<div class="form-group row">
                           <label class="col-sm-3 form-control-label">Name</label>
                           <div class="col-sm-9">
-                            <input type="text" name="name" class="form-control" required placeholder="Enter Your Name">
+                            <input type="text" name="name" class="form-control" required placeholder="Enter Company Name">
                           </div>
                         </div>
 						<div class="line"></div>
 						<div class="form-group row">
-                          <label class="col-sm-3 form-control-label">Nick Name</label>
+                          <label class="col-sm-3 form-control-label">Slogan</label>
                           <div class="col-sm-9">
-                            <input type="text" name="nickname" class="form-control" required placeholder="Enter Your Nick Name">
+                            <input type="text" name="slogan" class="form-control" required placeholder="Enter Company Slogan">
                           </div>
                         </div>
 						<div class="line"></div>
 						<div class="form-group row">
-                          <label class="col-sm-3 form-control-label">Upload Image</label>
+                          <label class="col-sm-3 form-control-label">Upload Logo</label>
                           <div class="col-sm-9" style="text-align:center">
                             <input type="file" name="logo" class="form-control" required>
                           </div>
                         </div>  
 						<div class="line"></div>
 						<div class="form-group row">
-                          <label class="col-sm-3 form-control-label">Favicon</label>
+                          <label class="col-sm-3 form-control-label">Upload Favicon</label>
                           <div class="col-sm-9" style="text-align:center">
                             <input type="file" name="favicon" class="form-control" required>
                           </div>
@@ -294,7 +294,7 @@
 						<div class="form-group row">
                           <label class="col-sm-3 form-control-label">Copyright Text</label>
                           <div class="col-sm-9">
-                            <input type="text" name="copyright" required class="form-control" placeholder="Enter Your Site's Copyright Text">
+                            <input type="text" name="copyright" required class="form-control" placeholder="Enter Websites' Copyright Text">
                           </div>
                         </div>
 						<div class="form-group row">

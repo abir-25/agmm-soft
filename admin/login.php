@@ -97,7 +97,7 @@
               ></i>
             </span>
 
-            <div>
+          <div>
 <?php
 	if($_SERVER['REQUEST_METHOD'] == 'POST')
 	{
@@ -120,6 +120,8 @@
         {
           $_SESSION['login']=true;
           $_SESSION['user']=$value['email'];
+          $_SESSION['name']=$value['name'];
+          $_SESSION['role']=$value['role'];
         }
         
         header("Location:index.php");

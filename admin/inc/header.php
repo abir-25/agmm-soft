@@ -27,7 +27,7 @@ if($_SESSION['login']==false){
       while($result = $getData1->fetch_assoc()) 
       {
 ?>
-    <title><?php echo $result['nickname'];?>-Admin</title>
+    <title><?php echo $result['name'];?>-Admin</title>
     <link rel="shortcut icon" href="<?php echo $result['favicon'];?>">
 <?php } } ?>
     <meta name="description" content="">
@@ -76,7 +76,7 @@ if($_SESSION['login']==false){
         {
 ?>
                                 <div class="brand-text brand-big"><span><?php echo $result['name'];?></span></div>
-                                <div class="brand-text brand-small"><strong><?php echo $result['name'];?></strong></div>
+                                <div class="brand-text brand-small"><span><?php echo $result['name'];?></span></div>
 <?php } } ?>
                             </a>
                             <!-- Toggle Button--><a id="toggle-btn" href="#" class="menu-btn active"><span></span><span></span><span></span></a>
@@ -97,6 +97,8 @@ if($_SESSION['login']==false){
 			}
 		}
 ?>
+                            <li class="nav-item dropdown" style="margin-right: 15px"> Welcome, <?php echo $_SESSION['name']; ?>!
+                            </li>
                             <li class="nav-item dropdown"> <a id="messages" rel="nofollow" href="inbox.php" class="nav-link"><i class="fa fa-envelope-o"></i><span class="badge bg-orange"><?php echo $countId; ?></span></a>
                             </li>
                             <!-- Logout    -->

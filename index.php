@@ -1,3 +1,11 @@
+<?php include 'config/config.php'; ?>
+<?php include 'lib/database.php'; ?>
+<?php include 'helpers/format.php'; ?>
+<?php
+	$db = new Database();
+	$fm = new Format();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -68,11 +76,19 @@
       <div class="container">
         <div class="logo float-left">
           <!-- Uncomment below if you prefer to use an image logo -->
+<?php
+    $query = "select * from tbl_basic_info";
+    $getData = $db->select($query);
+    if($getData)
+    {
+        while($result = $getData->fetch_assoc()) 
+        {
+?>
           <h1 class="text-light">
-            <a href="#intro" class="scrollto"><span>AGMM Soft</span></a>
+            <a href="#intro" class="scrollto"><b><span><?php echo $result['name'];?></span></b></a>
           </h1>
-          <p style="font-size: 13px">New Thinkings, New Possibilities</p>
-
+          <p style="font-size: 13px"><?php echo $result['slogan'];?></p>
+<?php } } ?>
           <!-- <a href="#header" class="scrollto"><img src="img/logo.png" alt="" class="img-fluid"></a> -->
         </div>
 

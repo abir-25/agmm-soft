@@ -22,9 +22,7 @@
           </div>
           <div class="col-md-6 intro-info intro-title order-md-last order-last">
             <h2 class="banner-title">About Us</h2>
-          </div>
-
-          
+          </div> 
         </div>
       </div>
     </section>
@@ -150,6 +148,12 @@
         });
       });
     </script>
+    <!-- <script>
+      var url = window.location.pathname;
+      var dir = url.substring(url.lastIndexOf('/')+1);
+      var about_link = document.getElementById("about_link");
+      about_link.classList.add('active');
+    </script> -->
     <script src="lib/jquery/jquery.min.js"></script>
     <script src="lib/jquery/jquery-migrate.min.js"></script>
     <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>

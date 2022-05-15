@@ -1,7 +1,5 @@
 <?php ob_start(); ?>   <!---Solution for "output has already sent" Error-->
 <?php
-//include '../lib/session.php';
-//Session::checkLogin();
 ?>
 <?php include '../config/config.php'; ?>
 <?php include '../lib/database.php'; ?>
@@ -11,10 +9,11 @@
 	$fm = new Format();
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <?php
 		$query = "select * from tbl_basic_info";
     $getData = $db->num_rows($query);
@@ -23,119 +22,163 @@
       $getData1 = $db->select($query);
       while($result = $getData1->fetch_assoc()) 
       {
+        $company_name = $result['name'];
+        $company_favicon = $result['favicon'];
+      }
+    }
 ?>
-    <title><?php echo $result['nickname'];?>-Admin</title>
-    <link rel="shortcut icon" href="<?php echo $result['favicon'];?>">
-<?php } } ?>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="robots" content="all,follow">
-    <!-- Bootstrap CSS-->
-    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
-    <!-- Font Awesome CSS-->
-    <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
-    <!-- Fontastic Custom icon font-->
-    <link rel="stylesheet" href="css/fontastic.css">
-    <!-- Google fonts - Poppins -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
-    <!-- theme stylesheet-->
-    <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
-    <!-- Custom stylesheet - for your changes-->
-    <link rel="stylesheet" href="css/custom.css">
-    <!-- Favicon-->
+    <title><?php echo $company_name;?>-Admin</title>
+    <link rel="shortcut icon" href="<?php echo $company_favicon;?>">
+    <link rel="stylesheet" href="css/login.css" />
+    <link
+      href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,500,600,700,700i|Montserrat:300,400,500,600,700"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <div class="page login-page">
-      <div class="container d-flex align-items-center">
-        <div class="form-holder has-shadow">
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="info d-flex align-items-center">
-                <div class="content">
-                  <div class="logo">
-                    <h1>Admin Login  Panel</h1>
-                  </div>
-                  <p>Admin has Full Access to Change this Website.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6 bg-white">
-              <div class="form d-flex align-items-center">
-                <div class="content">
-                  <form id="login-form" method="post" action="">
+    <div class="overlay">
+      <form method="post" action="">
+        <div class="con">
+          <header class="head-form">
+            <h2><?php echo $company_name;?></h2>
+            <p>login here using your email and password</p>
+          </header>
+
+          <br />
+          <div class="field-set">
+            <span class="input-item">
+              <i class="fa fa-user" style="font-size: 19px"></i>
+            </span>
+            <select name="role" id="txt-input" required>
+              <option value="-1">Select User Role</option>
+              <option value="0">Admin</option>
+              <option value="1">Editor</option>
+            </select>
+
+            <br />
+            <span class="input-item input-item-text">
+              <i class="fa fa-envelope"></i>
+            </span>
+            <input
+              class="form-input"
+              type="email"
+              placeholder="Enter your Email"
+              id="txt-input"
+              name="email"
+              required
+            />
+
+            <br />
+            <span class="input-item input-item-text">
+              <i class="fa fa-key"></i>
+            </span>
+            <input
+              class="form-input"
+              type="password"
+              placeholder="Password"
+              id="pwd"
+              name="password"
+              required
+            />
+
+            <!--  Show/hide password  -->
+            <span>
+              <i
+                class="fa fa-eye"
+                aria-hidden="true"
+                type="button"
+                id="eye"
+              ></i>
+            </span>
+
+            <div>
 <?php
 	if($_SERVER['REQUEST_METHOD'] == 'POST')
 	{
+		$role = $_POST['role'];
 		$email = $fm->validation($_POST['email']);
 		$password = $fm->validation($_POST['password']);
 		
 		$email = mysqli_real_escape_string($db->link1, $email);
 		$password = mysqli_real_escape_string($db->link1, $password);
 		
-		$query = "SELECT * FROM tbl_login WHERE email = '$email' AND password = '$password'";
-		
-		$result = $db->select($query);
-		if($result != false)
-		{	
-			session_start();
-			while($value = $result->fetch_assoc())
-			{
-				$_SESSION['login']=true;
-				$_SESSION['user']=$value['email'];
-			}
-			
-			header("Location:index.php");
-		}
-		else
-		{
-			echo "<span style='color:red; font-size:18px;'>email or Password Not Matched !!</span>";
-		}
+    if($role!=-1)
+    {
+      $query = "SELECT * FROM tbl_login WHERE role = '$role' AND email = '$email' AND password = '$password'";
+      
+      $result = $db->select($query);
+      if($result != false)
+      {	
+        session_start();
+        while($value = $result->fetch_assoc())
+        {
+          $_SESSION['login']=true;
+          $_SESSION['user']=$value['email'];
+        }
+        
+        header("Location:index.php");
+      }
+      else
+      {
+        echo "<span style='color:red; font-size:18px;'>email or Password Not Matched !!</span>";
+      }
+    }
+    else
+    {
+      echo "<span style='color:red; font-size:18px;'>Please select user Role!!</span>";
+    }
 	}
 
 ?>
-                    <div class="form-group">
-                      <input id="login-email" type="email" name="email" required="" class="input-material">
-                      <label for="login-email" class="label-material">User Name</label>
-                    </div>
-                    <div class="form-group">
-                      <input id="login-password" type="password" name="password" required="" class="input-material">
-                      <label for="login-password" class="label-material">Password</label>
-                    </div>
-					<input type="submit" class="btn btn-primary" id="login" value="Login"/>
-					
-                  </form>
-                </div>
-              </div>
             </div>
 
+
+            <br />
+            <button class="log-in">
+              Login
+              <i class="fa fa-user-plus" aria-hidden="true"></i>
+            </button>
           </div>
         </div>
-      </div>
-      <div class="copyrights text-center">
-<?php
-$query = "select * from tbl_basic_info";
-$getData = $db->num_rows($query);
-if($getData)
-{
-  $getData1 = $db->select($query);
-	while($result = $getData1->fetch_assoc()) 
-	{
-?>
-        &copy; Copyright <strong><span><?php echo $result['name'];?></span></strong>. All Rights Reserved || Developed By <b><a href="#">Agamee-IT</a></b>
-<?php } } else { ?>   
-  &copy; Copyright <strong><span>Sujit Barua</span></strong>. All Rights Reserved || Developed By <b><a href="#">Agamee-IT</a></b>
-<?php }?>
-      </div>
-	  
+      </form>
     </div>
-    <!-- Javascript files-->
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="vendor/popper.js/umd/popper.min.js"> </script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="vendor/jquery.cookie/jquery.cookie.js"> </script>
-    <script src="vendor/chart.js/Chart.min.js"></script>
-    <script src="vendor/jquery-validation/jquery.validate.min.js"></script>
-    <!-- Main File-->
-    <script src="js/front.js"></script>
+
+    <script>
+      // Show/hide password onClick of button using Javascript only
+
+      // https://stackoverflow.com/questions/31224651/show-hide-password-onclick-of-button-using-javascript-only
+
+      function show() {
+        var p = document.getElementById("pwd");
+        p.setAttribute("type", "text");
+      }
+
+      function hide() {
+        var p = document.getElementById("pwd");
+        p.setAttribute("type", "password");
+      }
+
+      var pwShown = 0;
+
+      document.getElementById("eye").addEventListener(
+        "click",
+        function () {
+          if (pwShown == 0) {
+            pwShown = 1;
+            show();
+          } else {
+            pwShown = 0;
+            hide();
+          }
+        },
+        false
+      );
+    </script>
   </body>
 </html>

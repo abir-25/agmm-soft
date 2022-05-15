@@ -32,6 +32,10 @@
 
   <body> 
     <header id="header">
+<?php
+    $path = $_SERVER['SCRIPT_FILENAME'];
+    $current = basename($path, '.php');
+?>
       <div id="topbar">
         <div class="container top-section">
           <div class="marquee-text">
@@ -61,7 +65,7 @@
         <div class="logo float-left">
           <!-- Uncomment below if you prefer to use an image logo -->
           <h1 class="text-light">
-            <a href="#intro" class="scrollto"><span>AGMM Soft</span></a>
+            <a href="index.php" class="scrollto"><span>AGMM Soft</span></a>
           </h1>
           <p style="font-size: 13px">New Thinkings, New Possibilities</p>
 
@@ -70,10 +74,11 @@
 
         <nav class="main-nav float-right d-none d-lg-block stroke">
           <ul>
-            <li class="active"><a href="#intro">Home</a></li>
-            <li><a href="#about">About</a></li>
+            <li><a href="index.php">Home</a></li>
+             <!-- <li id="active_link"><a href="about.php">About</a></li> -->
+            <li <?php if($current == 'about'){ echo 'id="active_link"'; }?>><a href="about.php">About</a></li>
             <li class="drop-down">
-              <a href="#products">Products</a>
+              <a href="index.php#products">Products</a>
               <ul>
                 <li><a href="#">Product Name 1</a></li>
                 <li><a href="#">Product Name 2</a></li>
@@ -81,11 +86,11 @@
                 <li><a href="#">Product Name 4</a></li>
               </ul>
             </li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#team">Team</a></li>
-            <li><a href="technology.php">Technology</a></li>
+            <li><a href="index.php#services">Services</a></li>
+            <li><a href="index.php#team">Team</a></li>
+            <li <?php if($current == 'technology'){ echo 'id="active_link"'; }?>><a href="technology.php">Technology</a></li>
             <li><a href="">Gallery</a></li>
-            <li><a href="#testimonials">Contact</a></li>
+            <li><a href="index.php#testimonials">Contact</a></li>
           </ul>
         </nav>
         <!-- .main-nav -->

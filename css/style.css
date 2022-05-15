@@ -581,6 +581,7 @@ h2 span {
 
 .main-nav a:hover,
 .main-nav .active > a,
+.main-nav #active_link > a,
 .main-nav li:hover > a {
   color: #1bb1dc;
   /* text-decoration: none; */
@@ -621,6 +622,7 @@ h2 span {
 
 .main-nav .drop-down ul a:hover,
 .main-nav .drop-down ul .active > a,
+.main-nav .drop-down ul #active_link > a,
 .main-nav .drop-down ul li:hover > a {
   color: #1bb1dc;
 }
@@ -679,6 +681,9 @@ nav.stroke ul li a:hover:after,
 .main-nav .active > a:after {
   width: 80%;
 }
+.main-nav #active_link > a:after {
+  width: 80%;
+}
 
 /* Mobile Navigation */
 
@@ -711,6 +716,7 @@ nav.stroke ul li a:hover:after,
 
 .mobile-nav a:hover,
 .mobile-nav .active > a,
+.mobile-nav #active_link > a,
 .mobile-nav li:hover > a {
   color: #8dc2fa;
   text-decoration: none;
@@ -725,6 +731,9 @@ nav.stroke ul li a:hover:after,
 }
 
 .mobile-nav .active.drop-down > a:after {
+  content: "\f077";
+}
+.mobile-nav #active_link.drop-down > a:after {
   content: "\f077";
 }
 
@@ -1335,6 +1344,9 @@ nav.stroke ul li a:hover:after,
 #testimonials .owl-dot.active {
   background-color: #1bb1dc;
 }
+#testimonials .owl-dot#active_link {
+  background-color: #1bb1dc;
+}
 
 /* Team Section
 --------------------------------*/
@@ -1452,6 +1464,9 @@ nav.stroke ul li a:hover:after,
 }
 
 #clients .owl-dot.active {
+  background-color: #1bb1dc;
+}
+#clients .owl-dot#active_link {
   background-color: #1bb1dc;
 }
 

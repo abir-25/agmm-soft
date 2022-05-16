@@ -5,6 +5,10 @@
   width: 50px !important;
   height: 50px !important;
 }
+.team-member {
+  width: 100px !important;
+  height: 100px !important;
+}
 .post-image {
   width: 150px !important;
 }

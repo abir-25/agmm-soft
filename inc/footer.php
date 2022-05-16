@@ -64,7 +64,16 @@
 
       <div class="container">
         <div class="copyright">
-          &copy; Copyright <strong>AGMM Soft</strong>. All Rights Reserved
+<?php
+    $query = "select * from tbl_basic_info";
+    $getData = $db->select($query);
+    if($getData)
+    {
+        while($result = $getData->fetch_assoc()) 
+        {
+?>
+          <?php echo $result['copyright']; ?>
+<?php } } ?>
         </div>
         <div class="credits">
           Developed by <a href="#">AgameeIT</a>

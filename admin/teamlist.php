@@ -4,15 +4,15 @@
                 <!-- Page Header-->
                 <header class="page-header">
                     <div class="container-fluid">
-                        <h2 class="no-margin-bottom">Editor List</h2>
+                        <h2 class="no-margin-bottom">Team Members List</h2>
                     </div>
                 </header>
                 <!-- Breadcrumb-->
                 <div class="breadcrumb-holder container-fluid">
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                        <li class="breadcrumb-item active">Editor Option</li>
-                        <li class="breadcrumb-item active">Editor List</li>
+                        <li class="breadcrumb-item active">Team Option</li>
+                        <li class="breadcrumb-item active">Team Members List</li>
                     </ul>
                 </div>
 
@@ -28,7 +28,7 @@
                                         </div>
                                     </div>
                                     <div class="card-header d-flex align-items-center">
-                                        <h3 class="h4">Editor List</h3>
+                                        <h3 class="h4">Team Members List</h3>
                                     </div>
                                     <div class="card-body">
 <?php
@@ -36,13 +36,24 @@
 	if(isset($_GET['delid']))
 	{
 		$delid = $_GET['delid'];
+		$query = "select * from tbl_team where id='$delid'"; 
+		$getdata = $db->select($query);
 		
-		$delquery = "delete from tbl_login where id = '$delid'";
+		if($getdata)
+		{
+			while($delimg = $getdata->fetch_assoc())
+			{
+				$dellink = $delimg['image'];
+				unlink($dellink);
+			}
+		}
+		
+		$delquery = "delete from tbl_team where id = '$delid'";
 		$deldata = $db->deletedata($delquery);
 		
 		if($deldata)
 		{
-		    echo "<script>window.location = 'editorlist.php'; </script>";
+			echo "<script>window.location = 'teamlist.php'; </script>";
 		}
 		else
 		{
@@ -53,17 +64,18 @@
                                         <table class="table">
                                             <thead>
                                                 <tr>
-                                                    <th width="15%">No.</th>
-                                                    <th width="20%">Name</th>
-                                                    <th width="30%">Email</th>
-                                                    <th width="17%">Password</th>
+                                                    <th width="8%">No.</th>
+                                                    <th width="22%">Name</th>
+                                                    <th width="17%">Employee Type</th>
+                                                    <th width="20%">Designation</th>
+                                                    <th width="15%">Image</th>
                                                     <th width="18%">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
 <?php
-	$query = "select * from tbl_login where role='1' order by id asc ";
-    $i = 0;	
+	$query = "select * from tbl_team order by id asc";	
+    $i = 0;			
 	$post = $db->select($query);				
 	if($post)
 	{
@@ -73,28 +85,20 @@
 ?>
                                                 <tr>
                                                     <th scope="row" style="vertical-align:middle"><?php echo $i; ?></th>
-                                          
-
+                                                    
                                                     <td scope="row" style="vertical-align:middle"><?php echo $result['name']; ?></td>
 
-                                                    <td scope="row" style="vertical-align:middle"><?php echo $result['email']; ?></td>
+                                                    <td scope="row" style="vertical-align:middle"><?php if($result['type']==0) {echo "Management"; }
+                                                    else{
+                                                    echo "Employee";
+                                                    }; ?></td>
 
-<?php 
-    if($result['email'] == $_SESSION['user'] || $_SESSION['role'] == 0)
-    {
-?>
-                                                    <td scope="row" style="vertical-align:middle"><?php echo $result['password']; ?></td>
-<?php } else { ?>
-                                                    <td scope="row" style="vertical-align:middle">.......</td>
-<?php } ?>
-                                                    <td style="vertical-align:middle"><a class="actionLink" href="editeditor.php?editorId=<?php echo $result['id']; ?>">Update</a>
-<?php 
-    if($_SESSION['role'] == 0)
-    {
-?>
-                                                    || <a class="actionLink" onclick= "return confirm('Are you sure to Delete This Editor?');" href="?delid=<?php echo $result['id'];?>">Delete</a>
-<?php } ?>    
-                                                </td>
+                                                    <td scope="row" style="vertical-align:middle"><?php echo $result['designation']; ?></td>
+
+                                                    <td style="vertical-align:middle"><img class="team-member" src="<?php echo $result['image']; ?>" alt="" /></td>
+													
+													
+                                                    <td style="vertical-align:middle"><a class="actionLink" href="editteam.php?teamId=<?php echo $result['id']; ?>">Update</a>  || <a class="actionLink" onclick= "return confirm('Are you sure to Delete This Team Member?');" href="?delid=<?php echo $result['id'];?>">Delete</a></td>
                                                 </tr>
 <?php } } ?>
 											</tbody>
@@ -102,12 +106,7 @@
 <?php if($i==0) { ?>
                                         <p class="text-center py-4">No data Available</p>
 <?php } ?>
-<?php 
-    if($_SESSION['role'] == 0)
-    {
-?>
-                                        <a href="addeditor.php" class="btn btn-primary">Add</a>
-<?php } ?>
+                                        <a href="addfeature.php" class="btn btn-primary">Add</a>
                                     </div>
                                 </div>
                             </div>

@@ -75,7 +75,6 @@
 
       <div class="container">
         <div class="logo float-left">
-          <!-- Uncomment below if you prefer to use an image logo -->
 <?php
     $query = "select * from tbl_basic_info";
     $getData = $db->select($query);
@@ -126,7 +125,7 @@
           class="row justify-content-center align-self-center banner-section"
         >
           <div class="col-md-6 intro-info order-md-first order-last">
-            <h2 class="banner-title">AGMM Soft Solutions for Your</h2>
+            <h2 class="banner-title">AGMM SOFT Solutions for Your</h2>
             <div class="word-carousel">
               <div>
                 <ul class="moving-words">

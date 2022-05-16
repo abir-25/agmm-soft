@@ -37,6 +37,7 @@
 <?php
 	if($_SERVER['REQUEST_METHOD'] == 'POST')
 	{
+		$email = $fm->validation($_POST['email']);
 		$old = $fm->validation($_POST['old']);
 		$new = $fm->validation($_POST['new']);
 		$confirm = $fm->validation($_POST['confirm']);
@@ -45,53 +46,56 @@
 		$new = mysqli_real_escape_string($db->link1, $new);
 		$confirm = mysqli_real_escape_string($db->link1, $confirm);
 		
-    if($new == $confirm)
+    $query1 = "select * from tbl_login where email='$email'";
+    $check1 = $db->select($query1);
+    if($check1)
     {
-      $new1 = $new;
-
-      $cquery = "select * from tbl_login where password='$old'";
-      $check = $db->select($cquery);
-      if($check)
+      if($new == $confirm)
       {
-        while($result = $check->fetch_assoc())
+        $cquery = "select * from tbl_login where password='$old' and email='$email'";
+        $check = $db->select($cquery);
+        if($check)
         {
-          $query = "update tbl_login set password='$new' where id='1'";
-    
-          $result = $db->update($query);
-          if($result)
+          while($result = $check->fetch_assoc())
           {
-            echo "<span style='color:green; font-size:18px;'>Password Changed Successfully!</span>";	
+            $query = "update tbl_login set password='$new' where email='$email'";
+      
+            $result1 = $db->update($query);
+            if($result1)
+            {
+              echo "<span style='color:green; font-size:18px;'>Password Updated Successfully!</span>";	
+            }
+            else
+            {
+              echo "<span style='color:red; font-size:18px;'>Error!! Password Not Updated</span>";
+            }
           }
-          else
-          {
-            echo "<span style='color:red; font-size:18px;'>Error!! Password Not Changed...</span>";
-          }
+        }
+        else
+        {
+          echo "<span style='color:red; font-size:18px;'>Error!! Old Password Not Matched.</span>";
         }
       }
       else
       {
-        echo "<span style='color:red; font-size:18px;'>Error!! Old Password Not Matched.</span>";
+        echo "<span style='color:red; font-size:18px;'>Error!! New Password is Not Matched with Confirm Password.</span>";
       }
     }
     else
     {
-      echo "<span style='color:red; font-size:18px;'>Error!! New Password is Not Confirmed.</span>";
+      echo "<span style='color:red; font-size:18px;'>Error!! Email Id not found.</span>";
     }
-		
-	
+  
 	}
 ?>
-
+                    
                         <div class="form-group row">
-                          <label class="col-sm-3 form-control-label">Select User Role</label>
+                          <label class="col-sm-3 form-control-label">Email</label>
                           <div class="col-sm-9">
-                            <select name="role" id="" class="form-control role-select">
-                              <option value="-1">Select User Role</option>
-                              <option value="0">Admin</option>
-                              <option value="1">Editor</option>
-                            </select>
+                            <input type="text" name="email" 
+                            required class="form-control" placeholder="Enter Email Id">
                           </div>
-                        </div>  
+                        </div>
                         <div class="line"></div>                      
                         <div class="form-group row">
                           <label class="col-sm-3 form-control-label">Old Password</label>

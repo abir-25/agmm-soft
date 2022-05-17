@@ -52,6 +52,13 @@
                         </ul>
                     </li>
 
+                     <li><a href="#exampledropdownDropdown4" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-handshake-o"></i>Client Option</a>
+                        <ul id="exampledropdownDropdown4" class="collapse list-unstyled ">
+                            <li><a href="addclient.php">Add Client </a></li>
+                            <li><a href="clientlist.php">Client List</a></li>           
+                        </ul>
+                    </li>
+
                     
                 </ul>
 

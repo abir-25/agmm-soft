@@ -1,4 +1,11 @@
+<?php include 'config/config.php'; ?>
+<?php include 'lib/database.php'; ?>
+<?php include 'helpers/format.php'; ?>
+<?php
+	$db = new Database();
+	$fm = new Format();
 
+?>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta
       content="agmm, agmm soft, products website, agmm company website, agmm website, agmm software firm"
@@ -94,7 +101,7 @@
               </ul>
             </li>
             <li><a href="index.php#services">Services</a></li>
-            <li><a href="index.php#team">Team</a></li>
+            <li <?php if($current == 'team'){ echo 'id="active_link"'; }?>><a href="index.php#team">Team</a></li>
             <li <?php if($current == 'technology'){ echo 'id="active_link"'; }?>><a href="technology.php">Technology</a></li>
             <li><a href="">Gallery</a></li>
             <li><a href="index.php#testimonials">Contact</a></li>

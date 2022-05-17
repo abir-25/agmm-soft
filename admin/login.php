@@ -52,9 +52,9 @@
 
           <br />
           <div class="field-set">
-            <span class="input-item">
+            <!-- <span class="input-item">
               <i class="fa fa-user" style="font-size: 19px"></i>
-            </span>
+            </span> -->
             <select name="role" id="txt-input" required>
               <option value="-1">Select User Role</option>
               <option value="0">Admin</option>
@@ -62,9 +62,9 @@
             </select>
 
             <br />
-            <span class="input-item input-item-text">
+            <!-- <span class="input-item input-item-text">
               <i class="fa fa-envelope"></i>
-            </span>
+            </span> -->
             <input
               class="form-input"
               type="email"
@@ -75,27 +75,27 @@
             />
 
             <br />
-            <span class="input-item input-item-text">
+            <!-- <span class="input-item input-item-text">
               <i class="fa fa-key"></i>
-            </span>
+            </span> -->
             <input
               class="form-input"
               type="password"
-              placeholder="Password"
+              placeholder="Enter your Password"
               id="pwd"
               name="password"
               required
             />
 
             <!--  Show/hide password  -->
-            <span>
+            <!-- <span>
               <i
                 class="fa fa-eye"
                 aria-hidden="true"
                 type="button"
                 id="eye"
               ></i>
-            </span>
+            </span> -->
 
           <div>
 <?php

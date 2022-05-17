@@ -79,7 +79,7 @@ header p {
 /* inputs form  */
 input[class="form-input"],
 select {
-  width: 240px;
+  width: 281px;
   height: 50px;
   margin-top: 2%;
   padding: 15px;
@@ -91,15 +91,15 @@ select {
   transition: 0.2s linear;
   background-color: #fff !important;
 }
-input[id="txt-input"] {
+/* input[id="txt-input"] {
   width: 247px;
-}
+} */
 input:-webkit-autofill {
   background-color: red !important;
 }
-select {
+/* select {
   width: 252px;
-}
+} */
 /* focus  */
 input:focus {
   transform: translateX(-2px);

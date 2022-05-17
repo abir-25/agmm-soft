@@ -804,82 +804,50 @@
           </div>
 
           <div class="row">
-            <div class="col-lg-3 col-md-6 wow fadeInUp">
-              <div class="member">
-                <img src="img/team-1.jpg" class="img-fluid" alt="" />
+<?php
+    $query = "select * from tbl_team where type='0' limit 4";
+    $getData = $db->select($query);
+    if($getData)
+    {
+        $delay = 0;
+        while($result = $getData->fetch_assoc()) 
+        {
+          $delay = $delay+0.1;
+?>
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="<?php echo $delay; ?>s">
+              <div class="member"> 
+                <img src="admin/<?php echo $result['image'];?>" class="img-fluid member-img" alt="" />
                 <div class="member-info">
                   <div class="member-info-content">
-                    <h4>Walter White</h4>
-                    <span>Chief Executive Officer</span>
+                    <h4><?php echo $result['name'];?></h4>
+                    <span><?php echo $result['designation'];?></span>
                     <div class="social">
-                      <a href=""><i class="fa fa-twitter"></i></a>
-                      <a href=""><i class="fa fa-facebook"></i></a>
-                      <a href=""><i class="fa fa-google-plus"></i></a>
-                      <a href=""><i class="fa fa-linkedin"></i></a>
+                      <?php if($result['fb']!="") { ?>
+                      <a href="<?php echo $result['fb'];?>" target="_blank"><i class="fa fa-facebook"></i></a>
+                      <?php } ?>
+                      <?php if($result['ins']!="") { ?>
+                      <a href="<?php echo $result['ins'];?>" target="_blank"><i class="fa fa-instagram"></i></a>
+                      <?php } ?>
+                      <?php if($result['tw']!="") { ?>
+                      <a href="<?php echo $result['tw'];?>" target="_blank"><i class="fa fa-twitter"></i></a>
+                      <?php } ?>
+                      <?php if($result['li']!="") { ?>
+                      <a href="<?php echo $result['li'];?>" target="_blank"><i class="fa fa-linkedin"></i></a>
+                      <?php } ?>
+                      <?php if($result['git']!="") { ?>
+                      <a href="<?php echo $result['git'];?>" target="_blank"><i class="fa fa-github"></i></a>
+                      <?php } ?>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-
-            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-              <div class="member">
-                <img src="img/team-2.jpg" class="img-fluid" alt="" />
-                <div class="member-info">
-                  <div class="member-info-content">
-                    <h4>Sarah Jhonson</h4>
-                    <span>Product Manager</span>
-                    <div class="social">
-                      <a href=""><i class="fa fa-twitter"></i></a>
-                      <a href=""><i class="fa fa-facebook"></i></a>
-                      <a href=""><i class="fa fa-google-plus"></i></a>
-                      <a href=""><i class="fa fa-linkedin"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-              <div class="member">
-                <img src="img/team-3.jpg" class="img-fluid" alt="" />
-                <div class="member-info">
-                  <div class="member-info-content">
-                    <h4>William Anderson</h4>
-                    <span>CTO</span>
-                    <div class="social">
-                      <a href=""><i class="fa fa-twitter"></i></a>
-                      <a href=""><i class="fa fa-facebook"></i></a>
-                      <a href=""><i class="fa fa-google-plus"></i></a>
-                      <a href=""><i class="fa fa-linkedin"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-              <div class="member">
-                <img src="img/team-4.jpg" class="img-fluid" alt="" />
-                <div class="member-info">
-                  <div class="member-info-content">
-                    <h4>Amanda Jepson</h4>
-                    <span>Accountant</span>
-                    <div class="social">
-                      <a href=""><i class="fa fa-twitter"></i></a>
-                      <a href=""><i class="fa fa-facebook"></i></a>
-                      <a href=""><i class="fa fa-google-plus"></i></a>
-                      <a href=""><i class="fa fa-linkedin"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+<?php } } ?>
 
             <div class="col-lg-12 mt-2">
               <div class="get-started-btn-div justify-content-center">
                 <a
-                  href="#about"
+                  href="team.php"
                   class="btn-get-started scrollto custom-btn btn-16"
                   >View all members</a
                 >
@@ -1136,14 +1104,16 @@
           </header>
 
           <div class="owl-carousel clients-carousel">
-            <img src="img/clients/client-1.png" alt="" />
-            <img src="img/clients/client-2.png" alt="" />
-            <img src="img/clients/client-3.png" alt="" />
-            <img src="img/clients/client-4.png" alt="" />
-            <img src="img/clients/client-5.png" alt="" />
-            <img src="img/clients/client-6.png" alt="" />
-            <img src="img/clients/client-7.png" alt="" />
-            <img src="img/clients/client-8.png" alt="" />
+<?php
+    $query = "select * from tbl_client";
+    $getData = $db->select($query);
+    if($getData)
+    {
+        while($result = $getData->fetch_assoc()) 
+        {
+?>           
+            <img src="admin/<?php echo $result['logo']; ?>" alt="client" />
+<?php } } ?>
           </div>
         </div>
       </section>

@@ -37,8 +37,6 @@
 <?php
 	if($_SERVER['REQUEST_METHOD'] == 'POST')
 	{
-		$name  = mysqli_real_escape_string($db->link1, $_POST['name']);
-		$topic_id  = mysqli_real_escape_string($db->link1, $_POST['topic_id']);
 
 		$permitted  = array('jpg', 'jpeg', 'png', 'gif');
 		$file_name = $_FILES['logo']['name'];
@@ -57,7 +55,7 @@
         else
         {	
             move_uploaded_file($file_temp, $uploaded_image);
-            $query = "INSERT INTO tbl_client(name, topic_id, logo) VALUES('$name','$topic_id','$uploaded_image')";
+            $query = "INSERT INTO tbl_client(logo) VALUES('$uploaded_image')";
             $inserted_rows = $db->insert($query);
             if ($inserted_rows) 
             {
@@ -71,33 +69,6 @@
         }
 	}
 ?>
-
-                        <div class="form-group row">
-                          <label class="col-sm-3 form-control-label">Client Name</label>
-                          <div class="col-sm-9">
-                            <input type="text" name="name" class="form-control" required placeholder="Enter Client Name">
-                          </div>
-                        </div>
-						<div class="line"></div>
-						<div class="form-group row">
-                          <label class="col-sm-3 form-control-label">Topic</label>
-                          <div class="col-sm-9">
-                          <select name="topic_id" id="" class="form-control" required>
-                                <option value="">Select Topic</option>
-<?php
-	$query1 = "select * from tbl_topic";
-	    $getpost = $db->select($query1);
-      if($getpost)
-      {
-	      while($postresult = $getpost->fetch_assoc())
-	      {
-?>
-                                <option value="<?php echo $postresult['id'];?>"><?php echo $postresult['title'];?></option>
-<?php } } ?>
-                            </select>
-                          </div>
-                        </div>
-						<div class="line"></div>
 						<div class="form-group row">
                           <label class="col-sm-3 form-control-label">Upload Client logo</label>
                           <div class="col-sm-9" style="text-align:center">

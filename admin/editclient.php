@@ -46,8 +46,6 @@
 <?php
 	if($_SERVER['REQUEST_METHOD'] == 'POST')
 	{
-        $name  = mysqli_real_escape_string($db->link1, $_POST['name']);
-		$topic_id  = mysqli_real_escape_string($db->link1, $_POST['topic_id']);
 
 		$permited  = array('jpg', 'jpeg', 'png', 'gif');
 		$file_name = $_FILES['logo']['name'];
@@ -59,54 +57,31 @@
 		$unique_image = substr(md5(time()), 0, 10).'.'.$file_ext;
 		$uploaded_image = "upload/client/".$unique_image;
 	
-		if(!empty($file_name))
-        {
-            if (in_array($file_ext, $permited) === false) 
-            {
-                echo "<span class='error'>Error...You can upload only:-".implode(', ', $permited)."</span>";
-            } 
-            else
-            {	
-                move_uploaded_file($file_temp, $uploaded_image);
-                $query = "UPDATE tbl_client 
-                        SET 
-                        name = '$name',
-                        topic_id = '$topic_id',
-                        logo = '$uploaded_image'   
-                        where id='$clientId'";
-            
-                $updated_rows = $db->update($query);
-                if ($updated_rows) 
-                {
-                    echo "<span class='success'>Data Updated Successfully.
-                    </span>";
-                }
-                else 
-                {
-                    echo "<span class='error'>Data Not Updated !!</span>";
-                }
-                
-            }
-        }
-        else
-        {
-            $query = "UPDATE tbl_client 
-                        SET 
-                        name = '$name',
-                        topic_id = '$topic_id'       
-                        where id='$clientId'";
-            
-                $updated_rows = $db->update($query);
-                if ($updated_rows) 
-                {
-                    echo "<span class='success'>Data Updated Successfully.
-                    </span>";
-                }
-                else 
-                {
-                    echo "<span class='error'>Data Not Updated !!</span>";
-                }
-        }
+    if (in_array($file_ext, $permited) === false) 
+    {
+        echo "<span class='error'>Error...You can upload only:-".implode(', ', $permited)."</span>";
+    } 
+    else
+    {	
+      move_uploaded_file($file_temp, $uploaded_image);
+      $query = "UPDATE tbl_client 
+              SET 
+              logo = '$uploaded_image'   
+              where id='$clientId'";
+  
+      $updated_rows = $db->update($query);
+      if ($updated_rows) 
+      {
+          echo "<span class='success'>Data Updated Successfully.
+          </span>";
+      }
+      else 
+      {
+          echo "<span class='error'>Data Not Updated !!</span>";
+      }
+        
+    }
+
 	}
 ?>
 <?php
@@ -117,33 +92,6 @@
 	      while($postresult = $getpost->fetch_assoc())
 	      {
 ?>
-                        <div class="form-group row">
-                          <label class="col-sm-3 form-control-label">Client Name</label>
-                          <div class="col-sm-9">
-                            <input type="text" name="name" class="form-control" required value="<?php echo $postresult['name'];?>">
-                          </div>
-                        </div>
-						<div class="line"></div>
-						<div class="form-group row">
-                          <label class="col-sm-3 form-control-label">Topic</label>
-                          <div class="col-sm-9">
-                          <select name="topic_id" id="" class="form-control" required>
-                                  <option value="">Select skill type</option>
-<?php
-	$query2 = "select * from tbl_topic";
-	$getpost2 = $db->select($query2);
-      if($getpost2)
-      {
-	      while($postresult1 = $getpost2->fetch_assoc())
-	      {
-?>
-                              
-                                  <option value="<?php echo $postresult1["id"]; ?>" <?php if($postresult1['id'] == $postresult['topic_id']) {  echo "selected"; } ?>><?php echo $postresult1["title"]; ?></option>
-<?php } } ?>
-                                </select>
-                          </div>
-                        </div>
-						<div class="line"></div>
 						<div class="form-group row">
                           <label class="col-sm-3 form-control-label">Upload Client Logo</label>
                           <div class="col-sm-9" style="text-align:center">
@@ -157,7 +105,9 @@
                             <button type="submit" class="btn btn-primary">Update</button>
                           </div>
                         </div>
-<?php } } ?>
+<?php } } else { ?>
+                      <p class="text-center py-4">No data Available</p>
+<?php } ?>
 	
                       </form>
                     </div>

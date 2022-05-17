@@ -65,11 +65,9 @@
                                         <table class="table">
                                             <thead>
                                                 <tr>
-                                                    <th width="12%">No.</th>
-                                                    <th width="28%">Client Name</th>
-                                                    <th width="20%">Type</th>
-                                                    <th width="20%">Client Logo</th>
-                                                    <th width="20%">Action</th>
+                                                    <th width="25%">No.</th>
+                                                    <th width="50%">Client Logo</th>
+                                                    <th width="25%">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -82,26 +80,11 @@
 		while($result = $post->fetch_assoc())
 		{
 			$i++;
-            $topic_id = $result["topic_id"];
-            $query1 = "select * from tbl_topic order by id asc";				
-            $post1 = $db->select($query1);				
-            if($post1)
-            {
-                while($result1 = $post1->fetch_assoc())
-                {
-                    if($topic_id == $result1["id"])
-                        $topic = $result1["title"];
-                }
-            }
 ?>
                                                 <tr>
                                                     <th scope="row" style="vertical-align:middle"><?php echo $i; ?></th>
-                                                    
-                                                    <td scope="row" style="vertical-align:middle"><?php echo $result['name']; ?></td>
-
-                                                    <td scope="row" style="vertical-align:middle"><?php echo $topic; ?></td>
-
-                                                    <td style="vertical-align:middle"><img class="skill-list" src="<?php echo $result['logo']; ?>" alt="" /></td>
+ 
+                                                    <td style="vertical-align:middle"><img class="userimglist" src="<?php echo $result['logo']; ?>" alt="" /></td>
 													
 													
                                                     <td style="vertical-align:middle"><a class="actionLink" href="editclient.php?clientId=<?php echo $result['id']; ?>">Update</a>  || <a class="actionLink" onclick= "return confirm('Are you sure to Delete This Client?');" href="?delclientid=<?php echo $result['id'];?>">Delete</a></td>

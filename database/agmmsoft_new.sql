@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 4.9.7
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: May 18, 2022 at 04:38 AM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 8.0.3
+-- Host: localhost:3306
+-- Generation Time: May 18, 2022 at 08:37 AM
+-- Server version: 5.7.38
+-- PHP Version: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `db_agmm`
+-- Database: `agmmsoft_new`
 --
 
 -- --------------------------------------------------------
@@ -103,7 +104,7 @@ CREATE TABLE `tbl_contact` (
   `subject` varchar(255) NOT NULL,
   `phone` varchar(15) NOT NULL,
   `message` text NOT NULL,
-  `status` int(11) NOT NULL DEFAULT 0
+  `status` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -152,7 +153,7 @@ CREATE TABLE `tbl_faq` (
   `id` int(11) NOT NULL,
   `question` text NOT NULL,
   `answer` text NOT NULL,
-  `status` int(11) NOT NULL DEFAULT 1
+  `status` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -224,7 +225,7 @@ CREATE TABLE `tbl_pricing` (
 CREATE TABLE `tbl_role` (
   `id` int(11) NOT NULL,
   `role` varchar(15) NOT NULL,
-  `status` int(11) NOT NULL DEFAULT 0
+  `status` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -331,7 +332,11 @@ CREATE TABLE `tbl_team` (
 
 INSERT INTO `tbl_team` (`id`, `name`, `designation`, `image`, `type`, `fb`, `ins`, `tw`, `li`, `git`) VALUES
 (1, 'Abir Mahmud', 'Software Engineer', 'upload/team/606da873e7.jpg', 0, 'https://www.facebook.com/AbirMahmud101/', 'https://www.instagram.com/_abir_mahmud_/', 'https://twitter.com/TheAbirMahmud', 'https://www.linkedin.com/in/abirmahmud25/', 'https://github.com/abir-25'),
-(2, 'MS. Alina', 'Web Designer and Developer', 'upload/team/05ae77d392.jpg', 1, 'https://www.facebook.com/AbirMahmud101/', 'https://www.instagram.com/_abir_mahmud_/', 'https://twitter.com/TheAbirMahmud', 'https://www.linkedin.com/in/abirmahmud25/', 'https://github.com/abir-25');
+(5, 'Gias Uddin', 'Software Developer', 'upload/team/5f6b65752e.jpeg', 0, 'https://www.facebook.com/gias.uddin.1213', '', '', '', ''),
+(6, 'Mizanur Rahaman', 'Software Developer', 'upload/team/792dd228e0.jpg', 0, 'https://www.facebook.com/mizanrrahaman12', '', '', '', ''),
+(7, 'Monir Uddin', 'Director Operation', 'upload/team/52d7badeb9.jpg', 0, 'https://www.facebook.com/moniruddin.monir', '', '', '', ''),
+(8, 'Abdula Ar Rakib', 'Trainee', 'upload/team/b7dd01c5f5.jpg', 1, '', '', '', '', ''),
+(9, 'Erfanul Hoque', 'Business Analyst', 'upload/team/5017a19e83.png', 0, '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -563,7 +568,7 @@ ALTER TABLE `tbl_basic_info`
 -- AUTO_INCREMENT for table `tbl_client`
 --
 ALTER TABLE `tbl_client`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tbl_contact`
@@ -599,7 +604,7 @@ ALTER TABLE `tbl_gallery`
 -- AUTO_INCREMENT for table `tbl_login`
 --
 ALTER TABLE `tbl_login`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_news`
@@ -647,7 +652,7 @@ ALTER TABLE `tbl_social`
 -- AUTO_INCREMENT for table `tbl_team`
 --
 ALTER TABLE `tbl_team`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tbl_technology`
@@ -659,7 +664,7 @@ ALTER TABLE `tbl_technology`
 -- AUTO_INCREMENT for table `tbl_testimonial`
 --
 ALTER TABLE `tbl_testimonial`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tbl_what`

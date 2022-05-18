@@ -65,6 +65,13 @@
                             <li><a href="testimoniallist.php">Testimonial List</a></li>           
                         </ul>
                     </li>
+
+                    <li><a href="#exampledropdownDropdown6" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-laptop"></i>Technology Option</a>
+                        <ul id="exampledropdownDropdown6" class="collapse list-unstyled ">
+                            <li><a href="addtechnology.php">Add Technology </a></li>
+                            <li><a href="technologylist.php">Technology List</a></li>           
+                        </ul>
+                    </li>
                     
                 </ul>
 

@@ -805,7 +805,7 @@
 
           <div class="row">
 <?php
-    $query = "select * from tbl_team where type='0' limit 4";
+    $query = "select * from tbl_team where type='0'";
     $getData = $db->select($query);
     if($getData)
     {
@@ -1025,68 +1025,28 @@
                 <h3>Testimonials</h3>
               </header>
               <div class="owl-carousel testimonials-carousel wow fadeInUp">
+<?php
+    $query = "select * from tbl_testimonial order by id desc limit 8";
+    $getData = $db->select($query);
+    if($getData)
+    {
+        while($result = $getData->fetch_assoc()) 
+        {
+?>   
                 <div class="testimonial-item">
                   <img
-                    src="admin/upload/testimonial/testimonial-1.jpg"
+                    src="admin/<?php echo $result['logo']; ?>"
                     class="testimonial-img"
                     alt=""
                   />
 
-                  <h3>Product: ERP System</h3>
-                  <h4>Service: Software Product Development</h4>
-                  <p>Labaid Specialized Hospital</p>
-                  <p>Dhanmondi, Dhaka</p>
+                  <h3>Product: <?php echo $result['product']; ?></h3>
+                  <h4>Service: <?php echo $result['service']; ?></h4>
+                  <p><?php echo $result['client']; ?></p>
+                  <p><?php echo $result['address']; ?></p>
                 </div>
+<?php } } ?>
 
-                <div class="testimonial-item">
-                  <img
-                    src="admin/upload/testimonial/testimonial-2.jpg"
-                    class="testimonial-img"
-                    alt=""
-                  />
-                  <h3>Product: Customized Application Development</h3>
-                  <h4>Service: App Development</h4>
-                  <p>Armed Forces Institute</p>
-                  <p>Dhanmondi, Dhaka</p>
-                </div>
-
-                <div class="testimonial-item">
-                  <img
-                    src="admin/upload/testimonial/testimonial-3.jpg"
-                    class="testimonial-img"
-                    alt=""
-                  />
-                  <h3>Product: Integration System Development</h3>
-                  <h4>
-                    Service: System Integration and Product Implementation
-                  </h4>
-                  <p>Labaid Diagonostic Center</p>
-                  <p>New Market, Dhaka</p>
-                </div>
-
-                <div class="testimonial-item">
-                  <img
-                    src="admin/upload/testimonial/testimonial-4.jpg"
-                    class="testimonial-img"
-                    alt=""
-                  />
-                  <h3>Product: Attendance Mobile Application</h3>
-                  <h4>Service: App Development</h4>
-                  <p>Department of Hemathology</p>
-                  <p>Shershah, Dhaka</p>
-                </div>
-
-                <div class="testimonial-item">
-                  <img
-                    src="admin/upload/testimonial/testimonial-5.jpg"
-                    class="testimonial-img"
-                    alt=""
-                  />
-                  <h3>Product: Attendance and Payroll</h3>
-                  <h4>Service: System Software Development</h4>
-                  <p>Max Diagonostic Ltd</p>
-                  <p>Chawkbazar, Chattogram</p>
-                </div>
               </div>
             </div>
           </div>

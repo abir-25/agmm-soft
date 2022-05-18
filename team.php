@@ -41,7 +41,7 @@
 
           <div class="row">
 <?php
-    $query = "select * from tbl_team where type='0' limit 4";
+    $query = "select * from tbl_team where type='0'";
     $getData = $db->select($query);
     if($getData)
     {

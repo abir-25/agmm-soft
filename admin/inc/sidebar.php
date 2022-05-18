@@ -50,15 +50,21 @@
                             <li><a href="addteam.php">Add Team Member </a></li>
                             <li><a href="teamlist.php">Team Members' List</a></li>           
                         </ul>
-                    </li>
+                    </li>                
 
-                     <li><a href="#exampledropdownDropdown4" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-handshake-o"></i>Client Option</a>
+                    <li><a href="#exampledropdownDropdown4" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-handshake-o"></i>Client Option</a>
                         <ul id="exampledropdownDropdown4" class="collapse list-unstyled ">
                             <li><a href="addclient.php">Add Client </a></li>
                             <li><a href="clientlist.php">Client List</a></li>           
                         </ul>
                     </li>
 
+                    <li><a href="#exampledropdownDropdown5" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-briefcase"></i>Testimonial Option</a>
+                        <ul id="exampledropdownDropdown5" class="collapse list-unstyled ">
+                            <li><a href="addtestimonial.php">Add Testimonial </a></li>
+                            <li><a href="testimoniallist.php">Testimonial List</a></li>           
+                        </ul>
+                    </li>
                     
                 </ul>
 

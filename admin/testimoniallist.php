@@ -4,15 +4,15 @@
                 <!-- Page Header-->
                 <header class="page-header">
                     <div class="container-fluid">
-                        <h2 class="no-margin-bottom">Client List</h2>
+                        <h2 class="no-margin-bottom">Testimonial List</h2>
                     </div>
                 </header>
                 <!-- Breadcrumb-->
                 <div class="breadcrumb-holder container-fluid">
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                        <li class="breadcrumb-item active">Client Option</li>
-                        <li class="breadcrumb-item active">Client List</li>
+                        <li class="breadcrumb-item active">Testimonial Option</li>
+                        <li class="breadcrumb-item active">Testimonial List</li>
                     </ul>
                 </div>
 
@@ -28,15 +28,15 @@
                                         </div>
                                     </div>
                                     <div class="card-header d-flex align-items-center">
-                                        <h3 class="h4">Client List</h3>
+                                        <h3 class="h4">Testimonial List</h3>
                                     </div>
                                     <div class="card-body">
 <?php
 
-	if(isset($_GET['delclientid']))
+	if(isset($_GET['delid']))
 	{
-		$delclientid = $_GET['delclientid'];
-		$query = "select * from tbl_client where id='$delclientid'"; 
+		$delid = $_GET['delid'];
+		$query = "select * from tbl_testimonial where id='$delid'"; 
 		$getdata = $db->select($query);
 		
 		if($getdata)
@@ -48,12 +48,13 @@
 			}
 		}
 		
-		$delquery = "delete from tbl_client where id = '$delclientid'";
+		$delquery = "delete from tbl_testimonial where id = '$delid'";
 		$deldata = $db->deletedata($delquery);
 		
 		if($deldata)
 		{
-			echo "<script>window.location = 'clientlist.php'; </script>";
+			echo "<script>window.location = 'testimoniallist.php'; </script>";
+
 		}
 		else
 		{
@@ -64,15 +65,18 @@
                                         <table class="table">
                                             <thead>
                                                 <tr>
-                                                    <th width="25%">No.</th>
-                                                    <th width="50%">Client Logo</th>
-                                                    <th width="25%">Action</th>
+                                                    <th width="8%">No.</th>
+                                                    <th width="20%">Product</th>
+                                                    <th width="19%">Service</th>
+                                                    <th width="18%">Client</th>
+                                                    <th width="15%">Logo</th>
+                                                    <th width="20%">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                            <?php
-	$query = "select * from tbl_client order by id asc";
-    $i = 0;	
+<?php
+	$query = "select * from tbl_testimonial order by id desc";	
+    $i = 0;			
 	$post = $db->select($query);				
 	if($post)
 	{
@@ -82,11 +86,17 @@
 ?>
                                                 <tr>
                                                     <th scope="row" style="vertical-align:middle"><?php echo $i; ?></th>
- 
-                                                    <td style="vertical-align:middle"><img class="userimglist" src="<?php echo $result['logo']; ?>" alt="" /></td>
+                                                    
+                                                    <td scope="row" style="vertical-align:middle"><?php echo $result['product'];; ?></td>
+
+                                                    <td scope="row" style="vertical-align:middle"><?php echo $result['service'];; ?></td>
+
+                                                    <td scope="row" style="vertical-align:middle"><?php echo $result['client'];; ?></td>
+
+                                                    <td style="vertical-align:middle"><img  src="<?php echo $result['logo']; ?>" alt="" style="height: 75px;"/></td>
 													
 													
-                                                    <td style="vertical-align:middle"><a class="actionLink" href="editclient.php?clientId=<?php echo $result['id']; ?>">Update</a>  || <a class="actionLink" onclick= "return confirm('Are you sure to Delete This Client?');" href="?delclientid=<?php echo $result['id'];?>">Delete</a></td>
+                                                    <td style="vertical-align:middle"><a class="actionLink" href="edittestimonial.php?testId=<?php echo $result['id']; ?>">Update</a>  || <a class="actionLink" onclick= "return confirm('Are you sure to Delete This Testimonial?');" href="?delid=<?php echo $result['id'];?>">Delete</a></td>
                                                 </tr>
 <?php } } ?>
 											</tbody>
@@ -94,7 +104,7 @@
 <?php if($i==0) { ?>
                                         <p class="text-center py-4">No data Available</p>
 <?php } ?>
-                                        <a href="addclient.php" class="btn btn-primary">Add</a>
+                                        <a href="addtestimonial.php" class="btn btn-primary">Add</a>
                                     </div>
                                 </div>
                             </div>

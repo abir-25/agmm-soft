@@ -3369,6 +3369,9 @@ a > code {
   width: 100px;
   height: 100px;
 }
+.clientimglist {
+  width: 100px;
+}
 
 .billText,
 .billText1 {

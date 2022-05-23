@@ -37,12 +37,22 @@
       <section id="about">
         <div class="container">
           <div class="row">
+<?php
+    $query = "select * from tbl_technology";
+    $getData = $db->select($query);
+    if($getData)
+    {
+        $delay = 0;
+        while($result = $getData->fetch_assoc()) 
+        {
+          $delay = $delay+0.1;
+?>
             <div class="col-lg-3 col-12">
               <div class="language-div">
-                <img src="admin/upload/tech/orac.jpg" alt="">
+                <img src="admin/<?php echo $result['image']; ?>" alt="">
                 <div class="language-details">
-                  <h2>Oracle</h2>
-                  <p>Oracle Forms is a software product for creating screens that interact with an Oracle database</p>
+                  <h2><?php echo $result['title']; ?></h2>
+                  <p><?php echo $result['short']; ?></p>
                   <div class="link-div">
                     <a class="button-read-more" href="tech-details.php"><span class="text">Read More</span></a>
                   </div>
@@ -50,7 +60,7 @@
                 </div>
               </div>
             </div>
-
+<?php } } ?>
           </div>
         </div>
       </section>

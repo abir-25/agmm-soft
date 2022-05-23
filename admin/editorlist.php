@@ -62,7 +62,7 @@
                                             </thead>
                                             <tbody>
 <?php
-	$query = "select * from tbl_login where role='1' order by id asc ";
+	$query = "select * from tbl_login where role='1' order by id desc ";
     $i = 0;	
 	$post = $db->select($query);				
 	if($post)

@@ -67,7 +67,7 @@
                                                 <tr>
                                                     <th width="8%">No.</th>
                                                     <th width="22%">Title</th>
-                                                    <th width="40%">Long Description</th>
+                                                    <th width="40%">Description</th>
                                                     <th width="10%">Image</th>
                                                     <th width="20%">Action</th>
                                                 </tr>
@@ -88,7 +88,7 @@
                                                     
                                                     <td scope="row" style="vertical-align:middle"><?php echo $result['title'];; ?></td>
 
-                                                    <td scope="row" style="vertical-align:middle"><?php echo $result['description']; ?></td>
+                                                    <td scope="row" style="vertical-align:middle"><?php echo $result['short']; ?></td>
 
                                                     <td style="vertical-align:middle"><img class="skill-list" src="<?php echo $result['image']; ?>" alt="" /></td>
 													

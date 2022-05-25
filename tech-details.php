@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>AGMM Soft | Technology</title>
+    <title>AGMM Soft | Technology Details</title>
     <!--==========================
     Header
     ============================-->
@@ -12,16 +12,26 @@
     <!--==========================
     Intro Section
   ============================-->
+<?php
+	if(!isset($_GET['techId']) || $_GET['techId'] == NULL)
+	{
+		echo "<script>window.location = '404.php'; </script>";
+	}
+	else
+	{
+		$techId = $_GET['techId'];
+	}
+?>
     <section id="about_page" class="clearfix">
       <div class="container d-flex h-100">
         <div
           class="row justify-content-center align-self-center banner-section"
         >
         <div class="col-md-6 intro-img order-md-first order-first">
-            <img src="img/tech.jpg" alt="" class="img-fluid" />
+            <img src="img/tech-details.png" alt="" class="img-fluid" style="margin-top: 50px" />
           </div>
           <div class="col-md-6 intro-info intro-title order-md-last order-last">
-            <h2 class="banner-title">Technology</h2>
+            <h2 class="banner-title">Technology Details</h2>
           </div>
 
         </div>
@@ -38,29 +48,34 @@
         <div class="container">
           <div class="row">
 <?php
-    $query = "select * from tbl_technology";
+    $query = "select * from tbl_technology where id='$techId'";
     $getData = $db->select($query);
     if($getData)
     {
-        $delay = 0;
         while($result = $getData->fetch_assoc()) 
         {
-          $delay = $delay+0.1;
 ?>
-            <div class="col-lg-3 col-12">
-              <div class="language-div">
+            <div class="col-lg-4 col-12">
+              <div class="tech-image">
                 <img src="admin/<?php echo $result['image']; ?>" alt="">
-                <div class="language-details">
-                  <h2><?php echo $result['title']; ?></h2>
-                  <p><?php echo $result['short']; ?></p>
-                  <div class="link-div">
-                    <a class="button-read-more" href="tech-details.php?techId=<?php echo $result['id']; ?>"><span class="text">Read More</span></a>
-                  </div>
-
-                </div>
               </div>
             </div>
-<?php } } ?>
+
+            <div class="col-lg-8 col-12">
+              <div class="tech-details">
+                <h2><?php echo $result['title']; ?></h2>
+                <p><?php echo $result['short']; ?></p>
+                <p><?php echo $result['description']; ?></p>
+              </div>
+            </div>
+<?php } } else { ?>
+            <div class="col-12">
+                <div class="not-found">
+                    <img src="img/search.jpg" alt="">
+                    <p>Result not found</p>
+                </div>
+            </div>
+<?php } ?>
           </div>
         </div>
       </section>

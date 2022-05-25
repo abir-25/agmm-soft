@@ -1944,8 +1944,8 @@ nav.stroke ul li a:hover:after,
 }
 
 .language-details h2 {
-  font-size: 24px;
-  font-weight: 600;
+  font-size: 22px;
+  font-weight: 500;
   margin-bottom: 8px;
 }
 .language-details p {
@@ -1983,7 +1983,9 @@ nav.stroke ul li a:hover:after,
   padding-top: 70px;
   border-radius: 0px 0 14px 0;
 }
-
+.language-div:hover .language-details p {
+  margin-bottom: 23px;
+}
 /* CSS */
 .button-read-more {
   align-items: center;
@@ -2024,9 +2026,41 @@ nav.stroke ul li a:hover:after,
   background: none;
 }
 
+.tech-image img {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  border: 1px solid #eee;
+  padding: 5px;
+}
+
+.tech-details h2 {
+  font-weight: 600;
+}
+.tech-details p {
+  margin-bottom: 5px;
+}
+
+.not-found {
+  width: 60%;
+  padding: 50px;
+  margin: 20px auto;
+  text-align: center;
+}
+.not-found img {
+  width: 230px;
+}
+.not-found p {
+  font-size: 20px;
+  margin-top: 15px;
+}
 @media (min-width: 768px) {
   .button-read-more {
     font-size: 14px;
+  }
+}
+@media (max-width: 425px) {
+  .not-found {
+    width: 100%;
   }
 }
 

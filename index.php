@@ -84,7 +84,7 @@
         {
 ?>
           <h1 class="text-light">
-            <a href="#intro" class="scrollto"><b><span><?php echo $result['name'];?></span></b></a>
+            <a href="index.php#intro" class="scrollto"><b><span><?php echo $result['name'];?></span></b></a>
           </h1>
           <p style="font-size: 13px"><?php echo $result['slogan'];?></p>
 <?php } } ?>
@@ -107,6 +107,7 @@
             <li><a href="#services">Services</a></li>
             <li><a href="#team">Team</a></li>
             <li><a href="technology.php">Technology</a></li>
+            <li><a href="clients.php">Clients</a></li>
             <li><a href="">Gallery</a></li>
             <li><a href="#testimonials">Contact</a></li>
           </ul>

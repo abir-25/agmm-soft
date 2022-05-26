@@ -1921,7 +1921,9 @@ nav.stroke ul li a:hover:after,
 /*--------------------------------------------------------------
 # Technology
 --------------------------------------------------------------*/
-
+.technology-section {
+  padding: 20px 0px 80px !important;
+}
 .language-details {
   width: 255px;
   height: 115px;
@@ -2031,6 +2033,7 @@ nav.stroke ul li a:hover:after,
     rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
   border: 1px solid #eee;
   padding: 5px;
+  width: 85%;
 }
 
 .tech-details h2 {
@@ -2062,6 +2065,67 @@ nav.stroke ul li a:hover:after,
   .not-found {
     width: 100%;
   }
+}
+
+/*--------------------------------------------------------------
+# Clients
+--------------------------------------------------------------*/
+.client-section {
+  padding: 110px 0px !important;
+}
+.clients-main-div {
+  width: 100%;
+  border: 2px solid #eee;
+  padding: 8px;
+  position: relative;
+  margin-bottom: 104px;
+  height: 230px;
+  box-shadow: 0 0 5px rgb(0 0 0 / 50%);
+  background: #fff;
+}
+.client-img {
+  position: absolute;
+  top: -55px;
+  width: 96%;
+}
+.client-img img {
+  width: 104px;
+  height: 104px;
+  object-fit: contain;
+  border: 5px solid #eee;
+  box-shadow: 0 0 5px rgb(0 0 0 / 80%);
+  margin: auto;
+  width: 104px;
+  background: #fff;
+}
+.img-responsive {
+  display: block;
+  max-width: 100%;
+}
+.img-circle {
+  border-radius: 50%;
+}
+.clients-main-div h3 {
+  width: 100%;
+  float: left;
+  text-align: center;
+  font-size: 19px;
+  font-weight: bold;
+  margin-top: 58px;
+  margin-bottom: 0px;
+}
+.clients-main-div h3 a {
+  color: #004679;
+}
+.clients-main-div p {
+  width: 100%;
+  float: left;
+  text-align: center;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: 14px;
+  line-height: 25px;
+  color: #000;
 }
 
 /* CSS */

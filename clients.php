@@ -21,7 +21,7 @@
             <img src="img/clients.png" alt="" class="img-fluid" style="margin-top: 100px"/>
           </div>
           <div class="col-md-6 intro-info intro-title order-md-last order-last">
-            <h2 class="banner-title">Clients</h2>
+            <h2 class="banner-title" style="text-align: center;">Clients</h2>
           </div>
 
         </div>

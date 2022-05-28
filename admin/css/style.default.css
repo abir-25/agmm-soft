@@ -1820,7 +1820,7 @@ input.input-material ~ label.active {
 }
 
 select {
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
 }
 .role-select {
   margin-bottom: 0px !important;

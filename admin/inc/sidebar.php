@@ -25,6 +25,7 @@
                         <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
                             <li><a href="editdashboard.php">Admin Dashboard</a></li>       
                             <li><a href="titlelogo.php">Basic Information</a></li>
+                            <li><a href="editabout.php">About Us</a></li>
                             <li><a href="social.php">Social Media</a></li>
 <?php 
     if($_SESSION['role']==0){
@@ -33,6 +34,15 @@
 <?php } ?>
                         </ul>
                     </li>
+
+                    <li><a href="#exampledropdownDropdown7" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-hospital-o"></i>Product Option</a>
+                        <ul id="exampledropdownDropdown7" class="collapse list-unstyled ">
+                            <li><a href="addproduct.php">Add Product</a></li>
+                            <li><a href="productlist.php">Product List</a></li> 
+                            <li><a href="addbenefit.php">Add Product Benefit</a></li>
+                            <li><a href="benefitlist.php">Product Benefit List</a></li>           
+                        </ul>
+                    </li> 
                     
 					<li><a href="#exampledropdownDropdown2" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-user"></i>Editor Option</a>
                         <ul id="exampledropdownDropdown2" class="collapse list-unstyled ">

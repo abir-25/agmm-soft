@@ -4,17 +4,17 @@
           <!-- Page Header-->
           <header class="page-header">
             <div class="container-fluid">
-              <h2 class="no-margin-bottom">Edit Product</h2>
+              <h2 class="no-margin-bottom">Edit Product Module</h2>
             </div>
           </header>
 <?php
-	if(!isset($_GET['productId']) || $_GET['productId'] == NULL)
+	if(!isset($_GET['moduleId']) || $_GET['moduleId'] == NULL)
 	{
-		echo "<script>window.location = 'productlist.php'; </script>";
+		echo "<script>window.location = 'modulelist.php'; </script>";
 	}
 	else
 	{
-		$productId = $_GET['productId'];
+		$moduleId = $_GET['moduleId'];
 	}
 ?>
           <!-- Breadcrumb-->
@@ -22,7 +22,7 @@
             <ul class="breadcrumb">
               <li class="breadcrumb-item"><a href="index.php">Home</a></li>
               <li class="breadcrumb-item active">Product Option</li>  
-              <li class="breadcrumb-item active">Edit Product</li>
+              <li class="breadcrumb-item active">Edit Product Module</li>
             </ul>
           </div>
           <!-- Forms Section-->
@@ -46,9 +46,9 @@
 <?php
 	if($_SERVER['REQUEST_METHOD'] == 'POST')
 	{
-    $title  = mysqli_real_escape_string($db->link1, $_POST['title']);
-		$description  = mysqli_real_escape_string($db->link1, $_POST['editor']);
-    $status = $_POST['status'];
+        $title  = mysqli_real_escape_string($db->link1, $_POST['title']);
+		$p_id  = $_POST['p_id'];
+
 		 
 		$permitted  = array('jpg', 'jpeg', 'png', 'gif');
 		$file_name = $_FILES['image']['name'];
@@ -58,7 +58,7 @@
 		$div = explode('.', $file_name);
 		$file_ext = strtolower(end($div));
 		$unique_image = substr(md5(time()), 0, 10).'.'.$file_ext;
-		$uploaded_image = "upload/product/".$unique_image;
+		$uploaded_image = "upload/module/".$unique_image;
 	
 		if(!empty($file_name))
         {
@@ -69,13 +69,12 @@
             else
             {	
                 move_uploaded_file($file_temp, $uploaded_image);
-                $query = "UPDATE tbl_product 
+                $query = "UPDATE tbl_module 
                         SET 
                         title = '$title',
-                        description = '$description',
-                        status = '$status',
+                        p_id = '$p_id',
                         image = '$uploaded_image'    
-                        where id='$productId'";
+                        where id='$moduleId'";
             
                 $updated_rows = $db->update($query);
                 if ($updated_rows) 
@@ -92,12 +91,11 @@
         }
         else
         {
-            $query = "UPDATE tbl_product 
+            $query = "UPDATE tbl_module 
                         SET 
                         title = '$title',
-                        description = '$description',
-                        status = '$status'
-                        where id='$productId'";
+                        p_id = '$p_id' 
+                        where id='$moduleId'";
             
                 $updated_rows = $db->update($query);
                 if ($updated_rows) 
@@ -113,7 +111,7 @@
 	}
 ?>
 <?php
-	$query1 = "select * from tbl_product where id='$productId'";
+	$query1 = "select * from tbl_module where id='$moduleId'";
 	    $getpost = $db->select($query1);
       if($getpost)
       {
@@ -121,36 +119,35 @@
 	      {
 ?>
 
-              <div class="form-group row">
-                          <label class="col-sm-3 form-control-label">Product Status</label>
-                          <div class="col-sm-9">
-                            <select name="status" id="" class="form-control" required>
-                                <option value="">Select Product Status</option> 
-                                <option value="1" <?php if($postresult['status']=='1') { echo "selected"; } ?> >Completed</option>
-                                <option value="2" <?php if($postresult['status']=='2') { echo "selected"; } ?> >Running</option>
-                                <option value="3" <?php if($postresult['status']=='3') { echo "selected"; } ?> >Upcoming</option>
-                            </select>
-                          </div>
-                        </div>
-						<div class="line"></div>
                         <div class="form-group row">
                           <label class="col-sm-3 form-control-label">Product Name</label>
                           <div class="col-sm-9">
-                            <input type="text" name="title" class="form-control" required value="<?php echo $postresult['title'];?>">
+                                <select name="p_id" id="" class="form-control" required>
+                                  <option value="">Select Product Name</option>
+<?php
+	$query2 = "select * from tbl_product";
+	$getpost2 = $db->select($query2);
+      if($getpost2)
+      {
+	      while($postresult1 = $getpost2->fetch_assoc())
+	      {
+?>
+                              
+                                  <option value="<?php echo $postresult1["id"]; ?>" <?php if($postresult1['id'] == $postresult['p_id']) {  echo "selected"; } ?>><?php echo $postresult1["title"]; ?></option>
+<?php } } ?>
+                                </select>
                           </div>
                         </div>
 						<div class="line"></div>
 						<div class="form-group row">
-                          <label class="col-sm-3 form-control-label">Product Description</label>
+                          <label class="col-sm-3 form-control-label">Module Name</label>
                           <div class="col-sm-9">
-                          <textarea name="editor" id="editor">
-                            <?php echo $postresult['description'];?>
-                          </textarea>
+                          <input type="text" name="title" class="form-control" required value="<?php echo $postresult['title'];?>">
                           </div>
             </div>	
 						<div class="line"></div>
 						<div class="form-group row">
-                          <label class="col-sm-3 form-control-label">Upload Product Image</label>
+                          <label class="col-sm-3 form-control-label">Upload Module Image</label>
                           <div class="col-sm-9" style="text-align:center">
 						              <img src="<?php echo $postresult['image'];?>" width="150px"/><br/>
                             <input type="file" name="image" class="form-control">

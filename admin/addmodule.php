@@ -4,7 +4,7 @@
           <!-- Page Header-->
           <header class="page-header">
             <div class="container-fluid">
-              <h2 class="no-margin-bottom">Add Product</h2>
+              <h2 class="no-margin-bottom">Add Product Module</h2>
             </div>
           </header>
           <!-- Breadcrumb-->
@@ -12,7 +12,7 @@
             <ul class="breadcrumb">
               <li class="breadcrumb-item"><a href="index.php">Home</a></li>
               <li class="breadcrumb-item active">Product Option</li>
-			  <li class="breadcrumb-item active">Add Product</li>
+			  <li class="breadcrumb-item active">Add Product Module</li>
 			</ul>
           </div>
           <!-- Forms Section-->
@@ -38,8 +38,8 @@
 	if($_SERVER['REQUEST_METHOD'] == 'POST')
 	{
 		$title  = mysqli_real_escape_string($db->link1, $_POST['title']);
-		$description  = mysqli_real_escape_string($db->link1, $_POST['editor']);
-    $status = $_POST['status'];
+		$p_id  = $_POST['p_id'];
+
 		 
 		$permitted  = array('jpg', 'jpeg', 'png', 'gif');
 		$file_name = $_FILES['image']['name'];
@@ -49,7 +49,7 @@
 		$div = explode('.', $file_name);
 		$file_ext = strtolower(end($div));
 		$unique_image = substr(md5(time()), 0, 10).'.'.$file_ext;
-		$uploaded_image = "upload/product/".$unique_image;	
+		$uploaded_image = "upload/module/".$unique_image;	
 
         if (in_array($file_ext, $permitted) === false) 
         {
@@ -58,7 +58,7 @@
         else
         {	
             move_uploaded_file($file_temp, $uploaded_image);
-            $query = "INSERT INTO tbl_product(title, description, image, status) VALUES('$title','$description','$uploaded_image', '$status')";
+            $query = "INSERT INTO tbl_module(title, p_id, image) VALUES('$title','$p_id','$uploaded_image')";
             $inserted_rows = $db->insert($query);
             if ($inserted_rows) 
             {
@@ -74,34 +74,33 @@
 ?>
 
                         <div class="form-group row">
-                          <label class="col-sm-3 form-control-label">Product Status</label>
-                          <div class="col-sm-9">
-                              <select name="status" id="" class="form-control" required>
-                                <option value="">Select Product Status</option> 
-                                <option value="1">Completed</option>
-                                <option value="2">Running</option>
-                                <option value="3">Upcoming</option>
-                              </select>
-                          </div>
-                        </div>  
-                    <div class="line"></div>                      
-<div class="form-group row">
                           <label class="col-sm-3 form-control-label">Product Name</label>
                           <div class="col-sm-9">
-                            <input type="text" name="title" class="form-control" required placeholder="Enter Product Name">
+                            <select name="p_id" id="" class="form-control" required>
+                                  <option value="">Select Product Name</option>
+<?php
+	$query = "select * from tbl_product";
+	$post = $db->select($query);				
+	if($post)
+	{
+		while($result = $post->fetch_assoc())
+		{     
+?>    
+                                  <option value="<?php echo $result['id']; ?>"><?php echo $result['title']; ?></option>
+<?php } } ?>
+                              </select>
                           </div>
                         </div>
 						<div class="line"></div>
 						<div class="form-group row">
-                          <label class="col-sm-3 form-control-label">Product Description</label>
+                          <label class="col-sm-3 form-control-label">Module Name</label>
                           <div class="col-sm-9">
-                          <textarea name="editor" id="editor">
-                          </textarea>
+                          <input type="text" name="title" class="form-control" required placeholder="Enter Product Module Name">
                           </div>
             </div>			
 						<div class="line"></div>
 						<div class="form-group row">
-                          <label class="col-sm-3 form-control-label">Upload Product Image</label>
+                          <label class="col-sm-3 form-control-label">Upload Module Image</label>
                           <div class="col-sm-9" style="text-align:center">
                             <input type="file" name="image" class="form-control" required>
                           </div>

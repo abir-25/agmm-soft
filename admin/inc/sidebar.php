@@ -40,7 +40,11 @@
                             <li><a href="addproduct.php">Add Product</a></li>
                             <li><a href="productlist.php">Product List</a></li> 
                             <li><a href="addbenefit.php">Add Product Benefit</a></li>
-                            <li><a href="benefitlist.php">Product Benefit List</a></li>           
+                            <li><a href="benefitlist.php">Product Benefit List</a></li>   
+                            <li><a href="addmodule.php">Add Product Module</a></li>
+                            <li><a href="modulelist.php">Product Module List</a></li>
+                            <li><a href="addmodulepoint.php">Add Module Details</a></li>
+                            <li><a href="modulepointlist.php">Module Details List</a></li>                          
                         </ul>
                     </li> 
                     

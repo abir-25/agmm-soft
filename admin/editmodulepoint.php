@@ -46,8 +46,10 @@
                       <h3 class="h4">Edit Information</h3>
                     </div>
                     <div class="card-body">
+                       <form class="form-horizontal" action="" method="post" name="form">
 <?php
-	if('POST' == $_SERVER['REQUEST_METHOD'] && isset($_POST['form2'])) {
+	if('POST' == $_SERVER['REQUEST_METHOD']) {
+        $m_id  = $_POST['m_id'];
         $queryy = "select * from tbl_track";			
         $postt = $db->select($queryy);				
         if($postt)
@@ -56,20 +58,26 @@
                 $p_id = $resultt['p_id'];
             }
         }
-        $m_id  = $_POST['m_id'];
         $title  = mysqli_real_escape_string($db->link1, $_POST['title']);
 
-        $query = "INSERT INTO tbl_module_point(title, p_id, m_id) VALUES('$title','$p_id','$m_id')";
-        $inserted_rows = $db->insert($query);
-        if ($inserted_rows) 
+        $query = "UPDATE tbl_module_point
+                    SET 
+                    title = '$title',
+                    p_id = '$p_id',
+                    m_id = '$m_id'
+                    where id='$m_detailsId'";
+        
+        $updated_rows = $db->update($query);
+        if ($updated_rows) 
         {
-            echo "<span class='success'>Data Inserted Successfully.
+            echo "<span class='success'>Data Updated Successfully.
             </span>";
         }
         else 
         {
-            echo "<span class='error'>Data Not Inserted !!</span>";
+            echo "<span class='error'>Data Not Updated !!</span>";
         }
+
     }
         
 ?>      
@@ -81,48 +89,37 @@
       {
 	      while($postresult = $getpost->fetch_assoc())
 	      {
-              $ppp_id = $postresult['p_id'];
-              $mmm_id = $postresult['m_id'];
+          $ppp_id = $postresult['p_id'];
+          $mmm_id = $postresult['m_id'];
 
-?>
-                    <form class="form-horizontal" action="" method="post">
-
-                        <input type="hidden" name="form1" value="yes" >
-<?php
-    if(isset($_POST['p_id'])){
-        $pp_id = $_POST['p_id'];
-        $query = "UPDATE tbl_track 
+          $query = "UPDATE tbl_track 
                 SET 
-                p_id = '$pp_id'   
+                p_id = '$ppp_id'   
                 where id='1'";
     
-        $updated_rows = $db->update($query);
-    } 
+          $updated_rows = $db->update($query);
 ?>
+
                         <div class="form-group row">
                           <label class="col-sm-3 form-control-label">Product Name</label>
                           <div class="col-sm-9">
-                              <select name="p_id" id="" class="form-control" required  onchange="this.form.submit()">
-                                  <option value="">Select Product Name</option>
 <?php
-	$query = "select * from tbl_product";
+	$query = "select * from tbl_product where id='$ppp_id'";
 	$post = $db->select($query);				
 	if($post)
 	{
 		while($result = $post->fetch_assoc())
 		{     
-            $p_id = $result['id'];
+            $p_title = $result['title'];
 ?>    
-                                  <option value="<?php echo $p_id; ?>" <?php if($p_id == $pp_id) {  echo "selected"; } else if($p_id == $ppp_id) {  echo "selected"; } ?>><?php echo $result['title']; ?></option>
+                                <input type="text" class="form-control" readonly name="p_id"  value="<?php echo $p_title ;?>">
 <?php } } ?>   
-                              </select>
                           </div>
                         </div>
-                    </form>
 
-                    <form class="form-horizontal" action="" method="post" name="form">
-                        <input type="hidden" name="form2" value="yes" >
-						<div class="line"></div>
+
+                   
+						          <div class="line"></div>
                     
                         <div class="form-group row">
                           <label class="col-sm-3 form-control-label">Product Module</label>
@@ -130,14 +127,16 @@
                               <select name="m_id" id="" class="form-control">
                                   <option value="">Select Product Module</option>
 <?php
-	$query1 = "select * from tbl_module where p_id = '$pp_id'";
+	$query1 = "select * from tbl_module where p_id = '$ppp_id' ";
 	$post1 = $db->select($query1);				
 	if($post1)
 	{
 		while($result1 = $post1->fetch_assoc())
 		{     
+      $m_id = $result1['id'];
 ?>    
-                                  <option value="<?php echo $result1['id']; ?>"><?php echo $result1['title']; ?></option>
+     
+                                  <option value="<?php echo $m_id; ?>" <?php if($mmm_id == $m_id) { echo "selected"; } ?>><?php echo $result1["title"]; ?></option>
 <?php } } ?>
                               </select>
                           </div>

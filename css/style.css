@@ -836,7 +836,9 @@ nav.stroke ul li a:hover:after,
 #about .about-content {
   /* padding-top: 40px; */
 }
-
+#about .about-content p {
+  font-size: 14px;
+}
 #about .about-content h2 {
   color: #413e66;
   font-family: "Montserrat", sans-serif;
@@ -848,6 +850,33 @@ nav.stroke ul li a:hover:after,
   font-weight: 400;
   font-size: 22px;
   font-style: italic;
+}
+
+.about-top-overview {
+}
+
+.about-top-overview h2 {
+  margin: 0;
+  color: #444 !important;
+}
+
+.about-top-overview img {
+  width: 100px;
+  margin-bottom: 15px;
+}
+
+.about-top-overview p {
+  text-align: justify;
+  margin-bottom: 15px;
+  font-size: 15px;
+}
+.about-top-overview p:last-of-type {
+  margin-bottom: 40px;
+}
+.about_overview span {
+  color: #413e66;
+  font-weight: 700;
+  font-size: 17px;
 }
 
 #about .about-content ul {

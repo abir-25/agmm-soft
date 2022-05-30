@@ -37,8 +37,9 @@
 <?php
 	if($_SERVER['REQUEST_METHOD'] == 'POST')
 	{
-    $title  = mysqli_real_escape_string($db->link1, $_POST['title']);
-    $overview  = mysqli_real_escape_string($db->link1, $_POST['editor']);
+    $overview1  = mysqli_real_escape_string($db->link1, $_POST['overview1']);
+    $overview2  = mysqli_real_escape_string($db->link1, $_POST['overview2']);
+    $overview3  = mysqli_real_escape_string($db->link1, $_POST['overview3']);
     $mission  = mysqli_real_escape_string($db->link1, $_POST['mission']);
     $vision  = mysqli_real_escape_string($db->link1, $_POST['vision']);
 
@@ -63,8 +64,9 @@
                 move_uploaded_file($file_temp, $uploaded_image);
                 $query = "UPDATE tbl_about 
                         SET 
-                        title = '$title',
-                        overview = '$overview',
+                        overview1 = '$overview1',
+                        overview2 = '$overview2',
+                        overview3 = '$overview3',
                         mission = '$mission',
                         vision = '$vision',
                         image = '$uploaded_image'";
@@ -86,8 +88,9 @@
         {
             $query = "UPDATE tbl_about 
                         SET 
-                        title = '$title',
-                        overview = '$overview',
+                        overview1 = '$overview1',
+                        overview2 = '$overview2',
+                        overview3 = '$overview3',
                         mission = '$mission',
                         vision = '$vision'";
             
@@ -112,19 +115,28 @@
 	      while($postresult = $getpost->fetch_assoc())
 	      {
 ?>
-                        <div class="form-group row">
-                          <label class="col-sm-3 form-control-label">Title</label>
-                          <div class="col-sm-9">
-                            <input type="text" name="title" class="form-control" required value="<?php echo $postresult['title'];?>">
-                          </div> 
-                        </div>
-			<div class="line"></div>
+
 						<div class="form-group row">
-                          <label class="col-sm-3 form-control-label">Overview</label>
+                          <label class="col-sm-3 form-control-label">Overview Part-1</label>
                           <div class="col-sm-9">
-                          <textarea name="editor" id="editor">
-                            <?php echo $postresult['overview'];?>
-                          </textarea>
+                          <textarea name="overview1" required class="form-control" style="height:200px"><?php echo $postresult['overview1'];?>
+                            </textarea>
+                          </div>
+            </div>			
+            <div class="line"></div>
+            <div class="form-group row">
+                          <label class="col-sm-3 form-control-label">Overview Part-2</label>
+                          <div class="col-sm-9">
+                           <textarea name="overview2" required class="form-control" style="height:200px"><?php echo $postresult['overview2'];?>
+                            </textarea>
+                          </div>
+            </div>			
+            <div class="line"></div>
+            <div class="form-group row">
+                          <label class="col-sm-3 form-control-label">Overview Part-3</label>
+                          <div class="col-sm-9">
+                           <textarea name="overview3" required class="form-control" style="height:200px"><?php echo $postresult['overview3'];?>
+                            </textarea>
                           </div>
             </div>			
             <div class="line"></div>
@@ -147,7 +159,7 @@
 						<div class="form-group row">
                           <label class="col-sm-3 form-control-label">Upload About Image</label>
                           <div class="col-sm-9" style="text-align:center">
-						<img src="<?php echo $postresult['image'];?>" width="100px"/><br/>
+						<img src="<?php echo $postresult['image'];?>" width="180px"/><br/>
                             <input type="file" name="image" class="form-control">
                           </div>
                         </div>

@@ -171,19 +171,29 @@
     ============================-->
       <section id="about">
         <div class="container">
+<?php
+    $query = "select * from tbl_about";
+    $getData = $db->select($query);
+    if($getData)
+    {
+        while($result = $getData->fetch_assoc()) 
+        {
+?>
           <div class="row">
+  
             <div class="col-lg-5 col-md-6">
               <div class="about-img">
-                <img src="img/about-img.jpg" alt="" />
+                <img src="admin/<?php echo $result['image']; ?>" alt="" />
               </div>
             </div>
 
             <div class="col-lg-7 col-md-6 about-div">
               <div class="about-content">
                 <h2>About Us</h2>
-                <h3>
-                  Odio sed id eos et laboriosam consequatur eos earum soluta.
-                </h3>
+                <p class="about_overview">
+                  <?php echo $result['overview1']; ?>
+                  <!-- <?php //echo $fm->textShorten($result['overview']); ?> -->
+                </p>
                 <div class="mission-vision-div">
                   <div class="about-mission-img-div">
                     <img
@@ -193,14 +203,7 @@
                     />
                   </div>
                   <p>
-                    Aut dolor id. Sint aliquam consequatur ex ex labore. Et quis
-                    qui dolor nulla dolores neque. Aspernatur consectetur omnis
-                    numquam quaerat. Sed fugiat nisi. Officiis veniam molestiae.
-                    Et vel ut quidem alias veritatis repudiandae ut fugit. Est
-                    ut eligendi aspernatur nulla voluptates veniam iusto vel
-                    quisquam. Fugit ut maxime incidunt accusantium totam
-                    repellendus eum error. Et repudiandae eum iste qui et ut ab
-                    alias.
+                    <?php echo $result['mission']; ?>
                   </p>
                 </div>
                 <div class="mission-vision-div">
@@ -208,30 +211,9 @@
                     <img class="vision-img" src="img/about/vision.png" alt="" />
                   </div>
                   <p>
-                    Aut dolor id. Sint aliquam consequatur ex ex labore. Et quis
-                    qui dolor nulla dolores neque. Aspernatur consectetur omnis
-                    numquam quaerat. Sed fugiat nisi. Officiis veniam molestiae.
-                    Et vel ut quidem alias veritatis repudiandae ut fugit. Est
-                    ut eligendi aspernatur nulla voluptates veniam iusto vel
-                    quisquam.
+                    <?php echo $result['vision']; ?>
                   </p>
                 </div>
-                <ul>
-                  <li>
-                    <i class="ion-android-checkmark-circle"></i> Ullamco laboris
-                    nisi ut aliquip ex ea commodo consequat.
-                  </li>
-                  <li>
-                    <i class="ion-android-checkmark-circle"></i> Duis aute irure
-                    dolor in reprehenderit in voluptate velit.
-                  </li>
-                  <li>
-                    <i class="ion-android-checkmark-circle"></i> Ullamco laboris
-                    nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                    dolor in reprehenderit in voluptate trideta storacalaperda
-                    mastiro dolore eu fugiat nulla pariatur.
-                  </li>
-                </ul>
               </div>
               <div class="get-started-btn-div">
                 <a
@@ -242,6 +224,7 @@
               </div>
             </div>
           </div>
+<?php } } ?>
         </div>
       </section>
       <!-- #about -->
@@ -267,15 +250,27 @@
           </div>
 
           <div class="row products-container">
-            <div class="col-lg-4 col-md-6 products-item filter-app">
+
+<?php
+    $query = "select * from tbl_product";
+    $getData = $db->select($query);
+    if($getData)
+    {
+      $wow_delay = 0;
+        while($result = $getData->fetch_assoc()) 
+        {
+          $wow_delay = 0+0.1;
+?>
+
+            <div class="col-lg-4 col-md-6 products-item <?php if($result['status']=='1'){ echo 'filter-app'; } else if($result['status']=='2'){ echo 'filter-card'; } else if($result['status']=='3'){ echo 'filter-web'; }?>" data-wow-delay="<?php echo $wow_delay;?>s">
               <div class="products-wrap">
-                <img src="img/products/app1.jpg" class="img-fluid" alt="" />
+                <img src="admin/<?php echo $result['image']; ?>" class="img-fluid" alt="" />
                 <div class="products-info">
-                  <h4><a href="#">App 1</a></h4>
-                  <p>App</p>
+                  <h4><a href="#"><?php echo $result['title']; ?></a></h4>
+
                   <div>
                     <a
-                      href="img/products/app1.jpg"
+                      href=""
                       data-lightbox="products"
                       data-title="App 1"
                       class="link-preview"
@@ -289,208 +284,8 @@
                 </div>
               </div>
             </div>
-
-            <div
-              class="col-lg-4 col-md-6 products-item filter-web"
-              data-wow-delay="0.1s"
-            >
-              <div class="products-wrap">
-                <img src="img/products/web3.jpg" class="img-fluid" alt="" />
-                <div class="products-info">
-                  <h4><a href="#">Web 3</a></h4>
-                  <p>Web</p>
-                  <div>
-                    <a
-                      href="img/products/web3.jpg"
-                      class="link-preview"
-                      data-lightbox="products"
-                      data-title="Web 3"
-                      title="Preview"
-                      ><i class="ion ion-eye"></i
-                    ></a>
-                    <a href="#" class="link-details" title="More Details"
-                      ><i class="ion ion-android-open"></i
-                    ></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div
-              class="col-lg-4 col-md-6 products-item filter-app"
-              data-wow-delay="0.2s"
-            >
-              <div class="products-wrap">
-                <img src="img/products/app2.jpg" class="img-fluid" alt="" />
-                <div class="products-info">
-                  <h4><a href="#">App 2</a></h4>
-                  <p>App</p>
-                  <div>
-                    <a
-                      href="img/products/app2.jpg"
-                      class="link-preview"
-                      data-lightbox="products"
-                      data-title="App 2"
-                      title="Preview"
-                      ><i class="ion ion-eye"></i
-                    ></a>
-                    <a href="#" class="link-details" title="More Details"
-                      ><i class="ion ion-android-open"></i
-                    ></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 products-item filter-card">
-              <div class="products-wrap">
-                <img src="img/products/card2.jpg" class="img-fluid" alt="" />
-                <div class="products-info">
-                  <h4><a href="#">Card 2</a></h4>
-                  <p>Card</p>
-                  <div>
-                    <a
-                      href="img/products/card2.jpg"
-                      class="link-preview"
-                      data-lightbox="products"
-                      data-title="Card 2"
-                      title="Preview"
-                      ><i class="ion ion-eye"></i
-                    ></a>
-                    <a href="#" class="link-details" title="More Details"
-                      ><i class="ion ion-android-open"></i
-                    ></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div
-              class="col-lg-4 col-md-6 products-item filter-web"
-              data-wow-delay="0.1s"
-            >
-              <div class="products-wrap">
-                <img src="img/products/web2.jpg" class="img-fluid" alt="" />
-                <div class="products-info">
-                  <h4><a href="#">Web 2</a></h4>
-                  <p>Web</p>
-                  <div>
-                    <a
-                      href="img/products/web2.jpg"
-                      class="link-preview"
-                      data-lightbox="products"
-                      data-title="Web 2"
-                      title="Preview"
-                      ><i class="ion ion-eye"></i
-                    ></a>
-                    <a href="#" class="link-details" title="More Details"
-                      ><i class="ion ion-android-open"></i
-                    ></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div
-              class="col-lg-4 col-md-6 products-item filter-app"
-              data-wow-delay="0.2s"
-            >
-              <div class="products-wrap">
-                <img src="img/products/app3.jpg" class="img-fluid" alt="" />
-                <div class="products-info">
-                  <h4><a href="#">App 3</a></h4>
-                  <p>App</p>
-                  <div>
-                    <a
-                      href="img/products/app3.jpg"
-                      class="link-preview"
-                      data-lightbox="products"
-                      data-title="App 3"
-                      title="Preview"
-                      ><i class="ion ion-eye"></i
-                    ></a>
-                    <a href="#" class="link-details" title="More Details"
-                      ><i class="ion ion-android-open"></i
-                    ></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 products-item filter-card">
-              <div class="products-wrap">
-                <img src="img/products/card1.jpg" class="img-fluid" alt="" />
-                <div class="products-info">
-                  <h4><a href="#">Card 1</a></h4>
-                  <p>Card</p>
-                  <div>
-                    <a
-                      href="img/products/card1.jpg"
-                      class="link-preview"
-                      data-lightbox="products"
-                      data-title="Card 1"
-                      title="Preview"
-                      ><i class="ion ion-eye"></i
-                    ></a>
-                    <a href="#" class="link-details" title="More Details"
-                      ><i class="ion ion-android-open"></i
-                    ></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div
-              class="col-lg-4 col-md-6 products-item filter-card"
-              data-wow-delay="0.1s"
-            >
-              <div class="products-wrap">
-                <img src="img/products/card3.jpg" class="img-fluid" alt="" />
-                <div class="products-info">
-                  <h4><a href="#">Card 3</a></h4>
-                  <p>Card</p>
-                  <div>
-                    <a
-                      href="img/products/card3.jpg"
-                      class="link-preview"
-                      data-lightbox="products"
-                      data-title="Card 3"
-                      title="Preview"
-                      ><i class="ion ion-eye"></i
-                    ></a>
-                    <a href="#" class="link-details" title="More Details"
-                      ><i class="ion ion-android-open"></i
-                    ></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div
-              class="col-lg-4 col-md-6 products-item filter-web"
-              data-wow-delay="0.2s"
-            >
-              <div class="products-wrap">
-                <img src="img/products/web1.jpg" class="img-fluid" alt="" />
-                <div class="products-info">
-                  <h4><a href="#">Web 1</a></h4>
-                  <p>Web</p>
-                  <div>
-                    <a
-                      href="img/products/web1.jpg"
-                      class="link-preview"
-                      data-lightbox="products"
-                      data-title="Web 1"
-                      title="Preview"
-                      ><i class="ion ion-eye"></i
-                    ></a>
-                    <a href="#" class="link-details" title="More Details"
-                      ><i class="ion ion-android-open"></i
-                    ></a>
-                  </div>
-                </div>
-              </div>
-            </div>
+<?php  } } ?>
+            
           </div>
         </div>
       </section>

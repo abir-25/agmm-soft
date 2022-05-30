@@ -36,25 +36,50 @@
       <section id="about">
         <div class="container">
           <div class="row">
+<?php
+    $query = "select * from tbl_about";
+    $getData = $db->select($query);
+    if($getData)
+    {
+        while($result = $getData->fetch_assoc()) 
+        {
+          $overview1 = $result['overview1'];
+          $overview1_front = substr($overview1, 0, 9);
+          $overview1_rest = substr($overview1, 9 , (int)strlen($overview1));
+          
+          $overview2 = $result['overview2']; 
+          $overview2_front = substr($overview2, 0, 9);
+          $overview2_rest = substr($overview2, 9, (int)strlen($overview2));
+          
+          $overview3 = $result['overview3']; 
+          $overview3_front = substr($overview3, 0, 2);
+          $overview3_rest = substr($overview3, 2, (int)strlen($overview3));
+          
+?>
+            <div class="col-12">
+              <div class="about-content about-top-overview">
+                <h2>Company Overview</h2>
+                <img src="img/headline_boder.png" alt="">
+                <p class="about_overview">
+                  <span><?php echo $overview1_front; ?></span><?php echo $overview1_rest; ?>
+                </p>
+                <p class="about_overview">
+                  <span><?php echo $overview2_front; ?></span><?php echo $overview2_rest; ?>
+                </p>
+                <p class="about_overview">
+                  <span><?php echo $overview3_front; ?></span><?php echo $overview3_rest; ?>
+                </p>
+              </div>
+            </div>
+
             <div class="col-lg-5 col-md-6">
               <div class="about-img">
-                <img src="img/about-img.jpg" alt="" />
+                <img src="admin/<?php echo $result['image']; ?>" alt="" />
               </div>
             </div>
 
             <div class="col-lg-7 col-md-6 about-div">
               <div class="about-content">
-                <h2>Company Overview</h2>
-                <p>
-                    Aut dolor id. Sint aliquam consequatur ex ex labore. Et quis
-                    qui dolor nulla dolores neque. Aspernatur consectetur omnis
-                    numquam quaerat. Sed fugiat nisi. Officiis veniam molestiae.
-                    Et vel ut quidem alias veritatis repudiandae ut fugit. Est
-                    ut eligendi aspernatur nulla voluptates veniam iusto vel
-                    quisquam. Fugit ut maxime incidunt accusantium totam
-                    repellendus eum error. Et repudiandae eum iste qui et ut ab
-                    alias.
-                  </p>
                 <div class="mission-vision-div">
                   <div class="about-mission-img-div">
                     <img
@@ -64,14 +89,7 @@
                     />
                   </div>
                   <p>
-                    Aut dolor id. Sint aliquam consequatur ex ex labore. Et quis
-                    qui dolor nulla dolores neque. Aspernatur consectetur omnis
-                    numquam quaerat. Sed fugiat nisi. Officiis veniam molestiae.
-                    Et vel ut quidem alias veritatis repudiandae ut fugit. Est
-                    ut eligendi aspernatur nulla voluptates veniam iusto vel
-                    quisquam. Fugit ut maxime incidunt accusantium totam
-                    repellendus eum error. Et repudiandae eum iste qui et ut ab
-                    alias.
+                    <?php echo $result['mission']; ?>
                   </p>
                 </div>
                 <div class="mission-vision-div">
@@ -79,32 +97,12 @@
                     <img class="vision-img" src="img/about/vision.png" alt="" />
                   </div>
                   <p>
-                    Aut dolor id. Sint aliquam consequatur ex ex labore. Et quis
-                    qui dolor nulla dolores neque. Aspernatur consectetur omnis
-                    numquam quaerat. Sed fugiat nisi. Officiis veniam molestiae.
-                    Et vel ut quidem alias veritatis repudiandae ut fugit. Est
-                    ut eligendi aspernatur nulla voluptates veniam iusto vel
-                    quisquam.
+                    <?php echo $result['vision']; ?>
                   </p>
                 </div>
-                <ul>
-                  <li>
-                    <i class="ion-android-checkmark-circle"></i> Ullamco laboris
-                    nisi ut aliquip ex ea commodo consequat.
-                  </li>
-                  <li>
-                    <i class="ion-android-checkmark-circle"></i> Duis aute irure
-                    dolor in reprehenderit in voluptate velit.
-                  </li>
-                  <li>
-                    <i class="ion-android-checkmark-circle"></i> Ullamco laboris
-                    nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                    dolor in reprehenderit in voluptate trideta storacalaperda
-                    mastiro dolore eu fugiat nulla pariatur.
-                  </li>
-                </ul>
               </div>
             </div>
+<?php } } ?>
           </div>
         </div>
       </section>

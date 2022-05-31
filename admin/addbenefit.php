@@ -39,8 +39,9 @@
 	{
 		$p_id  = $_POST['p_id'];
 		$title  = mysqli_real_escape_string($db->link1, $_POST['title']);
+    $description  = mysqli_real_escape_string($db->link1, $_POST['description']);
 
-        $query = "INSERT INTO tbl_benefit(title, p_id) VALUES('$title','$p_id')";
+        $query = "INSERT INTO tbl_benefit(title, description, p_id) VALUES('$title','$description','$p_id')";
         $inserted_rows = $db->insert($query);
         if ($inserted_rows) 
         {
@@ -72,15 +73,24 @@
                               </select>
                           </div>
                         </div>
-                        
+            <div class="line"></div>                      
+<div class="form-group row">
+                          <label class="col-sm-3 form-control-label">Benefit Title</label>
+                          <div class="col-sm-9">
+                            <input type="text" name="title" class="form-control" required placeholder="Enter Product Benefit Title">
+                          </div>
+                        </div>            
 						<div class="line"></div>
 						<div class="form-group row">
-                          <label class="col-sm-3 form-control-label">Product Benefit</label>
+                          <label class="col-sm-3 form-control-label">Benefit Details</label>
                           <div class="col-sm-9">
-                            <input type="text" name="title" class="form-control" required placeholder="Enter Product Benefit">
+                            
+                            <textarea name="description" required class="form-control" style="height:200px"
+                            placeholder="Enter Product Benefit Details"
+                            ></textarea>
                           </div>
                         </div>
-
+ 
 						<div class="form-group row">
                           <div class="col-sm-4 offset-sm-3">
                             <button type="submit" class="btn btn-primary">Add</button>

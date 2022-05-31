@@ -146,7 +146,8 @@
 						<div class="form-group row">
                           <label class="col-sm-3 form-control-label">Product Module Details</label>
                           <div class="col-sm-9">
-                            <input type="text" name="title" class="form-control" value="<?php echo $postresult['title']; ?>">
+                            <textarea name="title" required class="form-control" style="height:200px"
+                            ><?php echo $postresult['title']; ?></textarea>
                           </div>
                         </div>
 

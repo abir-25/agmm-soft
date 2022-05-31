@@ -50,8 +50,17 @@
 		
 		$delquery = "delete from tbl_product where id = '$delid'";
 		$deldata = $db->deletedata($delquery);
+
+        $delquery1 = "delete from tbl_benefit where p_id = '$delid'";
+		$deldata1 = $db->deletedata($delquery1);
+
+        $delquery2 = "delete from tbl_module where p_id = '$delid'";
+		$deldata2 = $db->deletedata($delquery2);
+
+        $delquery3 = "delete from tbl_module_point where p_id = '$delid'";
+		$deldata3 = $db->deletedata($delquery3);
 		
-		if($deldata)
+		if($deldata && $deldata1 && $deldata2 && $deldata3)
 		{
 			echo "<script>window.location = 'productlist.php'; </script>";
 
@@ -83,6 +92,7 @@
 		while($result = $post->fetch_assoc())
 		{
 			$i++;
+            $description = $fm->textShorten($result['description']);
 ?>
                                                 <tr>
                                                     <th scope="row" style="vertical-align:middle"><?php echo $i; ?></th>
@@ -93,9 +103,9 @@
                                                     else if($result['status']=='2') { echo "Running"; }
                                                     else if($result['status']=='3') { echo "Upcoming"; }?></td>
 
-                                                    <td scope="row" style="vertical-align:middle"><?php echo $result['description']; ?></td>
+                                                    <td scope="row" style="vertical-align:middle"><?php echo $description; ?></td>
 
-                                                    <td style="vertical-align:middle"><img  src="<?php echo $result['image']; ?>" alt="" style="height: 75px;"/></td>
+                                                    <td style="vertical-align:middle"><img  src="<?php echo $result['image']; ?>" alt="" style="width: 120px;"/></td>
 													
 													
                                                     <td style="vertical-align:middle"><a class="actionLink" href="editproduct.php?productId=<?php echo $result['id']; ?>">Update</a>  || <a class="actionLink" onclick= "return confirm('Are you sure to Delete This Product?');" href="?delid=<?php echo $result['id'];?>">Delete</a></td>

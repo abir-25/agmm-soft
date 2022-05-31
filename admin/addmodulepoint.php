@@ -124,7 +124,9 @@
 						<div class="form-group row">
                           <label class="col-sm-3 form-control-label">Product Module Details</label>
                           <div class="col-sm-9">
-                            <input type="text" name="title" class="form-control" placeholder="Enter Product Benefit">
+                            <textarea name="title" required class="form-control" style="height:200px"
+                            placeholder="Enter Module Details"
+                            ></textarea>
                           </div>
                         </div>
 

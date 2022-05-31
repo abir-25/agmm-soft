@@ -55,7 +55,7 @@
                                                 <tr>
                                                     <th width="10%">No.</th>
                                                     <th width="25%">Product Name</th>
-                                                    <th width="45%">Product Benefit</th>
+                                                    <th width="45%"> Benefit Details</th>
                                                     <th width="20%">Action</th>
                                                 </tr>
                                             </thead>
@@ -69,6 +69,7 @@
 		while($result = $post->fetch_assoc())
 		{
 			$i++;
+            $description = $fm->textShorten($result['description']);
             $p_id = $result["p_id"];
             $query1 = "select * from tbl_product where id = '$p_id'";				
             $post1 = $db->select($query1);				
@@ -85,7 +86,7 @@
                                                     
                                                     <td scope="row" style="vertical-align:middle"><?php echo $title; ?></td>
 
-                                                    <td scope="row" style="vertical-align:middle"><?php echo $result['title']; ?></td>
+                                                    <td scope="row" style="vertical-align:middle"><?php echo $description; ?></td>
 													
                                                     <td style="vertical-align:middle"><a class="actionLink" href="editbenefit.php?benefitId=<?php echo $result['id']; ?>">Update</a>  || <a class="actionLink" onclick= "return confirm('Are you sure to Delete This Product Benefit?');" href="?delid=<?php echo $result['id'];?>">Delete</a></td>
                                                 </tr>

@@ -47,11 +47,13 @@
 	if($_SERVER['REQUEST_METHOD'] == 'POST')
 	{
     $title  = mysqli_real_escape_string($db->link1, $_POST['title']);
+    $description  = mysqli_real_escape_string($db->link1, $_POST['description']);
 		$p_id  = $_POST['p_id'];
 	
 		$query = "UPDATE tbl_benefit
                     SET 
                     title = '$title',
+                    description = '$description',
                     p_id = '$p_id'
                     where id='$benefitId'";
         
@@ -96,9 +98,17 @@
                         </div>
                         <div class="line"></div>
                         <div class="form-group row">
-                          <label class="col-sm-3 form-control-label">Product Benefit</label>
+                          <label class="col-sm-3 form-control-label">Benefit Title</label>
                           <div class="col-sm-9">
                             <input type="text" name="title" class="form-control" required value="<?php echo $postresult['title'];?>">
+                          </div>
+                        </div>
+                        <div class="line"></div>
+                        <div class="form-group row">
+                          <label class="col-sm-3 form-control-label">Benefit Details</label>
+                          <div class="col-sm-9">
+                            <textarea name="description" required class="form-control" style="height:200px"
+                            ><?php echo $postresult['description'];?></textarea>
                           </div>
                         </div>
                         <div class="form-group row">

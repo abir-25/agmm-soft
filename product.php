@@ -2,13 +2,22 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>AGMM Soft | About</title>
+    <title>AGMM Soft | Product</title>
     <!--==========================
     Header
     ============================-->
     <?php include "inc/header.php"; ?>
     <!-- #header -->
-
+<?php
+	if(!isset($_GET['proId']) || $_GET['proId'] == NULL)
+	{
+		echo "<script>window.location = 'index.php'; </script>";
+	}
+	else
+	{
+		$proId = $_GET['proId'];
+	}
+?>
     <!--==========================
     Intro Section
   ============================-->
@@ -17,13 +26,22 @@
         <div
           class="row justify-content-center align-self-center banner-section"
         >
+<?php
+    $query = "select * from tbl_product where id='$proId'";
+    $getData = $db->select($query);
+    if($getData)
+    {
+        while($result = $getData->fetch_assoc()) 
+        {
+?>
         <div class="col-md-6 intro-img order-md-first order-first">
-            <img src="img/about.jpg" alt="" class="img-fluid" />
+            <img src="admin/<?php echo $result['image']; ?>" alt="" class="img-fluid" />
           </div>
           <div class="col-md-6 intro-info intro-title order-md-last order-last">
-            <h2 class="banner-title">About Us</h2>
+            <h2 class="banner-title product-title"><?php echo $result['title']; ?></h2>
           </div> 
         </div>
+
       </div>
     </section>
 
@@ -36,48 +54,23 @@
       <section id="about">
         <div class="container">
           <div class="row">
-<?php
-    $query = "select * from tbl_about";
-    $getData = $db->select($query);
-    if($getData)
-    {
-        while($result = $getData->fetch_assoc()) 
-        {
-          $overview1 = $result['overview1'];
-          $overview1_front = substr($overview1, 0, 9);
-          $overview1_rest = substr($overview1, 9 , (int)strlen($overview1));
-          
-          $overview2 = $result['overview2']; 
-          $overview2_front = substr($overview2, 0, 9);
-          $overview2_rest = substr($overview2, 9, (int)strlen($overview2));
-          
-          $overview3 = $result['overview3']; 
-          $overview3_front = substr($overview3, 0, 2);
-          $overview3_rest = substr($overview3, 2, (int)strlen($overview3));
-          
-?>
+
             <div class="col-12">
-              <div class="about-content about-top-overview">
-                <h2>Company Overview</h2>
+              <div class="about-content about-top-overview product-overview">
+                <h2>AGMMS SOFT <span><?php echo $result['title']; ?></span></h2> 
                 <img src="img/headline_boder.png" alt="">
                 <p class="about_overview">
-                  <span><?php echo $overview1_front; ?></span><?php echo $overview1_rest; ?>
-                </p>
-                <p class="about_overview">
-                  <span><?php echo $overview2_front; ?></span><?php echo $overview2_rest; ?>
-                </p>
-                <p class="about_overview">
-                  <span><?php echo $overview3_front; ?></span><?php echo $overview3_rest; ?>
+                  <?php echo $result['description']; ?>
                 </p>
               </div>
             </div>
-
+<?php } } ?>
             <div class="col-12">
               <div class="about-content about-top-overview">
                 <h2>Mission</h2>
                 <img src="img/headline_boder.png" alt="">
                 <p class="about_overview">
-                  <?php echo $result['mission']; ?>
+                  
                 </p>
               </div>
             </div>
@@ -87,12 +80,11 @@
                 <h2>Vision</h2>
                 <img src="img/headline_boder.png" alt="">
                 <p class="about_overview">
-                  <?php echo $result['vision']; ?>
+                  
                 </p>
               </div>
             </div>
 
-<?php } } ?>
           </div>
         </div>
       </section>

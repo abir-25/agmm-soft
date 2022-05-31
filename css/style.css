@@ -856,8 +856,12 @@ nav.stroke ul li a:hover:after,
 }
 
 .about-top-overview h2 {
+  font-size: 27px;
   margin: 0;
   color: #444 !important;
+}
+.about-top-overview h2 span {
+  text-transform: capitalize;
 }
 
 .about-top-overview img {
@@ -1202,6 +1206,14 @@ nav.stroke ul li a:hover:after,
 #products #products-flters li:last-child {
   margin-right: 0;
 }
+.product-overview img {
+  margin-bottom: 0px;
+}
+
+.product-title {
+  font-size: 38px !important;
+  text-transform: uppercase;
+}
 
 #products .products-item {
   position: relative;
@@ -1250,7 +1262,6 @@ nav.stroke ul li a:hover:after,
 
 #products .products-item .products-wrap .products-info h4 {
   font-size: 22px;
-  line-height: 1px;
   font-weight: 700;
   margin-bottom: 14px;
   padding-bottom: 0;
@@ -1287,9 +1298,10 @@ nav.stroke ul li a:hover:after,
 
 #products .products-item .products-wrap .products-info .link-preview i,
 #products .products-item .products-wrap .products-info .link-details i {
-  padding-top: 6px;
+  padding-top: 8px;
   font-size: 22px;
   color: #fff;
+  padding-left: 2px;
 }
 
 #products .products-item .products-wrap .products-info .link-preview:hover,

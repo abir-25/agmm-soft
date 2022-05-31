@@ -266,19 +266,19 @@
               <div class="products-wrap">
                 <img src="admin/<?php echo $result['image']; ?>" class="img-fluid" alt="" />
                 <div class="products-info">
-                  <h4><a href="#"><?php echo $result['title']; ?></a></h4>
+                  <h4><a href="product.php?proId=<?php echo $result['id']; ?>"><?php echo $result['title']; ?></a></h4>
 
                   <div>
-                    <a
+                    <!-- <a
                       href=""
                       data-lightbox="products"
                       data-title="App 1"
                       class="link-preview"
                       title="Preview"
                       ><i class="ion ion-eye"></i
-                    ></a>
-                    <a href="#" class="link-details" title="More Details"
-                      ><i class="ion ion-android-open"></i
+                    ></a> -->
+                    <a href="product.php?proId=<?php echo $result['id']; ?>" class="link-details" title="More Details"
+                      ><i class="ion ion-eye"></i
                     ></a>
                   </div>
                 </div>

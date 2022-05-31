@@ -64,14 +64,31 @@
                 </p>
               </div>
             </div>
-<?php } } ?>
+
+
             <div class="col-12">
               <div class="about-content about-top-overview">
-                <h2>Mission</h2>
+                <h2>Benefits of AGMM SOFT <?php echo $result['title']; ?></span></h2>
                 <img src="img/headline_boder.png" alt="">
-                <p class="about_overview">
-                  
-                </p>
+
+                <ol class="list">
+<?php
+    $Bquery = "select * from tbl_benefit where p_id='$proId'";
+    $BgetData = $db->select($Bquery);
+    if($BgetData)
+    {
+        while($benefitResult = $BgetData->fetch_assoc()) 
+        {
+?>
+                  <li class="item">
+                    <div>
+                        <h2 class="benefit__title"><?php echo $benefitResult['title']; ?></h2><span><?php echo $benefitResult['description']; ?></span>
+                    </div>
+                      
+                  </li>
+
+<?php } } ?>
+              </ol>
               </div>
             </div>
 
@@ -89,7 +106,7 @@
         </div>
       </section>
       <!-- #about -->
-
+<?php } } ?>
     </main>
 
     <!--==========================

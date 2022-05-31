@@ -1322,6 +1322,39 @@ nav.stroke ul li a:hover:after,
   opacity: 1;
 }
 
+.list {
+  list-style: none;
+  padding: 0 !important;
+}
+
+.item {
+  counter-increment: list;
+}
+
+.item div {
+  margin-left: 40px;
+  padding-top: 25px;
+}
+
+.benefit__title {
+  padding: 0rem 0 0 0;
+  margin: 0 0 0.5rem 0 !important;
+  font-size: 16px !important;
+}
+
+.benefit__title::before {
+  align-items: center;
+  justify-content: center;
+  background-color: #e5e5e5;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 100%;
+  content: counter(list);
+  display: flex;
+  left: 0;
+  position: absolute;
+  text-align: center;
+}
 /* Testimonials Section
 --------------------------------*/
 

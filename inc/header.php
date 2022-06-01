@@ -91,13 +91,19 @@
             <li><a href="index.php">Home</a></li>
              <!-- <li id="active_link"><a href="about.php">About</a></li> -->
             <li <?php if($current == 'about'){ echo 'id="active_link"'; }?>><a href="about.php">About</a></li>
-            <li class="drop-down">
+            <li <?php if($current == 'product'){ echo 'id="active_link"'; }?> class="drop-down">
               <a href="index.php#products">Products</a>
               <ul>
-                <li><a href="#">Product Name 1</a></li>
-                <li><a href="#">Product Name 2</a></li>
-                <li><a href="#">Product Name 3</a></li>
-                <li><a href="#">Product Name 4</a></li>
+<?php
+    $query = "select * from tbl_product";
+    $getData = $db->select($query);
+    if($getData)
+    {
+        while($result = $getData->fetch_assoc()) 
+        {
+?>
+                <li><a href="product.php?proId=<?php echo $result['id']; ?>"><?php echo $result['title']; ?></a></li>
+<?php } } ?>
               </ul>
             </li>
             <li><a href="index.php#services">Services</a></li>

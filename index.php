@@ -98,10 +98,16 @@
             <li class="drop-down">
               <a href="#products">Products</a>
               <ul>
-                <li><a href="#">Product Name 1</a></li>
-                <li><a href="#">Product Name 2</a></li>
-                <li><a href="#">Product Name 3</a></li>
-                <li><a href="#">Product Name 4</a></li>
+<?php
+    $query = "select * from tbl_product";
+    $getData = $db->select($query);
+    if($getData)
+    {
+        while($result = $getData->fetch_assoc()) 
+        {
+?>
+                <li><a href="product.php?proId=<?php echo $result['id']; ?>"><?php echo $result['title']; ?></a></li>
+<?php } } ?>
               </ul>
             </li>
             <li><a href="#services">Services</a></li>

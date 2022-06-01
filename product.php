@@ -62,7 +62,7 @@
                 <p class="about_overview">
                   <?php echo $result['description']; ?>
                 </p>
-              </div>
+              </div> 
             </div>
 
 
@@ -92,16 +92,47 @@
               </div>
             </div>
 
-            <div class="col-12">
+            <div class="col-12 mt-4">
               <div class="about-content about-top-overview">
-                <h2>Vision</h2>
+                <h2>Modules of AGMM SOFT <?php echo $result['title']; ?></span></h2>
                 <img src="img/headline_boder.png" alt="">
-                <p class="about_overview">
-                  
-                </p>
+<?php
+    $Mquery = "select * from tbl_module where p_id='$proId'";
+    $MgetData = $db->select($Mquery);
+    if($MgetData)
+    {
+        while($moduleResult = $MgetData->fetch_assoc()) 
+        {
+          $m_id = $moduleResult['id'];
+?>
+                  <div class="module-section">
+                    <div class="module-div">
+                      <div class="module-icon">
+                        <img src="admin/<?php echo $moduleResult['image']; ?>" alt="">
+                      </div>
+                        <h2 class="benefit__title"><?php echo $moduleResult['title']; ?></h2>
+                    </div>
+                    <div class="module-details">
+                      <ol class="list list-mpoint">
+<?php
+    $MPquery = "select * from tbl_module_point where p_id='$proId' and m_id='$m_id'";
+    $MPgetData = $db->select($MPquery);
+    if($MPgetData)
+    {
+        while($mpResult = $MPgetData->fetch_assoc()) 
+        {
+?>
+                        <li class="item">
+                              <span><?php echo $mpResult['title']; ?></span> 
+                        </li>
+
+<?php } } ?>
+                      </ol>
+                    </div>
+                  </div>
+<?php } } ?>
               </div>
             </div>
-
           </div>
         </div>
       </section>

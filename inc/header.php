@@ -6,12 +6,15 @@
 	$fm = new Format();
 
 ?>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta
       content="agmm, agmm soft, products website, agmm company website, agmm website, agmm software firm"
       name="keywords"
     />
     <meta content="AGMM Software Company Website" name="description" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     <!-- Favicons -->
     <link href="img/favicon.png" rel="icon" />

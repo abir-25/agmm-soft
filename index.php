@@ -10,6 +10,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>AGMM Soft</title>
     
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
@@ -18,6 +19,7 @@
       name="keywords"
     />
     <meta content="AGMM Software Company Website" name="description" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     <!-- Favicons -->
     <link href="img/favicon.png" rel="icon" />
@@ -425,68 +427,69 @@
         <div class="container-fluid">
           <header class="section-header">
             <h3>Why choose us?</h3>
+<?php
+    $query = "select * from tbl_why";
+    $getData = $db->select($query);
+    if($getData)
+    {
+        while($result = $getData->fetch_assoc()) 
+        {
+?>
             <p>
-              Laudem latine persequeris id sed, ex fabulas delectus quo. No vel
-              partiendo abhorreant vituperatoribus.
+              <?php echo $result['title']; ?>
             </p>
           </header>
 
           <div class="row">
             <div class="col-lg-6">
               <div class="why-us-img">
-                <img src="img/why-us.jpg" alt="" class="img-fluid" />
+                <img src="admin/<?php echo $result['image']; ?>" alt="" class="img-fluid" />
               </div>
             </div>
 
             <div class="col-lg-6">
               <div class="why-us-content">
                 <p>
-                  Molestiae omnis numquam corrupti omnis itaque. Voluptatum
-                  quidem impedit. Odio dolorum exercitationem est error omnis
-                  repudiandae ad dolorum sit.
-                </p>
-                <p>
-                  Explicabo repellendus quia labore. Non optio quo ea ut ratione
-                  et quaerat. Porro facilis deleniti porro consequatur et
-                  temporibus. Labore est odio. Odio omnis saepe qui. Veniam
-                  eaque ipsum. Ea quia voluptatum quis explicabo sed nihil
-                  repellat..
+                  <?php echo $result['description']; ?>
                 </p>
 
-                <div class="features wow bounceInUp clearfix">
-                  <i class="fa fa-diamond" style="color: #f058dc"></i>
-                  <h4>Corporis dolorem</h4>
+
+                <div class="features wow bounceInUp clearfix why-point">
+                  <div class="why-top">
+                    <img src="admin/upload/why/creative.png" alt="">
+                    <h4><?php echo $result['point1_title']; ?></h4>
+                  </div>
                   <p>
-                    Commodi quia voluptatum. Est cupiditate voluptas quaerat
-                    officiis ex alias dignissimos et ipsum. Soluta at enim modi
-                    ut incidunt dolor et.
+                    <?php echo $result['point1_desc']; ?>
                   </p>
                 </div>
 
-                <div class="features wow bounceInUp clearfix">
-                  <i class="fa fa-object-group" style="color: #ffb774"></i>
-                  <h4>Eum ut aspernatur</h4>
+                <div class="features wow bounceInUp clearfix why-point">
+                  <div class="why-top">
+                    <img src="admin/upload/why/price.png" alt="">
+                    <h4><?php echo $result['point2_title']; ?></h4>
+                  </div>
+                  
                   <p>
-                    Molestias eius rerum iusto voluptas et ab cupiditate aut
-                    enim. Assumenda animi occaecati. Quo dolore fuga quasi autem
-                    aliquid ipsum odit. Perferendis doloremque iure nulla aut.
+                    <?php echo $result['point2_desc']; ?>
                   </p>
                 </div>
 
-                <div class="features wow bounceInUp clearfix">
-                  <i class="fa fa-language" style="color: #589af1"></i>
-                  <h4>Voluptates dolores</h4>
+                <div class="features wow bounceInUp clearfix why-point">
+                  <div class="why-top">
+                    <img src="admin/upload/why/ear.png" alt="">
+                    <h4><?php echo $result['point3_title']; ?></h4>
+                  </div>
+                  
                   <p>
-                    Voluptates nihil et quis omnis et eaque omnis sint aut.
-                    Ducimus dolorum aspernatur. Totam dolores ut enim ullam
-                    voluptas distinctio aut.
+                    <?php echo $result['point3_desc']; ?>
                   </p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
+<?php } } ?>
         <div class="container">
           <div class="row counters">
             <div class="col-lg-3 col-6 text-center">
@@ -546,6 +549,7 @@
             </div>
             <div class="col-lg-6 wow fadeInUp pt-5 pt-lg-0">
               <h4>What We Do</h4>
+
               <p>
                 Ipsum in aspernatur ut possimus sint. Quia omnis est occaecati
                 possimus ea. Quas molestiae perspiciatis occaecati qui rerum.

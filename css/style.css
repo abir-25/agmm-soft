@@ -1093,10 +1093,14 @@ nav.stroke ul li a:hover:after,
   margin-bottom: 5px;
 }
 
+#why-us .why-us-content p {
+  text-align: justify;
+}
+
 #why-us .why-us-content .features p {
   font-size: 16px;
   margin-left: 56px;
-  color: #555186;
+  /* color: #555186; */
 }
 
 #why-us .counters {
@@ -1119,6 +1123,17 @@ nav.stroke ul li a:hover:after,
   color: #8a87b6;
 }
 
+.why-top {
+  display: flex;
+}
+
+.why-top h4 {
+  margin-left: 15px !important;
+}
+
+.why-point img {
+  width: 40px;
+}
 /* Call To Action Section
 --------------------------------*/
 
@@ -1360,7 +1375,7 @@ nav.stroke ul li a:hover:after,
   border-radius: 100%;
   content: counter(list);
   display: flex;
-  left: 10px;
+  left: 13px;
   position: absolute;
   text-align: center;
   margin-top: -10px;
@@ -1578,10 +1593,12 @@ nav.stroke ul li a:hover:after,
 }
 
 #clients img {
-  max-width: 80%;
-  opacity: 0.5;
+  /* max-width: 80%; */
+  opacity: 0.8;
   transition: 0.3s;
   padding: 15px 0;
+  height: 110px;
+  width: auto;
 }
 
 #clients img:hover {

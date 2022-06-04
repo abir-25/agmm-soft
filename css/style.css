@@ -1598,7 +1598,7 @@ nav.stroke ul li a:hover:after,
   transition: 0.3s;
   padding: 15px 0;
   height: 110px;
-  width: auto;
+  width: 50%;
 }
 
 #clients img:hover {
@@ -2070,6 +2070,10 @@ nav.stroke ul li a:hover:after,
 
 #footer .credits a:hover {
   color: #0a98c0;
+}
+
+.grecaptcha-badge {
+  visibility: hidden;
 }
 
 /*--------------------------------------------------------------

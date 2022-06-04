@@ -95,8 +95,8 @@
 						<div class="form-group row">
                           <label class="col-sm-3 form-control-label">Product Description</label>
                           <div class="col-sm-9">
-                          <textarea name="editor" class="form-control" style="height:200px"></textarea>
-                          </div>
+                          <textarea name="editor" class="form-control" style="height:200px" placeholder="Enter Product Description" required></textarea>
+                          </div> 
             </div>			
 						<div class="line"></div>
 						<div class="form-group row">

@@ -54,6 +54,7 @@
     {
         while($result = $getData->fetch_assoc()) 
         {
+          $product = $result['product'];
 ?>
             <div class="col-lg-4 col-12">
               <div class="tech-image">
@@ -65,7 +66,13 @@
               <div class="tech-details">
                 <h2><?php echo $result['title']; ?></h2>
                 <p><?php echo $result['short']; ?></p>
-                <p><?php echo $result['description']; ?></p>
+                <p style="text-align: justify"><?php echo $result['description']; ?></p><br>
+                <?php 
+                    if($product!=null && $product!=""){
+                ?>
+                <p><b>Products: </b><?php echo $product; ?></p>
+                <?php } ?>
+
               </div>
             </div>
 <?php } } else { ?>

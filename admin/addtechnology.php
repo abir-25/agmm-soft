@@ -40,6 +40,7 @@
 		$title  = mysqli_real_escape_string($db->link1, $_POST['title']);
 		$description  = mysqli_real_escape_string($db->link1, $_POST['editor']);
 		$short  = mysqli_real_escape_string($db->link1, $_POST['short']);
+    $product  = mysqli_real_escape_string($db->link1, $_POST['product']);
 		 
 		$permitted  = array('jpg', 'jpeg', 'png', 'gif');
 		$file_name = $_FILES['image']['name'];
@@ -58,7 +59,7 @@
         else
         {	
             move_uploaded_file($file_temp, $uploaded_image);
-            $query = "INSERT INTO tbl_technology(title, short, description, image) VALUES('$title','$short','$description','$uploaded_image')";
+            $query = "INSERT INTO tbl_technology(title, short, description, product, image) VALUES('$title','$short','$description','$product','$uploaded_image')";
             $inserted_rows = $db->insert($query);
             if ($inserted_rows) 
             {
@@ -92,7 +93,14 @@
 						<div class="form-group row">
                           <label class="col-sm-3 form-control-label">Long Description</label>
                           <div class="col-sm-9">
-                          <textarea name="editor" class="form-control" style="height:200px"></textarea>
+                          <textarea name="editor" class="form-control" style="height:200px" placeholder="Enter Technology Long Description"></textarea>
+                          </div>
+            </div>
+            <div class="line"></div>
+						<div class="form-group row">
+                          <label class="col-sm-3 form-control-label">Product details</label>
+                          <div class="col-sm-9">
+                          <textarea name="product" class="form-control" style="height:150px" placeholder="Enter Technology Product Details"></textarea>
                           </div>
             </div>
 						<div class="line"></div>

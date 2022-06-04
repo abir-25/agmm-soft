@@ -43,7 +43,43 @@
 
     <!-- Main Stylesheet File -->
     <link href="css/style.css" rel="stylesheet" />
-    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6Ld0BkYgAAAAAD4lZsWbECNaLQE0rtH69lB_WgNn"></script>
+
+    <script>
+      // function onClick(e) {
+      //   e.preventDefault();
+        grecaptcha.ready(function() {
+          grecaptcha.execute('6Ld0BkYgAAAAAD4lZsWbECNaLQE0rtH69lB_WgNn', {action: 'submit'}).then(function(token) {
+
+              let response = document.getElementById('token_response');
+              response.value = token;
+
+              // Add your logic to submit to your backend server here.
+          });
+        });
+      //}
+    </script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.all.min.js"></script>
+    <script src="sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="sweetalert2.min.css">
+    <script>
+      function onSuccess(){
+          Swal.fire(
+          'Great job!',
+          'Message successfully sent!',
+          'success'
+        )
+      } 
+      
+      function onError(){
+          Swal.fire(
+          'Awww!',
+          'Message not sent!',
+          'error'
+        )
+      } 
+    </script>
   </head>
 
   <body> 
@@ -761,7 +797,51 @@
                 <header class="section-header">
                   <h3>Send us a message</h3>
                 </header>
-                <form action="" method="post" role="form" class="contactForm">
+  <?php
+	if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['token_response']))
+	{
+    $url = 'https://www.google.com/recaptcha/api/siteverify';
+    $secret = '6Ld0BkYgAAAAAGwuuxgmPO73rerKFky1kqkjCi1M';
+    $recaptcha_response = $_POST['token_response'];
+
+    $request = file_get_contents($url.'?secret='.$secret.'&response='.$recaptcha_response);
+    $response = json_decode($request);
+
+
+    if($response->success==true && $response->score >= 0.5)
+    {
+      $name  = $fm->validation($_POST['name']);
+      $email  = $fm->validation($_POST['email']);
+      $subject  = $fm->validation($_POST['subject']);
+      $message  = $fm->validation($_POST['message']);
+      
+      $name  = mysqli_real_escape_string($db->link1, $name);
+      $email  = mysqli_real_escape_string($db->link1,$email);
+      $subject  = mysqli_real_escape_string($db->link1, $subject);
+      $message  = mysqli_real_escape_string($db->link1, $message);
+      
+
+      $query = "INSERT INTO tbl_contact(name, email, subject, message) VALUES('$name','$email','$subject','$message')";
+      $inserted_rows = $db->insert($query);
+      if ($inserted_rows) {
+        echo "<script>onSuccess()</script>";
+      }
+      else{
+        echo "<script>onError()</script>";
+      }
+      
+    }
+    else
+    {
+			echo "<script>window.location = 'index.php'; </script>";
+      // echo "echo '<span style='font-size: 16px; color: red'>Something went wrong</span>'";
+    }
+  }
+  ?>
+                <form action="" method="post" >
+
+                  <input type="hidden" name="token_response" id="token_response">
+
                   <div class="form-group">
                     <input
                       type="text"
@@ -769,8 +849,7 @@
                       class="form-control"
                       id="name"
                       placeholder="Your Name"
-                      data-rule="minlen:4"
-                      data-msg="Please enter at least 4 chars"
+                      required
                     />
                     <div class="validation"></div>
                   </div>
@@ -781,8 +860,7 @@
                       name="email"
                       id="email"
                       placeholder="Your Email"
-                      data-rule="email"
-                      data-msg="Please enter a valid email"
+                      required
                     />
                     <div class="validation"></div>
                   </div>
@@ -793,8 +871,7 @@
                       name="subject"
                       id="subject"
                       placeholder="Subject"
-                      data-rule="minlen:4"
-                      data-msg="Please enter at least 8 chars of subject"
+                      required
                     />
                     <div class="validation"></div>
                   </div>
@@ -803,19 +880,14 @@
                       class="form-control"
                       name="message"
                       rows="5"
-                      data-rule="required"
-                      data-msg="Please write something for us"
                       placeholder="Message"
+                      required
                     ></textarea>
-                    <div class="validation"></div>
                   </div>
 
-                  <div class="g-recaptcha" data-sitekey=""></div>
+                  <!-- <div class="g-recaptcha" data-sitekey=""></div> -->
 
-                  <!-- <div id="sendmessage">
-                    Your message has been sent. Thank you!
-                  </div> -->
-                  <div id="errormessage"></div>
+                  This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply.
 
                   <div class="get-started-btn-div">
                     <button

@@ -49,6 +49,8 @@
     $title  = mysqli_real_escape_string($db->link1, $_POST['title']);
     $short  = mysqli_real_escape_string($db->link1, $_POST['short']);
 		$description  = mysqli_real_escape_string($db->link1, $_POST['editor']);
+    $product  = mysqli_real_escape_string($db->link1, $_POST['product']);
+
 
 		$permited  = array('jpg', 'jpeg', 'png', 'gif');
 		$file_name = $_FILES['image']['name'];
@@ -74,6 +76,7 @@
                         title = '$title',
                         short = '$short',
                         description = '$description',
+                        product = '$product',
                         image = '$uploaded_image'    
                         where id='$techId'";
             
@@ -96,7 +99,8 @@
                         SET 
                         title = '$title',
                         short = '$short',
-                        description = '$description'      
+                        description = '$description' ,     
+                        product = '$product'
                         where id='$techId'";
             
                 $updated_rows = $db->update($query);
@@ -138,6 +142,13 @@
                           <label class="col-sm-3 form-control-label">Long Description</label>
                           <div class="col-sm-9">
                           <textarea name="editor" class="form-control" style="height:200px"><?php echo $postresult['description'];?></textarea>
+                          </div>
+            </div>
+            <div class="line"></div>
+						<div class="form-group row">
+                          <label class="col-sm-3 form-control-label">Product Details</label>
+                          <div class="col-sm-9">
+                          <textarea name="product" class="form-control" style="height:200px"><?php echo $postresult['product'];?></textarea>
                           </div>
             </div>
 						<div class="line"></div>

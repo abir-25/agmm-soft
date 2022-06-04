@@ -43,6 +43,7 @@
 
     <!-- Main Stylesheet File -->
     <link href="css/style.css" rel="stylesheet" />
+    <script src="https://www.google.com/recaptcha/api.js"></script>
   </head>
 
   <body> 
@@ -808,6 +809,8 @@
                     ></textarea>
                     <div class="validation"></div>
                   </div>
+
+                  <div class="g-recaptcha" data-sitekey=""></div>
 
                   <!-- <div id="sendmessage">
                     Your message has been sent. Thank you!

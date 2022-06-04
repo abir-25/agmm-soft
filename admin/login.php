@@ -52,9 +52,6 @@
 
           <br />
           <div class="field-set">
-            <!-- <span class="input-item">
-              <i class="fa fa-user" style="font-size: 19px"></i>
-            </span> -->
             <select name="role" id="txt-input" required>
               <option value="-1">Select User Role</option>
               <option value="0">Admin</option>
@@ -62,9 +59,6 @@
             </select>
 
             <br />
-            <!-- <span class="input-item input-item-text">
-              <i class="fa fa-envelope"></i>
-            </span> -->
             <input
               class="form-input"
               type="email"
@@ -75,9 +69,6 @@
             />
 
             <br />
-            <!-- <span class="input-item input-item-text">
-              <i class="fa fa-key"></i>
-            </span> -->
             <input
               class="form-input"
               type="password"
@@ -87,16 +78,6 @@
               required
             />
 
-            <!--  Show/hide password  -->
-            <!-- <span>
-              <i
-                class="fa fa-eye"
-                aria-hidden="true"
-                type="button"
-                id="eye"
-              ></i>
-            </span> -->
-
           <div>
 <?php
 	if($_SERVER['REQUEST_METHOD'] == 'POST')
@@ -105,8 +86,8 @@
 		$email = $fm->validation($_POST['email']);
 		$password = $fm->validation($_POST['password']);
 		
-		$email = mysqli_real_escape_string($db->link1, $email);
-		$password = mysqli_real_escape_string($db->link1, $password);
+		// $email = mysqli_real_escape_string($db->link1, $email);
+		// $password = mysqli_real_escape_string($db->link1, $password);
 		
     if($role!=-1)
     {
@@ -152,10 +133,6 @@
     </div>
 
     <script>
-      // Show/hide password onClick of button using Javascript only
-
-      // https://stackoverflow.com/questions/31224651/show-hide-password-onclick-of-button-using-javascript-only
-
       function show() {
         var p = document.getElementById("pwd");
         p.setAttribute("type", "text");

@@ -83,7 +83,7 @@
 						<div class="form-group row">
                           <label class="col-sm-3 form-control-label">Short Description</label>
                           <div class="col-sm-9">
-                          <textarea name="short" required class="form-control" style="height:200px"
+                          <textarea name="short" required class="form-control" style="height:150px"
                             placeholder="Enter Technology Short Description"
                             ></textarea>
                           </div>
@@ -92,7 +92,7 @@
 						<div class="form-group row">
                           <label class="col-sm-3 form-control-label">Long Description</label>
                           <div class="col-sm-9">
-                          <textarea name="editor" id="editor"></textarea>
+                          <textarea name="editor" class="form-control" style="height:200px"></textarea>
                           </div>
             </div>
 						<div class="line"></div>
@@ -123,24 +123,6 @@
     </div>
     <!-- Javascript files-->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="vendor/tinymce/tinymce.min.js"></script>
-    <script>
-      tinymce.init({
-      selector: 'textarea#editor', 
-      auto_focus: 'element1',
-      height: "200"
-	    });
-      
-      $( document ).ready(function() {
-        $('#buttonpost').on("click", function(){
-          tinyMCE.triggerSave();
-          var value = $("textarea#editor").val();		
-          $("#display-post").html(value);
-          $(".texteditor-container").hide();
-          return false;
-        });
-      });   
-    </script>
     <script src="vendor/popper.js/umd/popper.min.js"> </script>
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="vendor/jquery.cookie/jquery.cookie.js"> </script>

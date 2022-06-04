@@ -143,8 +143,7 @@
 						<div class="form-group row">
                           <label class="col-sm-3 form-control-label">Product Description</label>
                           <div class="col-sm-9">
-                          <textarea name="editor" id="editor">
-                            <?php echo $postresult['description'];?>
+                          <textarea name="editor" class="form-control" style="height:200px"><?php echo $postresult['description'];?>
                           </textarea>
                           </div>
             </div>	
@@ -180,33 +179,9 @@
     </div>
     <!-- Javascript files-->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="vendor/tinymce/tinymce.min.js"></script>
-    <script>
-      tinymce.init({
-      selector: 'textarea#editor', 
-      auto_focus: 'element1',
-      height: "200"
-	    });
-      
-      $( document ).ready(function() {
-        $('#buttonpost').on("click", function(){
-          tinyMCE.triggerSave();
-          var value = $("textarea#editor").val();		
-          $("#display-post").html(value);
-          $(".texteditor-container").hide();
-          return false;
-        });
-      });   
-    </script>
-    <script src="vendor/popper.js/umd/popper.min.js">
-
-
-    </script>
+    <script src="vendor/popper.js/umd/popper.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="vendor/jquery.cookie/jquery.cookie.js">
-
-
-    </script>
+    <script src="vendor/jquery.cookie/jquery.cookie.js"></script>
     <script src="vendor/jquery-validation/jquery.validate.min.js"></script>
     <!-- Main File-->
     <script src="js/front.js"></script>

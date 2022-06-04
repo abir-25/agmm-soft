@@ -57,7 +57,7 @@
 
             <div class="col-12">
               <div class="about-content about-top-overview product-overview">
-                <h2>AGMMS SOFT <span><?php echo $result['title']; ?></span></h2> 
+                <h2>AGMM SOFT <span><?php echo $result['title']; ?></span></h2> 
                 <img src="img/headline_boder.png" alt="">
                 <p class="about_overview">
                   <?php echo $result['description']; ?>

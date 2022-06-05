@@ -493,7 +493,7 @@
 
                 <div class="features wow bounceInUp clearfix why-point">
                   <div class="why-top">
-                    <img src="admin/upload/why/creative.png" alt="">
+                    <img src="admin/<?php echo $result['point1_image']; ?>" alt="">
                     <h4><?php echo $result['point1_title']; ?></h4>
                   </div>
                   <p>
@@ -503,7 +503,7 @@
 
                 <div class="features wow bounceInUp clearfix why-point">
                   <div class="why-top">
-                    <img src="admin/upload/why/price.png" alt="">
+                    <img src="admin/<?php echo $result['point2_image']; ?>" alt="">
                     <h4><?php echo $result['point2_title']; ?></h4>
                   </div>
                   
@@ -514,7 +514,7 @@
 
                 <div class="features wow bounceInUp clearfix why-point">
                   <div class="why-top">
-                    <img src="admin/upload/why/ear.png" alt="">
+                    <img src="admin/<?php echo $result['point3_image']; ?>" alt="">
                     <h4><?php echo $result['point3_title']; ?></h4>
                   </div>
                   

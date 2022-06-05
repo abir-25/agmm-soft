@@ -37,187 +37,160 @@
 <?php
 	if($_SERVER['REQUEST_METHOD'] == 'POST')
 	{
-		$name = $fm->validation($_POST['name']);
-		$slogan = $fm->validation($_POST['slogan']);
-		$copyright = $fm->validation($_POST['copyright']);
+    $count=0;
 
-    	$name = mysqli_real_escape_string($db->link1, $name);
-    	$slogan = mysqli_real_escape_string($db->link1, $slogan);
-    	$copyright = mysqli_real_escape_string($db->link1, $copyright);
+		$title = $fm->validation($_POST['title']);
+		$description = $fm->validation($_POST['description']);
+		$point1_title = $fm->validation($_POST['point1_title']);
+		$point1_desc = $fm->validation($_POST['point1_desc']);
+		$point2_title = $fm->validation($_POST['point2_title']);
+		$point2_desc = $fm->validation($_POST['point2_desc']);
+		$point3_title = $fm->validation($_POST['point3_title']);
+		$point3_desc = $fm->validation($_POST['point3_desc']);
+
+    $title = mysqli_real_escape_string($db->link1, $title);
+    $description = mysqli_real_escape_string($db->link1, $description);
+    $point1_title = mysqli_real_escape_string($db->link1, $point1_title);
+    $point1_desc = mysqli_real_escape_string($db->link1, $point1_desc);
+    $point2_title = mysqli_real_escape_string($db->link1, $point2_title);
+    $point2_desc = mysqli_real_escape_string($db->link1, $point2_desc);
+    $point3_title = mysqli_real_escape_string($db->link1, $point3_title);
+    $point3_desc = mysqli_real_escape_string($db->link1, $point3_desc);
 		 
 		$permitted  = array('jpg', 'jpeg', 'png', 'gif');
-		$file_name = $_FILES['logo']['name'];
-		$file_size = $_FILES['logo']['size'];
-		$file_temp = $_FILES['logo']['tmp_name'];
+		$file_name = $_FILES['image']['name'];
+		$file_size = $_FILES['image']['size'];
+		$file_temp = $_FILES['image']['tmp_name'];
 
-		$file_name2 = $_FILES['favicon']['name'];
-		$file_size2 = $_FILES['favicon']['size'];
-		$file_temp2 = $_FILES['favicon']['tmp_name'];
+		$file_name2 = $_FILES['point1_image']['name'];
+		$file_size2 = $_FILES['point1_image']['size'];
+		$file_temp2 = $_FILES['point1_image']['tmp_name'];
+
+    $file_name3 = $_FILES['point2_image']['name'];
+		$file_size3 = $_FILES['point2_image']['size'];
+		$file_temp3 = $_FILES['point2_image']['tmp_name'];
+
+    $file_name4 = $_FILES['point3_image']['name'];
+		$file_size4 = $_FILES['point3_image']['size'];
+		$file_temp4 = $_FILES['point3_image']['tmp_name'];
 
 		$div = explode('.', $file_name);
 		$file_ext = strtolower(end($div));
 		$unique_image = substr(md5(time()), 0, 10).'.'.$file_ext;
-		$uploaded_image = "upload/bio/".$unique_image;
+		$uploaded_image = "upload/why/".$unique_image;
 	
 		$div2 = explode('.', $file_name2);
 		$file_ext2 = strtolower(end($div2));
 		$unique_image2 = substr(md5(time()), 0, 10).'.'.$file_ext2;
-		$uploaded_image2 = "upload/bio/".$unique_image2;
+		$uploaded_image2 = "upload/why/".$unique_image2;
 	
+    $div3 = explode('.', $file_name3);
+		$file_ext3 = strtolower(end($div3));
+		$unique_image3 = substr(md5(time()), 0, 10).'.'.$file_ext3;
+		$uploaded_image3 = "upload/why/".$unique_image3;
 
-		move_uploaded_file($file_temp, $uploaded_image);
-		move_uploaded_file($file_temp2, $uploaded_image2);
+    $div4 = explode('.', $file_name4);
+		$file_ext4 = strtolower(end($div4));
+		$unique_image4 = substr(md5(time()), 0, 10).'.'.$file_ext4;
+		$uploaded_image4 = "upload/why/".$unique_image4;
 	
+        $query1 = "UPDATE tbl_why 
+                    SET 
+                    title = '$title',
+                    description = '$description',
+                    point1_title = '$point1_title',
+                    point1_desc = '$point1_desc',
+                    point2_title = '$point2_title',
+                    point2_desc = '$point2_desc',
+                    point3_title = '$point3_title',
+                    point3_desc = '$point3_desc'";
+        
+        $updated_rows1 = $db->update($query1);
 
-		$query1 = "select * from tbl_basic_info";
-		$getpost = $db->num_rows($query1);
-		if(!$getpost)
-		{
-			if(empty($file_name)){
-				echo "<span class='error'>Please upload your Logo!!</span>";
-			}
-			else if(empty($file_name2)){
-				echo "<span class='error'>Please upload your Favicon!!</span>";
-			}
-			else{
-				
-				$query = "INSERT INTO tbl_basic_info(name, slogan, logo, favicon, copyright) VALUES('$name','$slogan','$uploaded_image','$uploaded_image2','$copyright')";
-				$inserted_rows = $db->insert($query);
-				if ($inserted_rows) 
-				{
-					echo "<span class='success'>Data Inserted Successfully.
-					</span>";
-				}
-				else 
-				{
-					echo "<span class='error'>Data Not Inserted !!</span>";
-				}
-			}
-			
-		}
-
-		else{
-			if(!empty($file_name) && !empty($file_name2))
-			{
-				if (in_array($file_ext, $permitted) === false) 
-				{
-					 echo "<span class='error'>You can upload only:-"
-					 .implode(', ', $permitted)."</span>";
-				} 
-				else if (in_array($file_ext2, $permitted) === false) 
-				{
-					 echo "<span class='error'>You can upload only:-"
-					 .implode(', ', $permitted)."</span>";
-				} 
-				else
-				{	
-					move_uploaded_file($file_temp, $uploaded_image);
-					move_uploaded_file($file_temp2, $uploaded_image2);
-					
-					$query = "UPDATE tbl_basic_info 
-							  SET 
-							  name = '$name',
-							  slogan = '$slogan',
-							  logo = '$uploaded_image',
-							  favicon = '$uploaded_image2',
-							  copyright = '$copyright'";
-					
-					$updated_rows = $db->update($query);
-					if ($updated_rows) 
-					{
-						echo "<span class='success'>Data Updated Successfully.
-						</span>";
-					}
-					else 
-					{
-						echo "<span class='error'>Data Not Updated !!</span>";
-					}
-				}
-			}
-			else if(!empty($file_name))
-			{
-				if (in_array($file_ext, $permitted) === false) 
-				{
-					 echo "<span class='error'>You can upload only:-"
-					 .implode(', ', $permitted)."</span>";
-				} 
-				else
-				{	
-					move_uploaded_file($file_temp, $uploaded_image);
-					$query = "UPDATE tbl_basic_info 
-							  SET 
-							  name = '$name',
-							  slogan = '$slogan',
-							  logo = '$uploaded_image',
-							  copyright = '$copyright'";
-					
-					$updated_rows = $db->update($query);
-					if ($updated_rows) 
-					{
-						echo "<span class='success'>Data Updated Successfully.
-						</span>";
-					}
-					else 
-					{
-						echo "<span class='error'>Data Not Updated !!</span>";
-					}
-				}
-			}
-			else if(!empty($file_name2))
-			{
-				if (in_array($file_ext2, $permitted) === false) 
-				{
-					 echo "<span class='error'>You can upload only:-"
-					 .implode(', ', $permitted)."</span>";
-				} 
-				else
-				{	
-					move_uploaded_file($file_temp2, $uploaded_image2);
-					$query = "UPDATE tbl_basic_info 
-							  SET 
-							  name = '$name',
-							  slogan = '$slogan',
-							  favicon = '$uploaded_image2',
-							  copyright = '$copyright'";
-					
-					$updated_rows = $db->update($query);
-					if ($updated_rows) 
-					{
-						echo "<span class='success'>Data Updated Successfully.
-						</span>";
-					}
-					else 
-					{
-						echo "<span class='error'>Data Not Updated !!</span>";
-					}
-				}
-			}
-			else{
-				$query = "UPDATE tbl_basic_info 
-							  SET 
-							  name = '$name',
-							  slogan = '$slogan',
-							  copyright = '$copyright'";
-					
-					$updated_rows = $db->update($query);
-					if ($updated_rows) 
-					{
-						echo "<span class='success'>Data Updated Successfully.
-						</span>";
-					}
-					else 
-					{
-						echo "<span class='error'>Data Not Updated !!</span>";
-					}
-			}
-		}
-
+        if(!empty($file_name))
+        {
+            move_uploaded_file($file_temp, $uploaded_image);
+            if (in_array($file_ext, $permitted) === false) 
+            {
+                    echo "<span class='error'>You can upload only:-"
+                    .implode(', ', $permitted)."</span>";
+            } 
+            else
+            {	
+                $query2 = "UPDATE tbl_why 
+                            SET 
+                            image = '$uploaded_image'";
+                
+                $updated_rows2 = $db->update($query2);
+            }
+        }
+        if(!empty($file_name2))
+        {
+	        	move_uploaded_file($file_temp2, $uploaded_image2);
+            if (in_array($file_ext2, $permitted) === false) 
+            {
+                    echo "<span class='error'>You can upload only:-"
+                    .implode(', ', $permitted)."</span>";
+            } 
+            else
+            {	
+                $query3 = "UPDATE tbl_why 
+                            SET 
+                            point1_image = '$uploaded_image2'";
+                
+                $updated_rows3 = $db->update($query3);
+            }
+        }
+        if(!empty($file_name3))
+        {
+		        move_uploaded_file($file_temp3, $uploaded_image3);
+            if (in_array($file_ext3, $permitted) === false) 
+            {
+                    echo "<span class='error'>You can upload only:-"
+                    .implode(', ', $permitted)."</span>";
+            } 
+            else
+            {	
+                $query4 = "UPDATE tbl_why 
+                            SET 
+                            point2_image = '$uploaded_image3'";
+                
+                $updated_rows4 = $db->update($query4);
+            }
+        }
+        if(!empty($file_name4))
+        {
+		        move_uploaded_file($file_temp4, $uploaded_image4);
+            if (in_array($file_ext4, $permitted) === false) 
+            {
+                    echo "<span class='error'>You can upload only:-"
+                    .implode(', ', $permitted)."</span>";
+            } 
+            else
+            {	
+                $query5 = "UPDATE tbl_why 
+                            SET 
+                            point3_image = '$uploaded_image4'";
+                
+                $updated_rows5 = $db->update($query5);
+            }
+        }
+		
+        if ($updated_rows1 || $updated_rows2 || $updated_rows3 || $updated_rows4 || $updated_rows5) 
+        {
+            echo "<span class='success'>Data Updated Successfully.
+            </span>";
+        }
+        else 
+        {
+            echo "<span class='error'>Data Not Updated !!</span>";
+        }
 	
 	}
 ?>
 
 <?php
-	$query1 = "select * from tbl_basic_info";
+	$query1 = "select * from tbl_why";
 	$getpost = $db->num_rows($query1);
     if($getpost)
     {
@@ -226,87 +199,100 @@
 	    {
 ?>
                         <div class="form-group row">
-                          <label class="col-sm-3 form-control-label">Name</label>
+                          <label class="col-sm-3 form-control-label">Title</label>
                           <div class="col-sm-9">
-                            <input type="text" name="name" class="form-control" required value="<?php echo $postresult['name']; ?>">
+                            <textarea name="title" class="form-control" required style="height:100px"><?php echo $postresult['title']; ?></textarea>
                           </div>
                         </div>
-						<div class="line"></div>
+                        <div class="line"></div>
 						<div class="form-group row">
-                          <label class="col-sm-3 form-control-label">Slogan</label>
-                          <div class="col-sm-9">
-                            <input type="text" name="slogan" class="form-control" required value="<?php echo $postresult['slogan']; ?>">
-                          </div>
-                        </div>
-						<div class="line"></div>
-						<div class="form-group row">
-                          <label class="col-sm-3 form-control-label">Upload Logo</label>
+                          <label class="col-sm-3 form-control-label">Upload Image</label>
                           <div class="col-sm-9" style="text-align:center">
-						  <img src="<?php echo $postresult['logo'];?>" height="200px" width="200px"/><br/>
-                            <input type="file" name="logo" class="form-control">
+						  <img src="<?php echo $postresult['image'];?>" height="200px"/><br/>
+                            <input type="file" name="image" class="form-control">
+                          </div>
+                        </div> 
+						<div class="line"></div>
+						<div class="form-group row">
+                          <label class="col-sm-3 form-control-label">Description</label>
+                          <div class="col-sm-9">
+                            <textarea name="description" class="form-control" required style="height:200px"><?php echo $postresult['description']; ?></textarea>
+                          </div>
+                        </div>
+                        <div class="line"></div>
+						<div class="form-group row">
+                          <label class="col-sm-3 form-control-label">First Point image</label>
+                          <div class="col-sm-9" style="text-align:center">
+						  <img src="<?php echo $postresult['point1_image'];?>" height="60px"/><br/>
+                            <input type="file" name="point1_image" class="form-control">
                           </div>
                         </div>  
 						<div class="line"></div>
-						<div class="form-group row">
-                          <label class="col-sm-3 form-control-label">Upload Favicon</label>
-                          <div class="col-sm-9" style="text-align:center">
-						  <img src="<?php echo $postresult['favicon'];?>" height="100px" width="100px"/><br/>
-                            <input type="file" name="favicon" class="form-control">
-                          </div>
-                        </div>
-						<div class="line"></div>
-						<div class="form-group row">
-                          <label class="col-sm-3 form-control-label">Copyright Text</label>
+                        <div class="form-group row">
+                          <label class="col-sm-3 form-control-label">First Point Title</label>
                           <div class="col-sm-9">
-                            <input type="text" name="copyright" required class="form-control" value="<?php echo $postresult['copyright']; ?>">
+                            <input type="text" name="point1_title" class="form-control" required value="<?php echo $postresult['point1_title']; ?>">
                           </div>
                         </div>
+                        <div class="line"></div>
+						<div class="form-group row">
+                          <label class="col-sm-3 form-control-label">First Point Description</label>
+                          <div class="col-sm-9">
+                            <textarea name="point1_desc" class="form-control" required style="height:150px"><?php echo $postresult['point1_desc']; ?></textarea>
+                          </div>
+                        </div>
+                        <div class="line"></div>
+						<div class="form-group row">
+                          <label class="col-sm-3 form-control-label">Second Point image</label>
+                          <div class="col-sm-9" style="text-align:center">
+						  <img src="<?php echo $postresult['point2_image'];?>" height="60px"/><br/>
+                            <input type="file" name="point2_image" class="form-control">
+                          </div>
+                        </div>  
+						<div class="line"></div>
+                        <div class="form-group row">
+                          <label class="col-sm-3 form-control-label">Second Point Title</label>
+                          <div class="col-sm-9">
+                            <input type="text" name="point2_title" class="form-control" required value="<?php echo $postresult['point2_title']; ?>">
+                          </div>
+                        </div>
+                        <div class="line"></div>
+						<div class="form-group row">
+                          <label class="col-sm-3 form-control-label">Second Point Description</label>
+                          <div class="col-sm-9">
+                            <textarea name="point2_desc" class="form-control" required style="height:150px"><?php echo $postresult['point2_desc']; ?></textarea>
+                          </div>
+                        </div>
+                        <div class="line"></div>
+						<div class="form-group row">
+                          <label class="col-sm-3 form-control-label">Third Point image</label>
+                          <div class="col-sm-9" style="text-align:center">
+						  <img src="<?php echo $postresult['point3_image'];?>" height="60px"/><br/>
+                            <input type="file" name="point3_image" class="form-control">
+                          </div>
+                        </div>  
+						<div class="line"></div>
+                        <div class="form-group row">
+                          <label class="col-sm-3 form-control-label">Third Point Title</label>
+                          <div class="col-sm-9">
+                            <input type="text" name="point3_title" class="form-control" required value="<?php echo $postresult['point3_title']; ?>">
+                          </div>
+                        </div>
+                        <div class="line"></div>
+						<div class="form-group row">
+                          <label class="col-sm-3 form-control-label">Third Point Description</label>
+                          <div class="col-sm-9">
+                            <textarea name="point3_desc" class="form-control" required style="height:150px"><?php echo $postresult['point3_desc']; ?></textarea>
+                          </div>
+                        </div>
+
 						<div class="form-group row">
                           <div class="col-sm-4 offset-sm-3">
                             <button type="submit" class="btn btn-primary">Update</button>
                           </div>
                         </div>
-<?php } } else { ?>						
-						<div class="form-group row">
-                          <label class="col-sm-3 form-control-label">Name</label>
-                          <div class="col-sm-9">
-                            <input type="text" name="name" class="form-control" required placeholder="Enter Company Name">
-                          </div>
-                        </div>
-						<div class="line"></div>
-						<div class="form-group row">
-                          <label class="col-sm-3 form-control-label">Slogan</label>
-                          <div class="col-sm-9">
-                            <input type="text" name="slogan" class="form-control" required placeholder="Enter Company Slogan">
-                          </div>
-                        </div>
-						<div class="line"></div>
-						<div class="form-group row">
-                          <label class="col-sm-3 form-control-label">Upload Logo</label>
-                          <div class="col-sm-9" style="text-align:center">
-                            <input type="file" name="logo" class="form-control" required>
-                          </div>
-                        </div>  
-						<div class="line"></div>
-						<div class="form-group row">
-                          <label class="col-sm-3 form-control-label">Upload Favicon</label>
-                          <div class="col-sm-9" style="text-align:center">
-                            <input type="file" name="favicon" class="form-control" required>
-                          </div>
-                        </div>
-						<div class="line"></div>
-						<div class="form-group row">
-                          <label class="col-sm-3 form-control-label">Copyright Text</label>
-                          <div class="col-sm-9">
-                            <input type="text" name="copyright" required class="form-control" placeholder="Enter Websites' Copyright Text">
-                          </div>
-                        </div>
-						<div class="form-group row">
-                          <div class="col-sm-4 offset-sm-3">
-                            <button type="submit" class="btn btn-primary">Add</button>
-                          </div>
-                        </div>
-<?php } ?>
+<?php } } ?>						
+		
      
                        
                       </form>

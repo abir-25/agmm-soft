@@ -37,9 +37,13 @@
 <?php
 	if($_SERVER['REQUEST_METHOD'] == 'POST')
 	{
-		$p_id  = $_POST['p_id'];
-		$title  = mysqli_real_escape_string($db->link1, $_POST['title']);
-    $description  = mysqli_real_escape_string($db->link1, $_POST['description']);
+    $p_id = $fm->validation($_POST['p_id']);
+    $title = $fm->validation($_POST['title']);
+    $description = $fm->validation($_POST['description']);
+
+		$p_id  = mysqli_real_escape_string($db->link1, $p_id);
+		$title  = mysqli_real_escape_string($db->link1, $title);
+    $description  = mysqli_real_escape_string($db->link1, $description);
 
         $query = "INSERT INTO tbl_benefit(title, description, p_id) VALUES('$title','$description','$p_id')";
         $inserted_rows = $db->insert($query);

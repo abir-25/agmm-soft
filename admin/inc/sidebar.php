@@ -26,6 +26,7 @@
                             <li><a href="editdashboard.php">Admin Dashboard</a></li>       
                             <li><a href="titlelogo.php">Basic Information</a></li>
                             <li><a href="editabout.php">About Us</a></li>
+                            <li><a href="why.php">Why Choose Us</a></li>
                             <li><a href="social.php">Social Media</a></li>
 <?php 
     if($_SESSION['role']==0){

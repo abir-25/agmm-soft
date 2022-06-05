@@ -14,7 +14,8 @@
 	}
 	else
 	{
-		$id = $_GET['msgid'];
+    $msgid = $fm->validation($_GET['msgid']);
+    $id = mysqli_real_escape_string($db->link1, $msgid);
 	}
 ?>
 

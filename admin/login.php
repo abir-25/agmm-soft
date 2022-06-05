@@ -82,10 +82,14 @@
 <?php
 	if($_SERVER['REQUEST_METHOD'] == 'POST')
 	{
-		$role = $_POST['role'];
-		$email = $fm->validation($_POST['email']);
-		$password = $fm->validation($_POST['password']);
-		
+    $role = $fm->validation($_POST['role']);
+    $email = $fm->validation($_POST['email']);
+    $password = $fm->validation($_POST['password']);
+
+		$role  = mysqli_real_escape_string($db->link1, $role);
+		$email  = mysqli_real_escape_string($db->link1, $email);
+		$password  = mysqli_real_escape_string($db->link1, $password);
+
 		// $email = mysqli_real_escape_string($db->link1, $email);
 		// $password = mysqli_real_escape_string($db->link1, $password);
 		

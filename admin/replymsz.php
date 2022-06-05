@@ -14,7 +14,8 @@
 	}
 	else
 	{
-		$id = $_GET['msgid'];
+    $msgid = $fm->validation($_GET['msgid']);
+    $id = mysqli_real_escape_string($db->link1, $msgid);
 	}
 ?>
 
@@ -51,6 +52,12 @@
 		$from    = $fm->validation($_POST['from']);
 		$subject = $fm->validation($_POST['subject']);
 		$message = $fm->validation($_POST['message']);
+
+		$to  = mysqli_real_escape_string($db->link1, $to);
+		$from  = mysqli_real_escape_string($db->link1, $from);
+		$subject  = mysqli_real_escape_string($db->link1, $subject);
+		$message  = mysqli_real_escape_string($db->link1, $message);
+
 		$sendmail = mail($to, $subject, $message, $from);
 		
 		if($sendmail)

@@ -37,20 +37,35 @@
 <?php
 	if($_SERVER['REQUEST_METHOD'] == 'POST')
 	{
-		$facebook    = mysqli_real_escape_string($db->link1, $_POST['facebook']);
-		$youtube  	 = mysqli_real_escape_string($db->link1, $_POST['youtube']);
-		$instagram   = mysqli_real_escape_string($db->link1, $_POST['instagram']); 
-		$linkedin    = mysqli_real_escape_string($db->link1, $_POST['linkedin']);
-    $twitter     = mysqli_real_escape_string($db->link1, $_POST['twitter']);
-		$github  	   = mysqli_real_escape_string($db->link1, $_POST['github']);
-		$website     = mysqli_real_escape_string($db->link1, $_POST['website']); 
-		$pinterest   = mysqli_real_escape_string($db->link1, $_POST['pinterest']);
-		$reddit      = mysqli_real_escape_string($db->link1, $_POST['reddit']);
-    $tumblr      = mysqli_real_escape_string($db->link1, $_POST['tumblr']);
-		$google_plus = mysqli_real_escape_string($db->link1, $_POST['google_plus']);
-		$twitch      = mysqli_real_escape_string($db->link1, $_POST['twitch']); 
-		$discord     = mysqli_real_escape_string($db->link1, $_POST['discord']);
-		$vimeo       = mysqli_real_escape_string($db->link1, $_POST['vimeo']);
+    $facebook = $fm->validation($_POST['facebook']);
+    $youtube = $fm->validation($_POST['youtube']);
+    $instagram = $fm->validation($_POST['instagram']);
+    $linkedin = $fm->validation($_POST['linkedin']);
+    $twitter = $fm->validation($_POST['twitter']);
+    $github = $fm->validation($_POST['github']);
+    $website = $fm->validation($_POST['website']);
+    $pinterest = $fm->validation($_POST['pinterest']);
+    $reddit = $fm->validation($_POST['reddit']);
+    $tumblr = $fm->validation($_POST['tumblr']);
+    $google_plus = $fm->validation($_POST['google_plus']);
+    $twitch = $fm->validation($_POST['twitch']);
+    $discord = $fm->validation($_POST['discord']);
+    $vimeo = $fm->validation($_POST['vimeo']);
+
+		$facebook    = mysqli_real_escape_string($db->link1, $facebook);
+		$youtube  	 = mysqli_real_escape_string($db->link1, $youtube);
+		$instagram   = mysqli_real_escape_string($db->link1, $instagram); 
+		$linkedin    = mysqli_real_escape_string($db->link1, $linkedin);
+    $twitter     = mysqli_real_escape_string($db->link1, $twitter);
+		$github  	   = mysqli_real_escape_string($db->link1, $github);
+		$website     = mysqli_real_escape_string($db->link1, $website); 
+		$pinterest   = mysqli_real_escape_string($db->link1, $pinterest);
+		$reddit      = mysqli_real_escape_string($db->link1, $reddit);
+    $tumblr      = mysqli_real_escape_string($db->link1, $tumblr);
+		$google_plus = mysqli_real_escape_string($db->link1, $google_plus);
+		$twitch      = mysqli_real_escape_string($db->link1, $twitch); 
+		$discord     = mysqli_real_escape_string($db->link1, $discord);
+		$vimeo       = mysqli_real_escape_string($db->link1, $vimeo);
 
     $query1 = "select * from tbl_social";
 		$getpost = $db->num_rows($query1);

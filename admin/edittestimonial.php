@@ -14,7 +14,8 @@
 	}
 	else
 	{
-		$testId = $_GET['testId'];
+    $testId = $fm->validation($_GET['testId']);
+    $testId = mysqli_real_escape_string($db->link1, $testId);
 	}
 ?>
           <!-- Breadcrumb-->
@@ -46,10 +47,15 @@
 <?php
 	if($_SERVER['REQUEST_METHOD'] == 'POST')
 	{
-    $product  = mysqli_real_escape_string($db->link1, $_POST['product']);
-		$service  = mysqli_real_escape_string($db->link1, $_POST['service']);
-    $client  = mysqli_real_escape_string($db->link1, $_POST['client']);
-    $address  = mysqli_real_escape_string($db->link1, $_POST['address']);
+    $product = $fm->validation($_POST['product']);
+    $service = $fm->validation($_POST['service']);
+    $client = $fm->validation($_POST['client']);
+    $address = $fm->validation($_POST['address']);
+
+		$product  = mysqli_real_escape_string($db->link1, $product);
+		$service  = mysqli_real_escape_string($db->link1, $service);
+    $client  = mysqli_real_escape_string($db->link1, $client);
+    $address  = mysqli_real_escape_string($db->link1, $address);
 		 
 		$permitted  = array('jpg', 'jpeg', 'png', 'gif');
 		$file_name = $_FILES['logo']['name'];

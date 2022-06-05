@@ -30,9 +30,11 @@
                                     </div>
                                     <div class="card-body card-body2">
 <?php
-	if(isset($_GET['delid']))
+	if(isset($_GET['delid']) && $_GET['delid'] != NULL)
 	{
-		$delid = $_GET['delid']; 
+        $delid = $fm->validation($_GET['delid']);
+        $delid = mysqli_real_escape_string($db->link1, $delid);
+
 		$delquery = "delete from tbl_contact where id='$delid'";
 		$deldata = $db->deletedata($delquery);
 		
@@ -48,9 +50,10 @@
 ?>
 <?php
 
-	if(isset($_GET['seenid']))
+	if(isset($_GET['seenid']) && $_GET['seenid'] != NULL)
 	{
-		$seenid = $_GET['seenid'];
+        $seenid = $fm->validation($_GET['seenid']);
+        $seenid = mysqli_real_escape_string($db->link1, $seenid);
 		$query = "UPDATE tbl_contact SET status='1' WHERE id='$seenid'";
 		$update_row = $db->update($query);
 		if($update_row)
@@ -68,9 +71,10 @@
 				
 <?php
 
-	if(isset($_GET['unseenid']))
+	if(isset($_GET['unseenid']) && $_GET['unseenid'] != NULL)
 	{
-		$unseenid = $_GET['unseenid'];
+        $unseenid = $fm->validation($_GET['unseenid']);
+        $unseenid = mysqli_real_escape_string($db->link1, $unseenid);
 		$query = "UPDATE tbl_contact SET status='0' WHERE id='$unseenid'";
 		$update_row = $db->update($query);
 		if($update_row)

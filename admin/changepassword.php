@@ -42,6 +42,7 @@
 		$new = $fm->validation($_POST['new']);
 		$confirm = $fm->validation($_POST['confirm']);
 		
+		$email = mysqli_real_escape_string($db->link1, $email);
 		$old = mysqli_real_escape_string($db->link1, $old);
 		$new = mysqli_real_escape_string($db->link1, $new);
 		$confirm = mysqli_real_escape_string($db->link1, $confirm);

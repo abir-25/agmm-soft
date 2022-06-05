@@ -37,9 +37,13 @@
 <?php
 	if($_SERVER['REQUEST_METHOD'] == 'POST')
 	{
-		$name  = mysqli_real_escape_string($db->link1, $_POST['name']);
-		$slogan  = mysqli_real_escape_string($db->link1, $_POST['slogan']);
-		$copyright = $_POST['copyright'];
+		$name = $fm->validation($_POST['name']);
+		$slogan = $fm->validation($_POST['slogan']);
+		$copyright = $fm->validation($_POST['copyright']);
+
+    	$name = mysqli_real_escape_string($db->link1, $name);
+    	$slogan = mysqli_real_escape_string($db->link1, $slogan);
+    	$copyright = mysqli_real_escape_string($db->link1, $copyright);
 		 
 		$permitted  = array('jpg', 'jpeg', 'png', 'gif');
 		$file_name = $_FILES['logo']['name'];

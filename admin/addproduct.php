@@ -37,9 +37,14 @@
 <?php
 	if($_SERVER['REQUEST_METHOD'] == 'POST')
 	{
-		$title  = mysqli_real_escape_string($db->link1, $_POST['title']);
-		$description  = mysqli_real_escape_string($db->link1, $_POST['editor']);
-    $status = $_POST['status'];
+    $title = $fm->validation($_POST['title']);
+    $status = $fm->validation($_POST['status']);
+    $description = $fm->validation($_POST['editor']);
+    
+		$status  = mysqli_real_escape_string($db->link1, $status);
+		$title  = mysqli_real_escape_string($db->link1, $title);
+		$description  = mysqli_real_escape_string($db->link1, $description);
+    //$status = $_POST['status'];
 		 
 		$permitted  = array('jpg', 'jpeg', 'png', 'gif');
 		$file_name = $_FILES['image']['name'];

@@ -14,7 +14,8 @@
 	}
 	else
 	{
-		$benefitId = $_GET['benefitId'];
+    $benefitId = $fm->validation($_GET['benefitId']);
+    $benefitId = mysqli_real_escape_string($db->link1, $benefitId);
 	}
 ?>
           <!-- Breadcrumb-->
@@ -46,9 +47,13 @@
 <?php
 	if($_SERVER['REQUEST_METHOD'] == 'POST')
 	{
-    $title  = mysqli_real_escape_string($db->link1, $_POST['title']);
-    $description  = mysqli_real_escape_string($db->link1, $_POST['description']);
-		$p_id  = $_POST['p_id'];
+    $title = $fm->validation($_POST['title']);
+    $description = $fm->validation($_POST['description']);
+    $p_id = $fm->validation($_POST['p_id']);
+
+    $title  = mysqli_real_escape_string($db->link1, $title);
+    $description  = mysqli_real_escape_string($db->link1, $description);
+    $p_id  = mysqli_real_escape_string($db->link1, $p_id);
 	
 		$query = "UPDATE tbl_benefit
                     SET 

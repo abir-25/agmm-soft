@@ -33,10 +33,11 @@
                                     <div class="card-body">
 <?php
 
-	if(isset($_GET['delid']))
+	if(isset($_GET['delid']) && $_GET['delid'] != NULL)
 	{
-		$delid = $_GET['delid'];
-		
+		$delid = $fm->validation($_GET['delid']);
+        $delid = mysqli_real_escape_string($db->link1, $delid);
+
 		$delquery = "delete from tbl_benefit where id = '$delid'";
 		$deldata = $db->deletedata($delquery);
 		

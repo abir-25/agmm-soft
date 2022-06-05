@@ -43,9 +43,13 @@
 <?php
 	if($_SERVER['REQUEST_METHOD'] == 'POST')
 	{
-		$name  = mysqli_real_escape_string($db->link1, $_POST['name']);
-		$email  = mysqli_real_escape_string($db->link1, $_POST['email']);
-		$password  = mysqli_real_escape_string($db->link1, $_POST['password']);
+    $name = $fm->validation($_POST['name']);
+    $email = $fm->validation($_POST['email']);
+    $password = $fm->validation($_POST['password']);
+
+		$name  = mysqli_real_escape_string($db->link1, $name);
+		$email  = mysqli_real_escape_string($db->link1, $email);
+		$password  = mysqli_real_escape_string($db->link1, $password);
 
     $query1 = "SELECT * from tbl_login where email='$email'";
     $result1 = $db->select($query1);

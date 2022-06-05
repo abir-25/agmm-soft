@@ -37,14 +37,23 @@
 <?php
 	if($_SERVER['REQUEST_METHOD'] == 'POST')
 	{
-		$name  = mysqli_real_escape_string($db->link1, $_POST['name']);
-		$designation  = mysqli_real_escape_string($db->link1, $_POST['designation']);
-		$type = $_POST['type'];
-		$fb = $_POST['fb'];
-		$ins = $_POST['ins'];
-		$li = $_POST['li'];
-		$tw = $_POST['tw'];
-		$git = $_POST['git'];
+    $name = $fm->validation($_POST['name']);
+    $designation = $fm->validation($_POST['designation']);
+    $type = $fm->validation($_POST['type']);
+    $fb = $fm->validation($_POST['fb']);
+    $ins = $fm->validation($_POST['ins']);
+    $li = $fm->validation($_POST['li']);
+    $tw = $fm->validation($_POST['tw']);
+    $git = $fm->validation($_POST['git']);
+
+		$name  = mysqli_real_escape_string($db->link1, $name);
+		$designation  = mysqli_real_escape_string($db->link1, $designation);
+		$type = mysqli_real_escape_string($db->link1, $type);
+		$fb = mysqli_real_escape_string($db->link1, $fb);
+		$ins = mysqli_real_escape_string($db->link1, $ins);
+		$li = mysqli_real_escape_string($db->link1, $li);
+		$tw = mysqli_real_escape_string($db->link1, $tw);
+		$git = mysqli_real_escape_string($db->link1, $git);
 
 		 
 		$permitted  = array('jpg', 'jpeg', 'png', 'gif');

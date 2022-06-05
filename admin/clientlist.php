@@ -33,9 +33,11 @@
                                     <div class="card-body">
 <?php
 
-	if(isset($_GET['delclientid']))
+	if(isset($_GET['delclientid']) && $_GET['delclientid'] != NULL)
 	{
-		$delclientid = $_GET['delclientid'];
+        $delclientid = $fm->validation($_GET['delclientid']);
+        $delclientid = mysqli_real_escape_string($db->link1, $delclientid);
+
 		$query = "select * from tbl_client where id='$delclientid'"; 
 		$getdata = $db->select($query);
 		

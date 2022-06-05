@@ -37,11 +37,17 @@
 <?php
 	if($_SERVER['REQUEST_METHOD'] == 'POST')
 	{
-    $overview1  = mysqli_real_escape_string($db->link1, $_POST['overview1']);
-    $overview2  = mysqli_real_escape_string($db->link1, $_POST['overview2']);
-    $overview3  = mysqli_real_escape_string($db->link1, $_POST['overview3']);
-    $mission  = mysqli_real_escape_string($db->link1, $_POST['mission']);
-    $vision  = mysqli_real_escape_string($db->link1, $_POST['vision']);
+    $overview1 = $fm->validation($_POST['overview1']);
+    $overview2 = $fm->validation($_POST['overview2']);
+    $overview3 = $fm->validation($_POST['overview3']);
+    $mission = $fm->validation($_POST['mission']);
+    $vision = $fm->validation($_POST['vision']);
+
+    $overview1  = mysqli_real_escape_string($db->link1, $overview1);
+    $overview2  = mysqli_real_escape_string($db->link1, $overview2);
+    $overview3  = mysqli_real_escape_string($db->link1, $overview3);
+    $mission  = mysqli_real_escape_string($db->link1, $mission);
+    $vision  = mysqli_real_escape_string($db->link1, $vision);
 
 		$permited  = array('jpg', 'jpeg', 'png', 'gif');
 		$file_name = $_FILES['image']['name'];

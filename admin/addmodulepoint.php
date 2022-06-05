@@ -46,8 +46,12 @@
                 $p_id = $resultt['p_id'];
             }
         }
-        $m_id  = $_POST['m_id'];
-        $title  = mysqli_real_escape_string($db->link1, $_POST['title']);
+        //$m_id  = $_POST['m_id'];
+        $m_id = $fm->validation($_POST['m_id']);
+        $title = $fm->validation($_POST['title']);
+        
+        $m_id  = mysqli_real_escape_string($db->link1, $m_id);
+        $title  = mysqli_real_escape_string($db->link1, $title);
 
         $query = "INSERT INTO tbl_module_point(title, p_id, m_id) VALUES('$title','$p_id','$m_id')";
         $inserted_rows = $db->insert($query);

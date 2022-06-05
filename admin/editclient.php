@@ -14,7 +14,8 @@
 	}
 	else
 	{
-		$clientId = $_GET['clientId'];
+    $clientId = $fm->validation($_GET['clientId']);
+    $clientId = mysqli_real_escape_string($db->link1, $clientId);
 	}
 ?>
           <!-- Breadcrumb-->

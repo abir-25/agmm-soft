@@ -14,7 +14,8 @@
 	}
 	else
 	{
-		$techId = $_GET['techId'];
+    $techId = $fm->validation($_GET['techId']);
+    $techId = mysqli_real_escape_string($db->link1, $techId);
 	}
 ?>
           <!-- Breadcrumb-->
@@ -46,10 +47,15 @@
 <?php
 	if($_SERVER['REQUEST_METHOD'] == 'POST')
 	{
-    $title  = mysqli_real_escape_string($db->link1, $_POST['title']);
-    $short  = mysqli_real_escape_string($db->link1, $_POST['short']);
-		$description  = mysqli_real_escape_string($db->link1, $_POST['editor']);
-    $product  = mysqli_real_escape_string($db->link1, $_POST['product']);
+    $title = $fm->validation($_POST['title']);
+    $description = $fm->validation($_POST['editor']);
+    $short = $fm->validation($_POST['short']);
+    $product = $fm->validation($_POST['product']);
+
+		$title  = mysqli_real_escape_string($db->link1, $title);
+		$description  = mysqli_real_escape_string($db->link1, $description);
+		$short  = mysqli_real_escape_string($db->link1, $short);
+    $product  = mysqli_real_escape_string($db->link1, $product);
 
 
 		$permited  = array('jpg', 'jpeg', 'png', 'gif');

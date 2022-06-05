@@ -11,7 +11,8 @@
 	}
 	else
 	{
-		$m_detailsId = $_GET['m_detailsId'];
+    $m_detailsId = $fm->validation($_GET['m_detailsId']);
+    $m_detailsId = mysqli_real_escape_string($db->link1, $m_detailsId);
 	}
 ?>
           <!-- Page Header-->
@@ -49,7 +50,12 @@
                        <form class="form-horizontal" action="" method="post" name="form">
 <?php
 	if('POST' == $_SERVER['REQUEST_METHOD']) {
-        $m_id  = $_POST['m_id'];
+    $m_id = $fm->validation($_POST['m_id']);
+    $title = $fm->validation($_POST['title']);
+
+    $m_id  = mysqli_real_escape_string($db->link1, $m_id);
+    $title  = mysqli_real_escape_string($db->link1, $title  );
+
         $queryy = "select * from tbl_track";			
         $postt = $db->select($queryy);				
         if($postt)
@@ -58,7 +64,6 @@
                 $p_id = $resultt['p_id'];
             }
         }
-        $title  = mysqli_real_escape_string($db->link1, $_POST['title']);
 
         $query = "UPDATE tbl_module_point
                     SET 

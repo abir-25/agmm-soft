@@ -37,8 +37,11 @@
 <?php
 	if($_SERVER['REQUEST_METHOD'] == 'POST')
 	{
-		$title  = mysqli_real_escape_string($db->link1, $_POST['title']);
-		$p_id  = $_POST['p_id'];
+    $title = $fm->validation($_POST['title']);
+    $p_id = $fm->validation($_POST['p_id']);
+
+		$title  = mysqli_real_escape_string($db->link1, $title);
+		$p_id  = mysqli_real_escape_string($db->link1, $p_id);
 
 		 
 		$permitted  = array('jpg', 'jpeg', 'png', 'gif');

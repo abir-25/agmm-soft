@@ -37,10 +37,15 @@
 <?php
 	if($_SERVER['REQUEST_METHOD'] == 'POST')
 	{
-		$title  = mysqli_real_escape_string($db->link1, $_POST['title']);
-		$description  = mysqli_real_escape_string($db->link1, $_POST['editor']);
-		$short  = mysqli_real_escape_string($db->link1, $_POST['short']);
-    $product  = mysqli_real_escape_string($db->link1, $_POST['product']);
+    $title = $fm->validation($_POST['title']);
+    $description = $fm->validation($_POST['editor']);
+    $short = $fm->validation($_POST['short']);
+    $product = $fm->validation($_POST['product']);
+
+		$title  = mysqli_real_escape_string($db->link1, $title);
+		$description  = mysqli_real_escape_string($db->link1, $description);
+		$short  = mysqli_real_escape_string($db->link1, $short);
+    $product  = mysqli_real_escape_string($db->link1, $product);
 		 
 		$permitted  = array('jpg', 'jpeg', 'png', 'gif');
 		$file_name = $_FILES['image']['name'];

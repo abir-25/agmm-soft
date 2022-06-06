@@ -58,6 +58,7 @@
     $point3_desc = mysqli_real_escape_string($db->link1, $point3_desc);
 		 
 		$permitted  = array('jpg', 'jpeg', 'png', 'gif');
+
 		$file_name = $_FILES['image']['name'];
 		$file_size = $_FILES['image']['size'];
 		$file_temp = $_FILES['image']['tmp_name'];
@@ -107,6 +108,8 @@
         
         $updated_rows1 = $db->update($query1);
 
+        echo $file_name."    ".$file_name2."    ".$file_name3."     ".$file_name4;
+        
         if(!empty($file_name))
         {
             move_uploaded_file($file_temp, $uploaded_image);

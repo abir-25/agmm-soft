@@ -22,7 +22,16 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     <!-- Favicons -->
-    <link href="img/favicon.png" rel="icon" />
+<?php
+    $query = "select * from tbl_basic_info";
+    $getData = $db->select($query);
+    if($getData)
+    {
+        while($result = $getData->fetch_assoc()) 
+        {
+?>
+    <link href="admin/<?php echo $result['favicon']?>" rel="icon" />
+<?php } } ?>
     <link href="img/apple-touch-icon.png" rel="apple-touch-icon" />
 
     <!-- Google Fonts -->

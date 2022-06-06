@@ -102,11 +102,12 @@
                                             <tbody>
 <?php		
 $query = "select * from tbl_contact where status='0' order by id desc";
+$i=0;
 $msg = $db->select($query);
 
 if($msg)
 {
-	$i=0;
+	
 	while($result = $msg->fetch_assoc())
 	{
 		$i++;
@@ -124,6 +125,9 @@ if($msg)
 <?php } } ?>
                                             </tbody>
                                         </table>
+<?php if($i==0) { ?>
+                                        <p class="text-center py-4">No data Available</p>
+<?php } ?>
                                     </div>
                                 </div>
                             </div>
@@ -134,7 +138,7 @@ if($msg)
                                 <div class="card">
                                     <div class="card-close">
                                         <div class="dropdown">
-                                            <button type="button" id="closeCard1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
+                                            <button type="button" id="closeCard1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"></button>
                                             <div aria-labelledby="closeCard1" class="dropdown-menu dropdown-menu-right has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a></div>
                                         </div>
                                     </div>

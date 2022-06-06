@@ -36,7 +36,7 @@
                   <div class="card">
                     <div class="card-close">
                       <div class="dropdown">
-                        <button type="button" id="closeCard5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
+                        <button type="button" id="closeCard5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"></button>
                         <div aria-labelledby="closeCard5" class="dropdown-menu dropdown-menu-right has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><!--<a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a>--></div>
                       </div>
                     </div>
@@ -58,8 +58,11 @@
 		$subject  = mysqli_real_escape_string($db->link1, $subject);
 		$message  = mysqli_real_escape_string($db->link1, $message);
 
-		$sendmail = mail($to, $subject, $message, $from);
+    $header = "From: ".$from;
+		$sendmail = mail($to, $subject, $message, $header);
 		
+    echo $to."    ".$subject."     ".$message."     ".$header;
+
 		if($sendmail)
 		{
 			echo "<span class='success'>Message Sent Successfully !!</span>";

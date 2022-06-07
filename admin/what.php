@@ -140,9 +140,7 @@
                             <button type="submit" class="btn btn-primary">Update</button>
                           </div>
                         </div>
-<?php } } else { ?>
-                      <p class="text-center py-4">No data Available</p>
-<?php } ?>
+<?php } } ?>
 	
                       </form>
                     </div>

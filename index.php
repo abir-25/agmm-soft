@@ -538,25 +538,35 @@
 <?php } } ?>
         <div class="container">
           <div class="row counters">
+<?php
+    $query = "select * from tbl_counter";
+    $getData = $db->select($query);
+    if($getData)
+    {
+        while($result = $getData->fetch_assoc()) 
+        {
+?>
             <div class="col-lg-3 col-6 text-center">
-              <span data-toggle="counter-up">274</span>
-              <p>Clients</p>
+              <span data-toggle="counter-up"><?php echo $result['count1']; ?></span>
+              <p><?php echo $result['title1']; ?></p>
             </div>
 
             <div class="col-lg-3 col-6 text-center">
-              <span data-toggle="counter-up">421</span>
-              <p>Projects</p>
+              <span data-toggle="counter-up"><?php echo $result['count2']; ?></span>
+              <p><?php echo $result['title2']; ?></p>
             </div>
 
             <div class="col-lg-3 col-6 text-center">
-              <span data-toggle="counter-up">1,364</span>
-              <p>Hours Of Support</p>
+              <span data-toggle="counter-up"><?php echo $result['count3']; ?></span>
+              <p><?php echo $result['title3']; ?></p>
             </div>
 
             <div class="col-lg-3 col-6 text-center">
-              <span data-toggle="counter-up">18</span>
-              <p>Hard Workers</p>
+              <span data-toggle="counter-up"><?php echo $result['count4']; ?></span>
+              <p><?php echo $result['title4']; ?></p>
             </div>
+            
+<?php } } ?>
           </div>
         </div>
       </section>
@@ -589,28 +599,26 @@
     ============================-->
       <section id="features">
         <div class="container">
+<?php
+    $query = "select * from tbl_what";
+    $getData = $db->select($query);
+    if($getData)
+    {
+        while($result = $getData->fetch_assoc()) 
+        {
+?>
           <div class="row feature-item">
             <div class="col-lg-6 wow fadeInUp">
-              <img src="img/features-1.svg" class="img-fluid" alt="" />
+              <img src="admin/<?php echo $result['image']; ?>" class="img-fluid" alt="" />
             </div>
             <div class="col-lg-6 wow fadeInUp pt-5 pt-lg-0">
               <h4>What We Do</h4>
 
-              <p>
-                Ipsum in aspernatur ut possimus sint. Quia omnis est occaecati
-                possimus ea. Quas molestiae perspiciatis occaecati qui rerum.
-                Deleniti quod porro sed quisquam saepe. Numquam mollitia
-                recusandae non ad at et a.
-              </p>
-              <p>
-                Ad vitae recusandae odit possimus. Quaerat cum ipsum corrupti.
-                Odit qui asperiores ea corporis deserunt veritatis quidem
-                expedita perferendis. Qui rerum eligendi ex doloribus quia sit.
-                Porro rerum eum eum.
-              </p>
+              <p class="text-justify"><?php echo $result['description1']; ?></p>
+              <p class="text-justify"><?php echo $result['description2']; ?></p>
             </div>
           </div>
-
+<?php } } ?>
           <!--<div class="row feature-item mt-5 pt-5">
             <div class="col-lg-6 wow fadeInUp order-1 order-lg-2">
               <img src="img/features-2.svg" class="img-fluid" alt="" />

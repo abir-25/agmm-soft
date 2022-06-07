@@ -55,18 +55,13 @@
     <script src="https://www.google.com/recaptcha/api.js?render=6Ld0BkYgAAAAAD4lZsWbECNaLQE0rtH69lB_WgNn"></script>
 
     <script>
-      // function onClick(e) {
-      //   e.preventDefault();
         grecaptcha.ready(function() {
           grecaptcha.execute('6Ld0BkYgAAAAAD4lZsWbECNaLQE0rtH69lB_WgNn', {action: 'submit'}).then(function(token) {
 
               let response = document.getElementById('token_response');
               response.value = token;
-
-              // Add your logic to submit to your backend server here.
           });
         });
-      //}
     </script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="sweetalert2.all.min.js"></script>
@@ -162,7 +157,7 @@
             <li><a href="#team">Team</a></li>
             <li><a href="technology.php">Technology</a></li>
             <li><a href="clients.php">Clients</a></li>
-            <li><a href="">Gallery</a></li>
+            <li><a href="gallery.php">Gallery</a></li>
             <li><a href="#testimonials">Contact</a></li>
           </ul>
         </nav>

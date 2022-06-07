@@ -89,6 +89,13 @@
                             <li><a href="technologylist.php">Technology List</a></li>           
                         </ul>
                     </li>
+
+                    <li><a href="#exampledropdownDropdown8" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-file-image-o"></i>Gallery Option</a>
+                        <ul id="exampledropdownDropdown8" class="collapse list-unstyled ">
+                            <li><a href="addgallery.php">Add Gallery </a></li>
+                            <li><a href="gallerylist.php">Gallery List</a></li>           
+                        </ul>
+                    </li>
                     
                 </ul>
 

@@ -113,7 +113,7 @@
             <li <?php if($current == 'team'){ echo 'id="active_link"'; }?>><a href="index.php#team">Team</a></li>
             <li <?php if($current == 'technology'){ echo 'id="active_link"'; } else if($current == 'tech-details'){ echo 'id="active_link"'; }?>><a href="technology.php">Technology</a></li>
             <li <?php if($current == 'clients'){ echo 'id="active_link"'; }?>><a href="clients.php">Clients</a></li>
-            <li><a href="">Gallery</a></li>
+            <li <?php if($current == 'gallery'){ echo 'id="active_link"'; }?>><a href="gallery.php">Gallery</a></li>
             <li><a href="index.php#testimonials">Contact</a></li>
           </ul>
         </nav>

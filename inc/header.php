@@ -38,6 +38,9 @@
 
     <!-- Main Stylesheet File -->
     <link href="css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.css"/>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+
   </head>
 
   <body> 

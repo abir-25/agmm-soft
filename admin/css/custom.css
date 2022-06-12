@@ -9,6 +9,10 @@
   width: 100px !important;
   height: 100px !important;
 }
+.service-image {
+  width: 180px !important;
+  height: 140px !important;
+}
 .post-image {
   width: 150px !important;
 }

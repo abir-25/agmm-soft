@@ -359,25 +359,82 @@
           </header>
 
           <div class="row">
+<?php
+    $query = "select * from tbl_service";
+    $getData = $db->select($query);
+    if($getData)
+    {
+      $data_wow_delay = 0;
+      $s_count = 0;
+        while($result = $getData->fetch_assoc()) 
+        {
+          $s_count++;
+          $wow_delay = 0+0.1;
+          $description = $fm->textShorten($result['description']);
+?>
             <div
               class="col-md-6 col-lg-4 wow bounceInUp"
+              data-wow-delay="<?php echo $wow_delay; ?>s"
               data-wow-duration="1.4s"
             >
+            <a href="">
               <div class="box">
+<?php if($s_count==1){ ?>
                 <div class="icon" style="background: #fceef3">
                   <i
                     class="ion-android-laptop"
                     style="color: #ff689b"
                   ></i>
                 </div>
-                <h4 class="title"><a href="">Lorem Ipsum</a></h4>
+<?php } ?>
+
+<?php if($s_count==2){ ?>
+                <div class="icon" style="background: #fff0da">
+                  <i
+                    class="ion-ios-bookmarks-outline"
+                    style="color: #e98e06"
+                  ></i>
+                </div>
+<?php } ?>
+
+<?php if($s_count==3){ ?>
+                <div class="icon" style="background: #e1eeff">
+                  <i class="ion-ios-world-outline" style="color: #2282ff"></i>
+                </div>
+<?php } ?>
+
+<?php if($s_count==4){ ?>
+                <div class="icon" style="background: #e6fdfc">
+                  <i class="ion-ios-paper-outline" style="color: #3fcdc7"></i>
+                </div>
+<?php } ?>
+
+<?php if($s_count==5){ ?>
+                <div class="icon" style="background: #eafde7">
+                  <i
+                    class="ion-ios-speedometer-outline"
+                    style="color: #41cf2e"
+                  ></i>
+                </div>
+<?php } ?>
+
+<?php if($s_count==6){ ?>
+                <div class="icon" style="background: #ecebff">
+                  <i class="ion-ios-clock-outline" style="color: #8660fe"></i>
+                </div>
+<?php } ?>
+                <h4 class="title"><a href="service.php?sId=<?php echo $result['id']; ?>"><?php echo $result['title']; ?></a></h4>
                 <p class="description">
-                  Voluptatum deleniti atque corrupti quos dolores et quas
-                  molestias excepturi sint occaecati cupiditate non provident
+                  <?php echo $description; ?>
                 </p>
               </div>
+              </a>
             </div>
-            <div
+<?php } } ?>
+
+
+
+            <!-- <div
               class="col-md-6 col-lg-4 wow bounceInUp"
               data-wow-duration="1.4s"
             >
@@ -462,7 +519,7 @@
                   Et harum quidem rerum facilis est et expedita distinctio. Nam
                   libero tempore, cum soluta nobis est eligendi
                 </p>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>

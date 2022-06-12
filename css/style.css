@@ -1067,6 +1067,30 @@ nav.stroke ul li a:hover:after,
   text-align: left;
 }
 
+.service-div {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  margin: 0px 50px;
+}
+.service-img-div {
+}
+.service-img-div img {
+  width: 100%;
+}
+.service-details {
+  padding: 13px;
+}
+.service-details h3 {
+  font-weight: 600;
+  font-size: 25px;
+  margin-top: 10px;
+}
+.service-details p {
+  font-size: 14px;
+  text-align: justify;
+}
+.list-spoint{
+  padding-left: 40px !important;
+}
 /* Why Us Section
 --------------------------------*/
 
@@ -2295,8 +2319,6 @@ nav.stroke ul li a:hover:after,
 .gallery-item .box {
   box-shadow: none !important;
   border: solid 1px rgba(0, 0, 0, 0.1);
-}
-.box {
   float: left;
   width: 100%;
   height: 390px;
@@ -2306,7 +2328,8 @@ nav.stroke ul li a:hover:after,
   background-color: #fff;
   box-sizing: border-box;
 }
-.box:before {
+
+.gallery-item .box:before {
   bottom: -4px;
   box-shadow: 0 1px 2px 0 rgb(0 0 0 / 20%);
   content: "";
@@ -2317,7 +2340,7 @@ nav.stroke ul li a:hover:after,
   right: 0;
   width: 98%;
 }
-.box:after {
+.gallery-item .box:after {
   bottom: -8px;
   box-shadow: 0 1px 2px 0 rgb(0 0 0 / 20%);
   content: "";
@@ -2336,7 +2359,7 @@ nav.stroke ul li a:hover:after,
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-.box .inner-box .frame {
+.gallery-item .box .inner-box .frame {
   float: left;
   width: 100%;
   position: relative;
@@ -2353,7 +2376,7 @@ nav.stroke ul li a:hover:after,
   clear: both;
   min-height: 44px;
 }
-.box .inner-box .frame img {
+.gallery-item .box .inner-box .frame img {
   height: 260px !important;
   width: 252px;
 }

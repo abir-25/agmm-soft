@@ -4,7 +4,7 @@
                 <!-- Page Header-->
                 <header class="page-header">
                     <div class="container-fluid">
-                        <h2 class="no-margin-bottom">Service List</h2>
+                        <h2 class="no-margin-bottom">Service Feature List</h2>
                     </div>
                 </header>
                 <!-- Breadcrumb-->
@@ -12,7 +12,7 @@
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="index.php">Home</a></li>
                         <li class="breadcrumb-item active">Service Option</li>
-                        <li class="breadcrumb-item active">Service List</li>
+                        <li class="breadcrumb-item active">Service Feature List</li>
                     </ul>
                 </div>
 
@@ -23,12 +23,12 @@
                                 <div class="card">
                                     <div class="card-close">
                                         <div class="dropdown">
-                                            <button type="button" id="closeCard1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"></button>
+                                            <button type="button" id="closeCard1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><!--<i class="fa fa-ellipsis-v"></i>--></button>
                                             <div aria-labelledby="closeCard1" class="dropdown-menu dropdown-menu-right has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a></div>
                                         </div>
                                     </div>
                                     <div class="card-header d-flex align-items-center">
-                                        <h3 class="h4">Service List</h3>
+                                        <h3 class="h4">Service Feature List</h3>
                                     </div>
                                     <div class="card-body">
 <?php
@@ -38,25 +38,12 @@
 		$delid = $fm->validation($_GET['delid']);
         $delid = mysqli_real_escape_string($db->link1, $delid);
 
-		$query = "select * from tbl_service where id='$delid'"; 
-		$getdata = $db->select($query);
-		
-		if($getdata)
-		{
-			while($delimg = $getdata->fetch_assoc())
-			{
-				$dellink = $delimg['image'];
-				unlink($dellink);
-			}
-		}
-		
-		$delquery = "delete from tbl_service where id = '$delid'";
+		$delquery = "delete from tbl_service_feature where id = '$delid'";
 		$deldata = $db->deletedata($delquery);
 		
 		if($deldata)
 		{
-		    echo "<script>window.location = 'servicelist.php'; </script>";
-
+			echo "<script>window.location = servicefeaturelist.php'; </script>";
 		}
 		else
 		{
@@ -67,36 +54,42 @@
                                         <table class="table">
                                             <thead>
                                                 <tr>
-                                                    <th width="8%">No.</th>
-                                                    <th width="16%">Title</th>
-                                                    <th width="35%">Description</th>
-                                                    <th width="21%">Image</th>
+                                                    <th width="10%">No.</th>
+                                                    <th width="25%">Service Name</th>
+                                                    <th width="45%"> Feature  Details</th>
                                                     <th width="20%">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
 <?php
-	$query = "select * from tbl_service order by id desc";	
-    $i = 0;			
+	$query = "select * from tbl_service_feature";
+    $i = 0;	
 	$post = $db->select($query);				
 	if($post)
 	{
 		while($result = $post->fetch_assoc())
 		{
 			$i++;
-             $description = $fm->textShorten($result['description']);
+            $description = $fm->textShorten($result['title']);
+            $s_id = $result["s_id"];
+            $query1 = "select * from tbl_service where id = '$s_id'";				
+            $post1 = $db->select($query1);				
+            if($post1)
+            {
+                while($result1 = $post1->fetch_assoc())
+                {
+                        $title = $result1["title"];
+                }
+            }
 ?>
                                                 <tr>
                                                     <th scope="row" style="vertical-align:middle"><?php echo $i; ?></th>
                                                     
-                                                    <td scope="row" style="vertical-align:middle"><?php echo $result['title'];; ?></td>
+                                                    <td scope="row" style="vertical-align:middle"><?php echo $title; ?></td>
 
                                                     <td scope="row" style="vertical-align:middle"><?php echo $description; ?></td>
-
-                                                    <td style="vertical-align:middle"><img class="service-image" src="<?php echo $result['image']; ?>" alt="" /></td>
 													
-													
-                                                    <td style="vertical-align:middle"><a class="actionLink" href="editservice.php?serviceId=<?php echo $result['id']; ?>">Update</a>  || <a class="actionLink" onclick= "return confirm('Are you sure to Delete This Service?');" href="?delid=<?php echo $result['id'];?>">Delete</a></td>
+                                                    <td style="vertical-align:middle"><a class="actionLink" href="editservicefeature.php?SfeatureId=<?php echo $result['id']; ?>">Update</a>  || <a class="actionLink" onclick= "return confirm('Are you sure to Delete This Service Feature?');" href="?delid=<?php echo $result['id'];?>">Delete</a></td>
                                                 </tr>
 <?php } } ?>
 											</tbody>
@@ -104,7 +97,7 @@
 <?php if($i==0) { ?>
                                         <p class="text-center py-4">No data Available</p>
 <?php } ?>
-                                        <a href="addservice.php" class="btn btn-primary">Add</a>
+                                        <a href="addservicefeature.php" class="btn btn-primary">Add</a>
                                     </div>
                                 </div>
                             </div>

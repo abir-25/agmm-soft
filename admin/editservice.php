@@ -135,7 +135,7 @@
 						<div class="form-group row">
                           <label class="col-sm-3 form-control-label">Service Description</label>
                           <div class="col-sm-9">
-                          <textarea name="description" required class="form-control" style="height:150px"><?php echo $postresult['description'];?></textarea>
+                          <textarea name="description" required class="form-control" style="height:200px"><?php echo $postresult['description'];?></textarea>
                           </div>
                         </div>
            

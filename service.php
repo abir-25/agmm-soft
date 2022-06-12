@@ -67,7 +67,7 @@
                         <h3><?php echo $result['title'];?></h3>
                         <p><?php echo $result['description'];?></p>
 
-                        <div class="module-details">
+                        <div class="module-details service-feature">
                       <ol class="list list-mpoint list-spoint">
 <?php
     $MPquery = "select * from tbl_service_feature where s_id='$sId'";

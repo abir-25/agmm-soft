@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 31, 2022 at 08:04 PM
+-- Generation Time: Jun 12, 2022 at 08:11 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -42,7 +42,7 @@ CREATE TABLE `tbl_about` (
 --
 
 INSERT INTO `tbl_about` (`id`, `overview1`, `overview2`, `overview3`, `image`, `mission`, `vision`) VALUES
-(1, 'AGMM SOFT started its\' glorious journey in 2018, established as a software development house, which is now one of the Customer Friendly software firms in the country. From the beginning of its outset, AGMM SOFT has taken up bold and innovative assignments in Database programming and the creation of multimedia programming. The company has emerged as a system integrator with a vision to develop customized and tailored software and also to create product basis development jobs for the domestic and international markets.                            ', 'AGMM SOFT focuses to incorporate Advanced Level Computer Education & Training with an intention to make the company instrumental in reducing the existing wide gap between huge demand and very low supply of the IT Professionals by creating skilled manpower in the IT field of the country. It bridges the gap between performance and corporate vision. Since its inception in Bangladesh in 2018, AGMM SOFT has achieved a very positive response from the market in providing a business solution to renowned business houses.                                                ', 'WE are one of the leading IT companies in Bangladesh. We provide Secure, Scalable, On-Demand Application Systems and Data Solutions to help customers improve their business performance. It is also an IT Enabled Service (ITES) provider in the domain of Healthcare, Textiles, and Manufacturing as well as an e-Commerce Portal business. As a provider of outstanding technology solutions and management consultancy through Information Technology.                                          ', 'upload/about/6592e9e6a8.jpg', 'Our mission is to enhance the business growth of our customers with creative Design and Development to deliver market-defining high-quality solutions that create value and reliable competitive advantage for our clients around the world. We ensure in providing end-to-end solution to our clients.\r\nWe also emphasize to deliver optimal solutions with quality and services at reasonable prices. For us, customer satisfaction is given highest priority. We maintain a cordial relationship with our customers in order to retain existing clients and expand customer circle.\r\n                                                                                    ', 'Our vision is to develop in a constant manner and grow as a major IT service provider to become a leading performer, in providing quality Software Development solutions in the competitive global marketplace. Our professional, flexible and integrated process reflects in what we do. We invariably try to improve the quality of our products by exploring innovative ideas.                                                                                    ');
+(1, 'AGMM SOFT started its\' glorious journey in 2018, established as a software development house, which is now one of the Customer Friendly software firms in the country. From the beginning of its outset, AGMM SOFT has taken up bold and innovative assignments in Database programming and the creation of multimedia programming. The company has emerged as a system integrator with a vision to develop customized and tailored software and also to create product basis development jobs for the domestic and international markets.                                                        ', 'AGMM SOFT focuses to incorporate Advanced Level Computer Education & Training with an intention to make the company instrumental in reducing the existing wide gap between huge demand and very low supply of the IT Professionals by creating skilled manpower in the IT field of the country. It bridges the gap between performance and corporate vision. Since its inception in Bangladesh in 2018, AGMM SOFT has achieved a very positive response from the market in providing a business solution to renowned business houses.                                                                            ', 'WE are one of the leading IT companies in Bangladesh. We provide Secure, Scalable, On-Demand Application Systems and Data Solutions to help customers improve their business performance. It is also an IT Enabled Service (ITES) provider in the domain of Healthcare, Textiles, and Manufacturing as well as an e-Commerce Portal business. As a provider of outstanding technology solutions and management consultancy through Information Technology.                                                                      ', 'upload/about/6592e9e6a8.jpg', 'Our mission is to enhance the business growth of our customers with creative Design and Development to deliver market-defining high-quality solutions that create value and reliable competitive advantage for our clients around the world. We ensure in providing end-to-end solutions to our clients.\r\nWe also emphasize delivering optimal solutions with quality and services at reasonable prices. For us, customer satisfaction is given the highest priority. We maintain a cordial relationship with our customers in order to retain existing clients and expand the customer circle.\r\n                                                                                                                ', 'Our vision is to develop in a constant manner and grow as a major IT service provider to become a leading performer, in providing quality Software Development solutions in the competitive global marketplace. Our professional, flexible and integrated process reflects in what we do. We invariably try to improve the quality of our products by exploring innovative ideas.                                                                                                                ');
 
 -- --------------------------------------------------------
 
@@ -64,7 +64,7 @@ CREATE TABLE `tbl_basic_info` (
 --
 
 INSERT INTO `tbl_basic_info` (`id`, `name`, `slogan`, `logo`, `favicon`, `copyright`) VALUES
-(1, 'AGMM SOFT', 'New Thinkings, New Possibilities', 'upload/bio/favicon.png', 'upload/bio/favicon.png', '© Copyright AGMM SOFT. All Rights Reserved');
+(1, 'AGMM SOFT', 'New Thinkings, New Possibilities', 'upload/bio/e4ef32b8ae.png', 'upload/bio/cbb1fd1cb4.png', '© Copyright AGMM SOFT. All Rights Reserved');
 
 -- --------------------------------------------------------
 
@@ -125,10 +125,20 @@ CREATE TABLE `tbl_contact` (
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `subject` varchar(255) NOT NULL,
-  `phone` varchar(15) NOT NULL,
   `message` text NOT NULL,
   `status` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_contact`
+--
+
+INSERT INTO `tbl_contact` (`id`, `name`, `email`, `subject`, `message`, `status`) VALUES
+(1, 'Abir Mahmud', 'abir@bgctub.ac.bd', 'test', 'Test MSG', 1),
+(2, 'Abir Mahmud', 'abir@bgctub.ac.bd', 'e  dadas', 'dsdsd sadd', 1),
+(3, 'Abir Mahmud', 'abir@bgctub.ac.bd', 'df sfds', 'fdsf dsf dsf sdf', 1),
+(4, 'Abir Mahmud', 'abir@bgctub.ac.bd', 'new', 'sdds dsf dsf dsf sdf', 1),
+(5, 'asad sad', 'alluabir25@gmail.com', '', '', 1);
 
 -- --------------------------------------------------------
 
@@ -147,6 +157,13 @@ CREATE TABLE `tbl_counter` (
   `title4` varchar(255) NOT NULL,
   `count4` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_counter`
+--
+
+INSERT INTO `tbl_counter` (`id`, `title1`, `count1`, `title2`, `count2`, `title3`, `count3`, `title4`, `count4`) VALUES
+(1, 'Clients', 20, 'Products', 10, 'Hours of Support', 24, 'Hard Workers', 12);
 
 -- --------------------------------------------------------
 
@@ -188,9 +205,19 @@ CREATE TABLE `tbl_faq` (
 CREATE TABLE `tbl_gallery` (
   `id` int(11) NOT NULL,
   `image` varchar(255) NOT NULL,
-  `title` varchar(255) NOT NULL,
-  `description` text NOT NULL
+  `title` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_gallery`
+--
+
+INSERT INTO `tbl_gallery` (`id`, `image`, `title`) VALUES
+(12, 'upload/gallery/f31a4bbc6f.jpg', 'Asian specialized hospital &amp; diagnostic center RT-PCR  is a specialized Diagnostic  with serve with healthcare innovation recently signed agreement with AGMM SOFT  Diagnostic  compete Laboratory  management information system'),
+(13, 'upload/gallery/1b42123105.jpg', '&quot;Lulu Super Shop&quot;  with serve with POS innovation and recently signed an agreement with AGMM SOFT  POS  compete Sales Management system.'),
+(14, 'upload/gallery/46b8221684.jpg', 'N.N Pathology (Lalpath) is a specialized Diagnostic with healthcare innovation that recently signed an agreement with AGM SOFT Diagnostic compete Laboratory  management information system'),
+(15, 'upload/gallery/d70bdea6ed.jpg', 'Unity Health Care is a specialized Diagnostic service with healthcare innovation that recently signed an agreement with AGMM SOFT Diagnostic  compete Laboratory  management information system'),
+(18, 'upload/gallery/4b8b76cdb5.jpeg', 'Business Meeting was held before updating a module on Hospital Management System Product');
 
 -- --------------------------------------------------------
 
@@ -212,8 +239,8 @@ CREATE TABLE `tbl_login` (
 
 INSERT INTO `tbl_login` (`id`, `role`, `name`, `email`, `password`) VALUES
 (1, 0, 'admin', 'agmmsoft@gmail.com', '12345'),
-(2, 1, 'Abir', 'abir@gmail.com', '12345'),
-(3, 1, 'mizan', 'mizan@gmail.com', '123');
+(3, 1, 'mizan', 'mizan@gmail.com', '123'),
+(5, 1, 'Abir', 'allu@gmail.com', '12345');
 
 -- --------------------------------------------------------
 
@@ -310,6 +337,13 @@ CREATE TABLE `tbl_news` (
   `title` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `tbl_news`
+--
+
+INSERT INTO `tbl_news` (`id`, `title`) VALUES
+(1, 'AGMMSOFT recently signed agreement with Unity health care of Laboratory Management System(LMS)');
+
 -- --------------------------------------------------------
 
 --
@@ -373,11 +407,19 @@ INSERT INTO `tbl_role` (`id`, `role`, `status`) VALUES
 
 CREATE TABLE `tbl_service` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
+  `title` varchar(255) NOT NULL,
   `description` text NOT NULL,
-  `image` varchar(255) NOT NULL,
-  `icon` varchar(255) NOT NULL
+  `image` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_service`
+--
+
+INSERT INTO `tbl_service` (`id`, `title`, `description`, `image`) VALUES
+(2, 'Software Development', 'We provide a full range of web application services, from requirement gathering until the application is successfully deployed on the client end. Considering the strategic importance of web design, AGMMSOFT engages extensive effort and creativity to build you the site that will stand out from the rest and contribute to the success of your business.\r\nWe develop and provide customized solutions based on your need, we are the right choice for you if you are here for cost-effective solutions to the digitalization of your business. AGMM SOFT is one of the leading IT companies in Bangladesh. We at AGMM SOFT have our own ‘Digital Creative Lab’ where our highly skilled team generates ideas, makes designs and develops the final products.', 'upload/service/6a101fef59.jpg'),
+(3, 'Customized ERP', 'AGMMSOFT ERP Solution is a suite of applications that manage core business processes such as sales, purchasing, human resources, customer support, CRM, and inventory. The purpose of the solution is to provide the best solution to the customer through increasing efficiency, streamlining processes, and promoting a culture of collaboration in the organization. We try to provide an integrated system as opposed to individual software designed specifically for a business process.\r\nWe stick to a profound Discovery process and thoroughly study the environment around your future product – competitors, audience, market, trends, potential investors, and your own business ecosystem. It helps us offer reasonable and forward-looking feature prioritization and make sure the ERP we build evolves in the right direction.', 'upload/service/304cd897d8.jpg'),
+(4, 'Web Development', 'Well-built software thinks about users and their needs. Web Sites require one thing, and that is functionality. Without it most websites are useless. We can develop advanced systems that can handle mass amounts of data and transactions. It does not matter how small or big your company is, we have solutions for any budget.\r\nA web application often denoted as a web app, is an interactive computer program built with web skills (HTML, CSS, JS), which stores (Database, Files) and manipulates data (CRUD), and is used by a team or a single user to accomplish tasks over the internet. CRUD is a popular shortening and is at the core of web app development. It stands for Create, Read, Update, and Delete. Web apps are accessed via a web browser such as Google Chrome and often include a login/signup mechanism. Anyone wishes to experience the best of web development to certify a growth-centric digital revolution for business, the Best option would be our full-stack web application development services which are seamless for everyone.', 'upload/service/3ddf51bd35.jpg');
 
 -- --------------------------------------------------------
 
@@ -387,9 +429,37 @@ CREATE TABLE `tbl_service` (
 
 CREATE TABLE `tbl_service_feature` (
   `id` int(11) NOT NULL,
-  `service_id` int(11) NOT NULL,
+  `s_id` int(11) NOT NULL,
   `title` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_service_feature`
+--
+
+INSERT INTO `tbl_service_feature` (`id`, `s_id`, `title`) VALUES
+(3, 2, 'Core and continuous activity of Designing and Developing Applications and Software Solutions since its commencement.'),
+(4, 2, 'Encompasses in providing a wide range of own products, tools, and platforms.'),
+(5, 2, 'In-house competency and training centers to apply new technologies and innovations.'),
+(6, 2, 'Follow well-proven and professional working methodologies for the implementation of a software solution.'),
+(7, 2, 'Processes are constantly revised to embrace world-class, state-of-the-art techniques.'),
+(8, 2, 'Project-specific metrics are defined and applied to ensure consistent results of high standard.'),
+(9, 3, 'Our end-to-end ERP services and solutions provide assistance in automating, computerizing, and speeding up transactions throughout the organization.'),
+(10, 3, 'Our ERP Solutions eliminate most of the business problems like Material shortages, Productivity enhancements, Customer service, Cash Management, Inventory problems, Quality problems, Prompt delivery, Billing, etc.'),
+(11, 3, 'With our vertically integrated solutions approach, experienced project teams, offshore delivery, and strong technology practices we help your organization derive maximum value from ERP projects.'),
+(12, 3, 'Our ERP systems are designed to be flexible, helping meet the need of the companies or businesses that use them.'),
+(13, 3, 'AGMMSOFT ERP Modules are designed with a dedicated motive of delivering products or services that meet customers’ expectations.'),
+(14, 3, 'With customized ERP software, you don’t need to change the business flows which means ERP software.'),
+(15, 3, 'Profound research around your business idea and market environment helps build the foundation for your future ERP. For this purpose, we offer technology and business consulting services and the Discovery project.'),
+(16, 3, 'As your technology partner, we keep your business goals and strategy first. Just like you, we see an ERP project as the starting point for your successful digital product.'),
+(17, 4, 'Our ability to build dynamic, personalized user-centric experiences enables your brand to explore innovative opportunities to reach audience.'),
+(18, 4, 'Our web development includes a mobile-responsive website.'),
+(19, 4, 'A fully integrated team enables rapid decision-making about direction and feasibility during the planning and design phases.'),
+(20, 4, 'We do more with less; we can build your company a custom web application that meets your business need.'),
+(21, 4, 'Performance-oriented fully focused application.'),
+(22, 4, 'Assurance of Quality Control Process.'),
+(23, 4, 'Application Maintenance highly efficiently.'),
+(24, 4, 'Performance-oriented fully focused application.');
 
 -- --------------------------------------------------------
 
@@ -459,8 +529,11 @@ CREATE TABLE `tbl_team` (
 --
 
 INSERT INTO `tbl_team` (`id`, `name`, `designation`, `image`, `type`, `fb`, `ins`, `tw`, `li`, `git`) VALUES
-(1, 'Abir Mahmud', 'Software Engineer', 'upload/team/606da873e7.jpg', 0, 'https://www.facebook.com/AbirMahmud101/', 'https://www.instagram.com/_abir_mahmud_/', 'https://twitter.com/TheAbirMahmud', 'https://www.linkedin.com/in/abirmahmud25/', 'https://github.com/abir-25'),
-(2, 'MS. Alina', 'Web Designer and Developer', 'upload/team/05ae77d392.jpg', 1, 'https://www.facebook.com/AbirMahmud101/', 'https://www.instagram.com/_abir_mahmud_/', 'https://twitter.com/TheAbirMahmud', 'https://www.linkedin.com/in/abirmahmud25/', 'https://github.com/abir-25');
+(5, 'Gias Uddin', 'Software Developer', 'upload/team/5f6b65752e.jpeg', 0, 'https://www.facebook.com/gias.uddin.1213', '', '', '', ''),
+(6, 'Mizanur Rahaman', 'Software Developer', 'upload/team/792dd228e0.jpg', 0, 'https://www.facebook.com/mizanrrahaman12', '', '', '', ''),
+(7, 'Monir Uddin', 'Director Operation', 'upload/team/52d7badeb9.jpg', 0, 'https://www.facebook.com/moniruddin.monir', '', '', '', ''),
+(8, 'Abdula Ar Rakib', 'Trainee', 'upload/team/b7dd01c5f5.jpg', 1, '', '', '', '', ''),
+(9, 'Erfanul Hoque', 'Business Analyst', 'upload/team/5017a19e83.png', 0, '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -473,18 +546,19 @@ CREATE TABLE `tbl_technology` (
   `title` varchar(255) NOT NULL,
   `image` varchar(255) NOT NULL,
   `short` text NOT NULL,
-  `description` text NOT NULL
+  `description` text NOT NULL,
+  `product` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tbl_technology`
 --
 
-INSERT INTO `tbl_technology` (`id`, `title`, `image`, `short`, `description`) VALUES
-(3, 'Oracle Database', 'upload/tech/2f79d0be69.jpg', 'The Oracle Database (commonly referred to as Oracle RDBMS or simply as Oracle) is an object-relational database management system                                                 ', '<p>Oracle database products offer customers cost-optimized and high-performance versions of Oracle Database, the world\'s leading converged, multi-model database management system, as well as in-memory, NoSQL and MySQL databases. Oracle Autonomous Database, available on premises via Oracle Cloud@Customer or in the Oracle Cloud Infrastructure, enables customers to simplify relational database environments and reduce management workloads.</p>\r\n<p><span style=\"font-family: \'Helvetica Neue\', Helvetica, Arial, sans-serif; font-size: 15px;\"><strong>Products:</strong> BERYL, CLYDE, DANA, DATASECURE, e-Services, FLOCK GROUND, HOSTALK BIOMETRIC, HOSTALK CLINICAL, JADE, KONA, ONKO, PRESCRIPTA, QUARTZ lite, QUARTZ pro, RADIUS lite, RUBY lite, RUBY pro .</span></p>'),
-(4, 'Oracle Forms & Reports', 'upload/tech/7c7fec00a5.jpg', 'Oracle Forms is a software product for creating screens that interact with an Oracle database. It has an IDE including an object navigator               ', '<p style=\"box-sizing: border-box; margin: 10px 0px 0px; line-height: 25px; width: 705px; height: auto; font-size: 15px; float: left; font-family: \'Helvetica Neue\', Helvetica, Arial, sans-serif;\">&nbsp;It has an IDE including an object navigator, property sheet and code editor that uses PL/SQL. It was originally developed to run server-side in character mode terminal sessions. It was ported to other platforms, including Windows, to function in a clientserver environment. Later versions were ported to Java where it runs in a Java EE container and can integrate with Java and web services.</p>\r\n<p style=\"box-sizing: border-box; margin: 10px 0px 0px; line-height: 25px; width: 705px; height: auto; font-size: 15px; float: left; font-family: \'Helvetica Neue\', Helvetica, Arial, sans-serif;\"><label style=\"box-sizing: border-box; margin: 0px; display: inline-block; font-weight: bold; width: 705px;\">Products:</label>&nbsp;CLYDE, e-Services, KONA, ONKO, QUARTZ lite, QUARTZ pro, RADIUS lite, RUBY lite, RUBY pro. 1.0.0.2</p>'),
-(5, 'MySQL', 'upload/tech/5da7233a10.jpg', 'MySQL is the world’s most popular open source database widely used as back-end database of websites and portals.', '<p><span style=\"color: #555555; font-family: \'Open Sans\', Arial, Helvetica, sans-serif; font-size: 14.4px;\">MySQL Enterprise Edition includes the most comprehensive set of advanced features, management tools and technical support to achieve the highest levels of MySQL scalability, security, reliability, and uptime. It reduces the risk, cost, and complexity in developing, deploying, and managing business-critical MySQL applications.</span></p>\r\n<p>&nbsp;</p>\r\n<p><span style=\"color: #555555; font-family: \'Open Sans\', Arial, Helvetica, sans-serif;\"><span style=\"font-size: 14.4px;\"><strong>Products:</strong> Bangladesh Healthcare, BD Travel Info, e-Services, RUBY pro</span></span></p>'),
-(6, 'Microsoft SQL Server', 'upload/tech/95b0f24fcf.jpg', 'Benefit from a consistent, unified experience across your entire SQL portfolio and a full range of deployment options from edge to cloud. ', '<p>Drive insights in near real-time by breaking the wall between operational and analytical stores, enabling you to analyze all your data using both Spark and SQL runtimes in the cloud with Azure Synapse Link.Ensure uptime with fully-managed disaster recovery in the cloud through the link feature in Azure SQL Managed Instance.&nbsp;</p>');
+INSERT INTO `tbl_technology` (`id`, `title`, `image`, `short`, `description`, `product`) VALUES
+(3, 'Oracle Database', 'upload/tech/2f79d0be69.jpg', 'The Oracle Database (commonly referred to as Oracle RDBMS or simply as Oracle) is an object-relational database management system                                                 ', 'Oracle database products offer customers cost-optimized and high-performance versions of Oracle Database, the world\'s leading converged, multi-model database management system, as well as in-memory, NoSQL and MySQL databases. Oracle Autonomous Database, available on premises via Oracle Cloud@Customer or in the Oracle Cloud Infrastructure, enables customers to simplify relational database environments and reduce management workloads.', 'BERYL, CLYDE, DANA, DATASECURE, e-Services, FLOCK GROUND, HOSTALK BIOMETRIC, HOSTALK CLINICAL, JADE, KONA, ONKO, PRESCRIPTA, QUARTZ lite, QUARTZ pro, RADIUS lite, RUBY lite, RUBY pro .'),
+(4, 'Oracle Forms & Reports', 'upload/tech/8e75193e2c.jpg', 'Oracle Forms is a software product for creating screens that interact with an Oracle database. It has an IDE including an object navigator                                           ', 'It has an IDE including an object navigator, property sheet and code editor that uses PL/SQL. It was originally developed to run server-side in character mode terminal sessions. It was ported to other platforms, including Windows, to function in a client?server environment. Later versions were ported to Java where it runs in a Java EE container and can integrate with Java and web services.', 'CLYDE, e-Services, KONA, ONKO, QUARTZ lite, QUARTZ pro, RADIUS lite, RUBY lite, RUBY pro. 1.0.0.2'),
+(5, 'MySQL', 'upload/tech/5da7233a10.jpg', 'MySQL is the world’s most popular open source database widely used as back-end database of websites and portals.', 'MySQL Enterprise Edition includes the most comprehensive set of advanced features, management tools and technical support to achieve the highest levels of MySQL scalability, security, reliability, and uptime. It reduces the risk, cost, and complexity in developing, deploying, and managing business-critical MySQL applications.', 'Bangladesh Healthcare, BD Travel Info, e-Services, RUBY pro'),
+(6, 'Oracle APEX', 'upload/tech/79f2c47e5a.jpg', 'Oracle APEX is a low-code development platform that enables you to build scalable, secure enterprise apps, with world-class features, that can be deployed anywhere.                                  ', '<p><span style=\"color: #ffffff;  background-color: #14282f;\">Using APEX, developers can quickly develop and deploy compelling apps that solve real problems and provide immediate value. You won\'t need to be an expert in a vast array of technologies to deliver sophisticated solutions. Focus on solving the problem and let APEX take care of the rest.</p>', '');
 
 -- --------------------------------------------------------
 
@@ -506,9 +580,9 @@ CREATE TABLE `tbl_testimonial` (
 --
 
 INSERT INTO `tbl_testimonial` (`id`, `service`, `product`, `logo`, `client`, `address`) VALUES
-(2, 'Application Development', 'Customized Application Development', 'upload/testimonial/c1157cb452.jpg', 'Armed Forces Institute', 'Dhanmondi, Dhaka'),
-(3, 'System Integration and Product Implementation', 'Integration System Development', 'upload/testimonial/773f319fb0.jpg', 'Labaid Diagonostic Center', 'New Market, Dhaka'),
-(4, 'App Development', 'Attendance Mobile Application', 'upload/testimonial/fceca9e777.jpg', 'Department of Hemathology', 'Shershah, Dhaka');
+(3, 'HR & Payroll System', 'Attendance Application System', 'upload/testimonial/60d2897706.jpg', 'chevron clinical laboratory (pvt.) ltd. Anowara Branch', 'chowmuhani,Anowara,Ctg'),
+(4, 'HR & Payroll System', 'Attendance Application System', 'upload/testimonial/249adcafc4.png', 'Qrex Diagnostic & Consultation Centre (Pvt.) Ltd', 'Plot 9/A, Road -O1, Lane 02, Block - G, Chattogram'),
+(5, 'LIS', 'laboratory information system', 'upload/testimonial/6f4b6dc237.jpg', 'ASIAN SPECIALIZED RT-PCR LAB & DIAGNOSTIC CENTER', '282 AH Paragon Tower, CDA Ave,Muradpur, Chattogram 4000');
 
 -- --------------------------------------------------------
 
@@ -536,9 +610,17 @@ INSERT INTO `tbl_track` (`id`, `p_id`) VALUES
 
 CREATE TABLE `tbl_what` (
   `id` int(11) NOT NULL,
-  `description` text NOT NULL,
+  `description1` text NOT NULL,
+  `description2` text NOT NULL,
   `image` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_what`
+--
+
+INSERT INTO `tbl_what` (`id`, `description1`, `description2`, `image`) VALUES
+(1, 'AGMM SOFT is one of the leading IT companies in Bangladesh. We provide Secure, Scalable, On-Demand Application Systems and Data Solutions to help customers improve their business performance. Our first step is to discover more about you, and your company’s vision, and to build a strong relationship. Following the initial meetup, we will outline your project, create milestones, and agree on priorities.', 'Once the outline is finished, visual concepts of the custom project will be created. Then we test our product to ensure its quality of the product. Quality assurance is one of the most important steps to building a perfect qualityful product.', 'upload/what/791e2d847e.jpg');
 
 -- --------------------------------------------------------
 
@@ -553,11 +635,21 @@ CREATE TABLE `tbl_why` (
   `description` text NOT NULL,
   `point1_title` varchar(255) NOT NULL,
   `point1_desc` text NOT NULL,
+  `point1_image` varchar(255) NOT NULL,
   `point2_title` varchar(255) NOT NULL,
   `point2_desc` text NOT NULL,
+  `point2_image` varchar(255) NOT NULL,
   `point3_title` varchar(255) NOT NULL,
-  `point3_desc` text NOT NULL
+  `point3_desc` text NOT NULL,
+  `point3_image` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_why`
+--
+
+INSERT INTO `tbl_why` (`id`, `title`, `image`, `description`, `point1_title`, `point1_desc`, `point1_image`, `point2_title`, `point2_desc`, `point2_image`, `point3_title`, `point3_desc`, `point3_image`) VALUES
+(1, 'AGMM SOFT is a full facility of IT system provider who values our associations with clients, merchants, corporate allies, and co-workers', 'upload/why/66872d5225.png', 'We\'re Passionate &amp; Friendly People. It\'s our attention to the small stuff, scheduling of timelines, and keen project management that makes us stand out from the rest. We are creative while keeping a close eye on the calendar and your budget. We know that our customers are important to us and hence we do not leave any stone unturned in helping, guiding, and providing the best possible solutions &amp; after-sales services and support to our clients.\r\nFor each project, we work with our clients to identify business objectives and goals.', 'Creativity', 'We bring our diverse background in advertising, design, branding, public relations, research, and strategic planning to work for your company. Not only will your materials look great – they will get results.', 'upload/why/22004e1b78.png', 'Pricing', 'Our prices are competitive and fair. There are no surprise bills. Any unexpected or additional expenses must be pre-approved by you. That\'s how we would like to be treated, and that is how our clients are treated.', 'upload/why/0ad40ee154.png', 'We Listen', 'We can only deliver results if we know what your success looks like. We listen, find out what you want to achieve, and plan how we get you there. Things work better when we do it together.', 'upload/why/5de425fee1.png');
 
 --
 -- Indexes for dumped tables
@@ -739,25 +831,25 @@ ALTER TABLE `tbl_basic_info`
 -- AUTO_INCREMENT for table `tbl_benefit`
 --
 ALTER TABLE `tbl_benefit`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `tbl_client`
 --
 ALTER TABLE `tbl_client`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tbl_contact`
 --
 ALTER TABLE `tbl_contact`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tbl_counter`
 --
 ALTER TABLE `tbl_counter`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tbl_dashboard`
@@ -775,31 +867,31 @@ ALTER TABLE `tbl_faq`
 -- AUTO_INCREMENT for table `tbl_gallery`
 --
 ALTER TABLE `tbl_gallery`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `tbl_login`
 --
 ALTER TABLE `tbl_login`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tbl_module`
 --
 ALTER TABLE `tbl_module`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `tbl_module_point`
 --
 ALTER TABLE `tbl_module_point`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT for table `tbl_news`
 --
 ALTER TABLE `tbl_news`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tbl_pricing`
@@ -811,7 +903,7 @@ ALTER TABLE `tbl_pricing`
 -- AUTO_INCREMENT for table `tbl_product`
 --
 ALTER TABLE `tbl_product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tbl_role`
@@ -823,13 +915,13 @@ ALTER TABLE `tbl_role`
 -- AUTO_INCREMENT for table `tbl_service`
 --
 ALTER TABLE `tbl_service`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tbl_service_feature`
 --
 ALTER TABLE `tbl_service_feature`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `tbl_slider`
@@ -847,13 +939,13 @@ ALTER TABLE `tbl_social`
 -- AUTO_INCREMENT for table `tbl_team`
 --
 ALTER TABLE `tbl_team`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tbl_technology`
 --
 ALTER TABLE `tbl_technology`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tbl_testimonial`
@@ -871,13 +963,13 @@ ALTER TABLE `tbl_track`
 -- AUTO_INCREMENT for table `tbl_what`
 --
 ALTER TABLE `tbl_what`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tbl_why`
 --
 ALTER TABLE `tbl_why`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

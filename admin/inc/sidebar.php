@@ -25,6 +25,7 @@
                         <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
                             <li><a href="editdashboard.php">Admin Dashboard</a></li>       
                             <li><a href="titlelogo.php">Basic Information</a></li>
+                            <li><a href="news.php">Latest Work</a></li>
                             <li><a href="editabout.php">About Us</a></li>
                             <li><a href="why.php">Why Choose Us</a></li>
                             <li><a href="counter.php">Counter Section</a></li>
@@ -51,6 +52,13 @@
                         </ul>
                     </li> 
                     
+                    <li><a href="#exampledropdownDropdown9" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-edit"></i>Service Option</a>
+                        <ul id="exampledropdownDropdown9" class="collapse list-unstyled ">
+                            <li><a href="addservice.php">Add Service </a></li>
+                            <li><a href="servicelist.php">Service List</a></li>           
+                        </ul>
+                    </li> 
+
 					<li><a href="#exampledropdownDropdown2" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-user"></i>Editor Option</a>
                         <ul id="exampledropdownDropdown2" class="collapse list-unstyled ">
 <?php 

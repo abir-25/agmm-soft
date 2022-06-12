@@ -59,9 +59,17 @@
                 direction="left"
                 onmouseover="this.stop();"
                 onmouseout="this.start();"
-                ><span>**</span> But I must explain to you how all this mistaken
-                idea of denouncing pleasure and praising pain was born and I
-                will give you a complete account of the system
+                ><span>**</span>
+<?php
+    $query = "select * from tbl_news";
+    $getData = $db->select($query);
+    if($getData)
+    {
+        while($result = $getData->fetch_assoc()) 
+        {
+?> 
+      <?php echo $result['title'];?>
+<?php } } ?> 
                 <span>**</span></marquee
               >
             </a>

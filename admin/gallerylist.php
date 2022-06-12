@@ -66,9 +66,10 @@
                                         <table class="table">
                                             <thead>
                                                 <tr>
-                                                    <th width="25%">No.</th>
-                                                    <th width="50%">Gallery Images</th>
-                                                    <th width="25%">Action</th>
+                                                    <th width="15%">No.</th>
+                                                    <th width="30%">Gallery Images</th>
+                                                    <th width="35%">Image Title</th>
+                                                    <th width="20%">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -86,6 +87,8 @@
                                                     <th scope="row" style="vertical-align:middle"><?php echo $i; ?></th>
  
                                                     <td style="vertical-align:middle"><img class="userimglist" src="<?php echo $result['image']; ?>" alt="" /></td>
+
+                                                    <td scope="row" style="vertical-align:middle"><?php echo $result['title']; ?></td>
 													
 													
                                                     <td style="vertical-align:middle"><a class="actionLink" href="editgallery.php?galId=<?php echo $result['id']; ?>">Update</a>  || <a class="actionLink" onclick= "return confirm('Are you sure to Delete This Image?');" href="?delId=<?php echo $result['id'];?>">Delete</a></td>

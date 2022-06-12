@@ -37,6 +37,8 @@
 <?php
 	if($_SERVER['REQUEST_METHOD'] == 'POST')
 	{
+    $title = $fm->validation($_POST['title']);
+    $title  = mysqli_real_escape_string($db->link1, $title);
 
 		$permitted  = array('jpg', 'jpeg', 'png', 'gif');
 		$file_name = $_FILES['image']['name'];
@@ -52,10 +54,15 @@
         {
             echo "<span class='error'>You can upload only:-".implode(', ', $permitted)."</span>";
         } 
+        elseif ($file_size >1048567) 
+        {
+            echo "<span class='error'>Image size must be less then 1MB!
+            </span>";
+        } 
         else
         {	
             move_uploaded_file($file_temp, $uploaded_image);
-            $query = "INSERT INTO tbl_gallery(image) VALUES('$uploaded_image')";
+            $query = "INSERT INTO tbl_gallery(title, image) VALUES('$title', '$uploaded_image')";
             $inserted_rows = $db->insert($query);
             if ($inserted_rows) 
             {
@@ -73,8 +80,20 @@
                           <label class="col-sm-3 form-control-label">Upload Image</label>
                           <div class="col-sm-9" style="text-align:center">
                             <input type="file" name="image" class="form-control" required>
+                            <p style="color: red; text-align: left; margin-bottom:0">Image size must be less than 1 MB</p>
                           </div>
-                        </div>  
+                          
+                        </div> 
+              <div class="line"></div>
+            <div class="form-group row">
+                          <label class="col-sm-3 form-control-label">Image Title</label>
+                          <div class="col-sm-9">
+                            
+                            <textarea name="title" required class="form-control" style="height:150px"
+                            placeholder="Enter Image Title"
+                            ></textarea>
+                          </div>
+                        </div> 
 						
 						<div class="form-group row">
                           <div class="col-sm-4 offset-sm-3">

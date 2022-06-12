@@ -47,6 +47,8 @@
 <?php
 	if($_SERVER['REQUEST_METHOD'] == 'POST')
 	{
+    $title = $fm->validation($_POST['title']);
+    $title  = mysqli_real_escape_string($db->link1, $title);
 
 		$permited  = array('jpg', 'jpeg', 'png', 'gif');
 		$file_name = $_FILES['image']['name'];
@@ -58,33 +60,61 @@
 		$unique_image = substr(md5(time()), 0, 10).'.'.$file_ext;
 		$uploaded_image = "upload/gallery/".$unique_image;
 	
-    if (in_array($file_ext, $permited) === false) 
-    {
-        echo "<span class='error'>Error...You can upload only:-".implode(', ', $permited)."</span>";
-    } 
-    else
-    {	
-      move_uploaded_file($file_temp, $uploaded_image);
-      $query = "UPDATE tbl_gallery 
-              SET 
-              image = '$uploaded_image'   
-              where id='$galId'";
-  
-      $updated_rows = $db->update($query);
-      if ($updated_rows) 
-      {
-          echo "<span class='success'>Data Updated Successfully.
-          </span>";
-      }
-      else 
-      {
-          echo "<span class='error'>Data Not Updated !!</span>";
-      }
-        
-    }
 
+    if(!empty($file_name))
+    {
+        if (in_array($file_ext, $permited) === false) 
+        {
+            echo "<span class='error'>Error...You can upload only:-".implode(', ', $permited)."</span>";
+        }
+        elseif ($file_size >1048567) 
+        {
+          echo "<span class='error'>Image size must be less then 1MB!
+          </span>";
+        }  
+        else
+        {	
+            move_uploaded_file($file_temp, $uploaded_image);
+            $query = "UPDATE tbl_gallery 
+                    SET 
+                    title = '$title',
+                    image = '$uploaded_image'
+                    where id='$galId'";
+        
+            $updated_rows = $db->update($query);
+            if ($updated_rows) 
+            {
+                echo "<span class='success'>Data Updated Successfully.
+                </span>";
+            }
+            else 
+            {
+                echo "<span class='error'>Data Not Updated !!</span>";
+            }
+            
+        }
+    }
+    else
+    {
+        $query = "UPDATE tbl_gallery 
+                    SET 
+                    title = '$title'
+                    where id='$galId'";
+        
+            $updated_rows = $db->update($query);
+            if ($updated_rows) 
+            {
+                echo "<span class='success'>Data Updated Successfully.
+                </span>";
+            }
+            else 
+            {
+                echo "<span class='error'>Data Not Updated !!</span>";
+            }
+    }
 	}
 ?>
+
 <?php
 	$query1 = "select * from tbl_gallery where id='$galId'";
 	    $getpost = $db->select($query1);
@@ -98,7 +128,17 @@
                           <div class="col-sm-9" style="text-align:center">
 						              <img src="<?php echo $postresult['image'];?>" width="150px"/><br/>
                             <input type="file" name="image" class="form-control">
+                            <p style="color: red; text-align: left; margin-bottom: 0">Image size must be less than 1 MB</p>
                           </div>
+                          
+                        </div>
+                        <div class="line"></div>
+            <div class="form-group row">
+                          <label class="col-sm-3 form-control-label">Image Title</label>
+                          <div class="col-sm-9">
+                            <textarea name="title" class="form-control" style="height:150px"
+                            ><?php echo $postresult['title'];?></textarea>
+                          </div>  
                         </div>
 						  
                         <div class="form-group row">

@@ -18,7 +18,7 @@
           class="row justify-content-center banner-section"
         >
         <div class="col-md-6 intro-img order-md-first order-first">
-            <img src="img/gallery.png" alt="" class="img-fluid" style="margin-top: 150px"/>
+            <img src="img/gallery.png" alt="" class="img-fluid" style="margin-top: 130px"/>
           </div>
           <div class="col-md-6 intro-info intro-title order-md-last order-last">
             <h2 class="banner-title" style="text-align: center;">Gallery</h2>
@@ -32,83 +32,9 @@
 
     <main id="main">
       <!--==========================
-      About Us Section
-    ============================-->
+      Gallery Section
+      ============================-->
       <section id="about" class="client-section gallery-section">
-
-      <!-- <div class="gallery-container p-3">
-      <a href="https://source.unsplash.com/600x600/?sig=1" data-lightbox="homePortfolio">
-        <img src="https://source.unsplash.com/600x600/?sig=1"/>
-      </a>
-      
-      <a href="https://source.unsplash.com/600x800/?sig=12" data-lightbox="homePortfolio" class="vertical">
-        <img src="https://source.unsplash.com/600x800/?sig=12"/>
-      </a>
-      
-      <a href="https://source.unsplash.com/800x600/?sig=71" data-lightbox="homePortfolio" class="horizontal">
-        <img src="https://source.unsplash.com/800x600/?sig=71"/>
-      </a>
-      
-      <a href="https://source.unsplash.com/600x600/?sig=40" data-lightbox="homePortfolio">
-        <img src="https://source.unsplash.com/600x600/?sig=40"/>
-      </a>
-      
-      <a href="https://source.unsplash.com/600x600/?sig=32" data-lightbox="homePortfolio">
-        <img src="https://source.unsplash.com/600x600/?sig=32"/>
-      </a>
-      
-      <a href="https://source.unsplash.com/800x800/?sig=7" data-lightbox="homePortfolio" class="big">
-        <img src="https://source.unsplash.com/800x800/?sig=7"/>
-      </a>
-      
-      <a href="https://source.unsplash.com/600x600/?sig=111" data-lightbox="homePortfolio">
-        <img src="https://source.unsplash.com/600x600/?sig=111"/>
-      </a>
-      
-      <a href="https://source.unsplash.com/600x800/?sig=94" data-lightbox="homePortfolio" class="vertical">
-        <img src="https://source.unsplash.com/600x800/?sig=94"/>
-      </a>
-      
-      <a href="https://source.unsplash.com/600x600/?sig=11" data-lightbox="homePortfolio">
-        <img src="https://source.unsplash.com/600x600/?sig=11"/>
-      </a>
-      
-      <a href="https://source.unsplash.com/800x600/?sig=68" data-lightbox="homePortfolio" class="horizontal">
-        <img src="https://source.unsplash.com/800x600/?sig=68"/>
-      </a>
-      
-      <a href="https://source.unsplash.com/600x600/?sig=24" data-lightbox="homePortfolio">
-        <img src="https://source.unsplash.com/600x600/?sig=24"/>
-      </a>
-      
-      <a href="https://source.unsplash.com/800x800/?sig=55" data-lightbox="homePortfolio" class="big">
-        <img src="https://source.unsplash.com/800x800/?sig=55"/>
-      </a>
-      
-      <a href="https://source.unsplash.com/600x600/?sig=56" data-lightbox="homePortfolio">
-        <img src="https://source.unsplash.com/600x600/?sig=56"/>
-      </a>
-      
-      <a href="https://source.unsplash.com/800x600/?sig=186" data-lightbox="homePortfolio" class="horizontal">
-        <img src="https://source.unsplash.com/800x600/?sig=186"/>
-      </a>
-      
-      <a href="https://source.unsplash.com/600x600/?sig=117" data-lightbox="homePortfolio">
-        <img src="https://source.unsplash.com/600x600/?sig=117"/>
-      </a>
-      
-      <a href="https://source.unsplash.com/800x800/?sig=157" data-lightbox="homePortfolio" class="big">
-        <img src="https://source.unsplash.com/800x800/?sig=157"/>
-      </a>
-      
-      <a href="https://source.unsplash.com/600x600/?sig=287" data-lightbox="homePortfolio">
-        <img src="https://source.unsplash.com/600x600/?sig=287"/>
-      </a>
-      
-      <a href="https://source.unsplash.com/600x800/?sig=307" data-lightbox="homePortfolio" class="vertical">
-        <img src="https://source.unsplash.com/600x800/?sig=307"/>
-      </a>
-    </div> -->
 
         <div class="container">
           <div class="row">
@@ -120,10 +46,18 @@
         while($result = $getData->fetch_assoc()) 
         {
 ?>           
-            <div class="item col-6 col-lg-3 col-md-4 mb-4 p-3">
-              <a href="admin/<?php echo $result['image']; ?>" class="fancybox" data-fancybox="gallery1">
-                <img src="admin/<?php echo $result['image']; ?>" alt="" width="100%">
-              </a>  
+            <div class="gallery-item col-12 col-lg-3 col-md-4 mb-1 p-3">
+
+            <div class="box">
+              <div class="inner-box">
+                <div class="frame"> 
+                  <a class="fancybox" data-fancybox="gallery1" href="admin/<?php echo $result['image']; ?>">
+                  <img src="admin/<?php echo $result['image']; ?>" alt="">
+                  </a> 
+                </div>
+                <em class="description"> <?php echo $result['title']; ?></em>
+              </div>
+            </div>
             </div>
 <?php } } ?>
                 
@@ -131,7 +65,7 @@
         </div>
   
       </section>
-      <!-- #about -->
+      <!-- #Gallery -->
 
     </main>
 

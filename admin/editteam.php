@@ -80,7 +80,12 @@
             if (in_array($file_ext, $permited) === false) 
             {
                 echo "<span class='error'>Error...You can upload only:-".implode(', ', $permited)."</span>";
-            } 
+            }
+            elseif ($file_size >1048567) 
+            {
+              echo "<span class='error'>Image size must be less then 1MB!
+              </span>";
+            }  
             else
             {	
                 move_uploaded_file($file_temp, $uploaded_image);

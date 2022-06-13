@@ -17,7 +17,16 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     <!-- Favicons -->
-    <link href="img/favicon.png" rel="icon" />
+<?php
+    $query = "select * from tbl_basic_info";
+    $getData = $db->select($query);
+    if($getData)
+    {
+        while($result = $getData->fetch_assoc()) 
+        {
+?> 
+    <link href="admin/<?php echo $result['favicon'];?>" rel="icon" />
+<?php } } ?>
     <link href="img/apple-touch-icon.png" rel="apple-touch-icon" />
 
     <!-- Google Fonts -->
@@ -75,10 +84,22 @@
             </a>
           </div>
           <div class="social-links">
-            <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-            <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-            <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
-            <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+<?php
+    $query = "select * from tbl_social";
+    $getData = $db->select($query);
+    if($getData)
+    {
+        while($result = $getData->fetch_assoc()) 
+        {
+?>     
+            <a href="<?php echo $result['twitter']; ?>" class="twitter" target="_blank"><i class="fa fa-twitter"></i>
+            </a>
+            <a href="<?php echo $result['facebook']; ?>" class="facebook" target="_blank"><i class="fa fa-facebook"></i></a>
+            <a href="<?php echo $result['instagram']; ?>" class="instagram" target="_blank"
+              ><i class="fa fa-instagram"></i
+            ></a>
+            <a href="<?php echo $result['linkedin']; ?>" class="linkedin" target="_blank"><i class="fa fa-linkedin"></i></a>
+<?php } } ?>
           </div>
         </div>
       </div>

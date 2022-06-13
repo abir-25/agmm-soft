@@ -116,10 +116,22 @@
             </a>
           </div>
           <div class="social-links">
-            <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-            <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-            <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
-            <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+<?php
+    $query = "select * from tbl_social";
+    $getData = $db->select($query);
+    if($getData)
+    {
+        while($result = $getData->fetch_assoc()) 
+        {
+?>     
+            <a href="<?php echo $result['twitter']; ?>" class="twitter" target="_blank"><i class="fa fa-twitter"></i>
+            </a>
+            <a href="<?php echo $result['facebook']; ?>" class="facebook" target="_blank"><i class="fa fa-facebook"></i></a>
+            <a href="<?php echo $result['instagram']; ?>" class="instagram" target="_blank"
+              ><i class="fa fa-instagram"></i
+            ></a>
+            <a href="<?php echo $result['linkedin']; ?>" class="linkedin" target="_blank"><i class="fa fa-linkedin"></i></a>
+<?php } } ?>
           </div>
         </div>
       </div>
@@ -293,6 +305,8 @@
         <div class="container">
           <header class="section-header">
             <h3 class="section-title">Our products</h3>
+            <p style="margin-bottom:0; padding-bottom: 30px">Grow your business through our products</p>
+
           </header>
 
           <div class="row">
@@ -583,7 +597,7 @@
               <img src="admin/<?php echo $result['image']; ?>" class="img-fluid" alt="" />
             </div>
             <div class="col-lg-6 wow fadeInUp pt-5 pt-lg-0">
-              <h4>What We Do</h4>
+              <h2>What We Do</h2>
 
               <p class="text-justify"><?php echo $result['description1']; ?></p>
               <p class="text-justify"><?php echo $result['description2']; ?></p>
@@ -692,7 +706,7 @@
       <!--==========================
       Pricing Section
     ============================-->
-      <section id="pricing" class="wow fadeInUp section-bg">
+      <!-- <section id="pricing" class="wow fadeInUp section-bg">
         <div class="container">
           <header class="section-header">
             <h3>Pricing</h3>
@@ -700,7 +714,7 @@
           </header>
 
           <div class="row flex-items-xs-middle flex-items-xs-center">
-            <!-- Basic Plan  -->
+           
             <div class="col-xs-12 col-lg-4">
               <div class="card">
                 <div class="card-header">
@@ -723,7 +737,7 @@
               </div>
             </div>
 
-            <!-- Regular Plan  -->
+           
             <div class="col-xs-12 col-lg-4">
               <div class="card">
                 <div class="card-header">
@@ -746,7 +760,7 @@
               </div>
             </div>
 
-            <!-- Premium Plan  -->
+          
             <div class="col-xs-12 col-lg-4">
               <div class="card">
                 <div class="card-header">
@@ -770,7 +784,7 @@
             </div>
           </div>
         </div>
-      </section>
+      </section> -->
       <!-- #pricing -->
 
       <!--==========================
@@ -930,6 +944,7 @@
         <div class="container">
           <header class="section-header">
             <h3>Our Clients</h3>
+            <p style="margin-bottom:0; padding-bottom: 50px">Our satisfied clients who get 24/7 support from us</p>
           </header>
 
           <div class="owl-carousel clients-carousel">
@@ -951,7 +966,7 @@
       <!--==========================
       Frequently Asked Questions Section
     ============================-->
-      <section id="faq">
+      <!-- <section id="faq">
         <div class="container">
           <header class="section-header">
             <h3>Frequently Asked Questions</h3>
@@ -1058,7 +1073,7 @@
             </li>
           </ul>
         </div>
-      </section>
+      </section> -->
       <!-- #faq -->
     </main>
 

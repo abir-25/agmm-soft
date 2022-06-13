@@ -27,12 +27,22 @@
                   
               </div>
               <div class="social-links">
-                <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-                <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-                <a href="#" class="instagram"
+<?php
+    $query = "select * from tbl_social";
+    $getData = $db->select($query);
+    if($getData)
+    {
+        while($result = $getData->fetch_assoc()) 
+        {
+?>      
+                <a href="<?php echo $result['twitter']; ?>" class="twitter" target="_blank"><i class="fa fa-twitter"></i>
+                </a>
+                <a href="<?php echo $result['facebook']; ?>" class="facebook" target="_blank"><i class="fa fa-facebook"></i></a>
+                <a href="<?php echo $result['instagram']; ?>" class="instagram" target="_blank"
                   ><i class="fa fa-instagram"></i
                 ></a>
-                <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+                <a href="<?php echo $result['linkedin']; ?>" class="linkedin" target="_blank"><i class="fa fa-linkedin"></i></a>
+<?php } } ?>
               </div>
             </div>
             <div class="col-lg-4">

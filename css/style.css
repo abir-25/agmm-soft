@@ -839,7 +839,8 @@ nav.stroke ul li a:hover:after,
 #about .about-content p {
   font-size: 14px;
 }
-#about .about-content h2 {
+#about .about-content h2,
+.feature-item h2 {
   color: #413e66;
   font-family: "Montserrat", sans-serif;
   font-weight: 700;

@@ -1,4 +1,14 @@
-<?php include "inc/header.php"; ?>
+<?php
+// use PHPMailer\PHPMailer\PHPMailer;
+// use PHPMailer\PHPMailer\SMTP;
+// use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+require 'vendor/autoload.php';
+
+include "inc/header.php"; ?>
 <?php include "inc/sidebar.php"; ?>
         <div class="content-inner">
           <!-- Page Header-->
@@ -46,31 +56,74 @@
                     <div class="card-body">
                       <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
 <?php
+  
+  
 	if($_SERVER['REQUEST_METHOD'] == 'POST')
 	{
+    require 'PHPMailer/Exception.php';
+    require 'PHPMailer/PHPMailer.php';
+    require 'PHPMailer/SMTP.php';
+
 		$to      = $fm->validation($_POST['to']);
 		$from    = $fm->validation($_POST['from']);
+		$password = $fm->validation($_POST['password']);
 		$subject = $fm->validation($_POST['subject']);
 		$message = $fm->validation($_POST['message']);
 
 		$to  = mysqli_real_escape_string($db->link1, $to);
 		$from  = mysqli_real_escape_string($db->link1, $from);
+		$password  = mysqli_real_escape_string($db->link1, $password);
 		$subject  = mysqli_real_escape_string($db->link1, $subject);
 		$message  = mysqli_real_escape_string($db->link1, $message);
 
-    $header = "From: ".$from;
-		$sendmail = mail($to, $subject, $message, $header);
-		
-    echo $to."    ".$subject."     ".$message."     ".$header;
+        $mail = new PHPMailer(true);
 
-		if($sendmail)
-		{
-			echo "<span class='success'>Message Sent Successfully !!</span>";
-		}
-		else
-		{
-			echo "<span class='error'>ERROR!! Something went wrong.</span>";
-		}
+        $mail->SMTPOptions = array(
+            'ssl' => array(
+                'verify_peer' => false,
+                'verify_peer_name' => false,
+                'allow_self_signed' => true
+            )
+        );
+        $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+        $mail->isSMTP();                                            //Send using SMTP
+        $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+        $mail->SMTPAuth = true;
+        $mail->SMTPAutoTLS = false;                                  //Enable SMTP authentication
+        $mail->Username   = 'alluabir25@gmail.com';                     //SMTP username
+        $mail->Password   = 'pObOn@@@17';                               //SMTP password
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+        $mail->Port       = 25;
+        
+        $mail->setFrom('agmmsoft@gmail.con', 'Mailer');
+        $mail->addAddress('abirbgc25@gmail.com', 'Joe User');     //Add a recipient
+        $mail->isHTML(true);                                  //Set email format to HTML
+        $mail->Subject = 'Here is the subject';
+        $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+
+    // $mail = new PHPMailer(true);
+    //  $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+    //     $mail->isSMTP();                                            //Send using SMTP
+    //     $mail->Host       = 'smtp.example.com';                     //Set the SMTP server to send through
+    //     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+    //     $mail->Username   = 'alluabir25@gmail.com';                     //SMTP username
+    //     $mail->Password   = 'pObOn@@@17';                               //SMTP password
+    //     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+    //     $mail->Port       = 465;
+        
+    //     $mail->setFrom('agmmsoft@gmail.con', 'Mailer');
+    //     $mail->addAddress('abirbgc25@gmail.com', 'Joe User');     //Add a recipient
+    //     $mail->isHTML(true);                                  //Set email format to HTML
+    //     $mail->Subject = 'Here is the subject';
+    //     $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+
+    if($mail -> Send()){
+        $massage="Message sent successfully by PHPMailer"."\n";
+    }
+    else
+    {
+        $massage="PHPMailer Error: " . $mail-> ErrorInfo."\n";
+    }
 	}
 ?>
 
@@ -87,12 +140,21 @@
                             <input type="text" name="to" class="form-control" value="<?php echo $postresult['email']; ?>">
                           </div>
                         </div>
+<?php } ?> 
 						<div class="line"></div>
- <?php } ?> 					
+ 					
 						<div class="form-group row">
                           <label class="col-sm-3 form-control-label">From</label>
                           <div class="col-sm-9">
-                            <input type="text" name="from" class="form-control" placeholder="Enter Your Email Address">
+                            <input type="text" name="from" class="form-control" value="agmmsoft@gmail.com">
+                          </div>
+                        </div>
+						<div class="line"></div>
+
+            <div class="form-group row">
+                          <label class="col-sm-3 form-control-label">Password</label>
+                          <div class="col-sm-9">
+                            <input type="password" name="password" class="form-control" placeholder="Enter your password">
                           </div>
                         </div>
 						<div class="line"></div>

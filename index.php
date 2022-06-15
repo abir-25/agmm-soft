@@ -159,7 +159,7 @@
             <li class="active"><a href="#intro">Home</a></li>
             <li><a href="#about">About</a></li>
             <li class="drop-down">
-              <a href="#products">Products</a>
+              <a href="#" class="">Products</a>
               <ul>
 <?php
     $query = "select * from tbl_product";
@@ -170,7 +170,7 @@
         {
 ?>
                 <li><a href="product.php?proId=<?php echo $result['id']; ?>"><?php echo $result['title']; ?></a></li>
-<?php } } ?>
+ <?php } } ?>
               </ul>
             </li>
             <li><a href="#services">Services</a></li>
@@ -258,7 +258,7 @@
 
             <div class="col-lg-7 col-md-6 about-div">
               <div class="about-content">
-                <h2>About Us</h2>
+                <h2 class="mt-3 mt-md-0">About Us</h2>
                 <p class="about_overview">
                   <?php echo $result['overview1']; ?>
                   <!-- <?php //echo $fm->textShorten($result['overview']); ?> -->
@@ -903,7 +903,7 @@
                 </form>
               </div>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-6 mt-5 mt-md-0">
               <header class="section-header">
                 <h3>Testimonials</h3>
               </header>

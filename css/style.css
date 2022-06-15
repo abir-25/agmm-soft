@@ -813,7 +813,7 @@ nav.stroke ul li a:hover:after,
 .section-header p {
   text-align: center;
   margin: auto;
-  font-size: 15px;
+  font-size: 16px;
   padding-bottom: 60px;
   color: #535074;
   width: 50%;
@@ -845,7 +845,9 @@ nav.stroke ul li a:hover:after,
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
 }
-
+.feature-item p {
+  font-size: 14px;
+}
 #about .about-content h3 {
   color: #696592;
   font-weight: 400;
@@ -1126,10 +1128,11 @@ nav.stroke ul li a:hover:after,
 
 #why-us .why-us-content p {
   text-align: justify;
+  font-size: 14px;
 }
 
 #why-us .why-us-content .features p {
-  font-size: 16px;
+  font-size: 14px;
   margin-left: 56px;
   /* color: #555186; */
 }
@@ -2520,5 +2523,37 @@ nav.stroke ul li a:hover:after,
 @media (max-width: 574px) {
   #footer .footer-top .social-links a {
     margin-bottom: 25px;
+  }
+}
+
+@media (max-width: 425px) {
+  #intro {
+    overflow: hidden;
+  }
+  #footer .footer-top:before {
+    border-left: 102px solid #000;
+    border-right: 125px solid transparent;
+    border-bottom: 0px solid transparent;
+    border-top: 300px solid #000;
+  }
+  #intro .intro-info h2 {
+    font-size: 33px;
+    margin-bottom: 30px;
+  }
+  .word-carousel div li {
+    font-size: 38px;
+  }
+  .get-started-btn-div {
+    justify-content: center;
+  }
+
+  #header .logo h1 {
+    padding: 0;
+  }
+  #features {
+    padding: 20px 0;
+  }
+  .social-links{
+    text-align: center;
   }
 }

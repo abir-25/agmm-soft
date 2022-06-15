@@ -21,7 +21,8 @@
             <img src="img/about.jpg" alt="" class="img-fluid" />
           </div>
           <div class="col-md-6 intro-info intro-title order-md-last order-last">
-            <h2 class="banner-title">About Us</h2>
+            <h2 class="banner-title d-none d-md-block">About Us</h2>
+            <h2 class="d-md-none d-block">About Us</h2>
           </div> 
         </div>
       </div>

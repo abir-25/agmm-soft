@@ -40,7 +40,8 @@
             <img src="admin/<?php echo $result['image']; ?>" alt="" class="img-fluid" />
           </div>
           <div class="col-md-6 intro-info intro-title order-md-last order-last">
-            <h2 class="banner-title product-title"><?php echo $result['title']; ?></h2>
+            <h2 class="mt-5 mt-md-0 banner-title d-none d-md-block product-title"><?php echo $result['title']; ?></h2>
+            <h2 class="mt-5 mt-md-0 d-block d-md-none product-title"><?php echo $result['title']; ?></h2>
           </div> 
         </div>
 
@@ -59,7 +60,7 @@
 
             <div class="col-12">
               <div class="about-content about-top-overview product-overview">
-                <h2>AGMM SOFT <span><?php echo $result['title']; ?></span></h2> 
+                <h2>AGMM SOFT</h2><p class="product-name"><?php echo $result['title']; ?></p> 
                 <img src="img/headline_boder.png" alt="">
                 <p class="about_overview">
                   <?php echo $result['description']; ?>
@@ -84,7 +85,8 @@
 ?>
                   <li class="item">
                     <div>
-                        <h2 class="benefit__title"><?php echo $benefitResult['title']; ?></h2><span><?php echo $benefitResult['description']; ?></span>
+                        <h2 class="benefit__title"><?php echo $benefitResult['title']; ?></h2>
+                        <span><?php echo $benefitResult['description']; ?></span>
                     </div>
                       
                   </li>

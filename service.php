@@ -28,10 +28,10 @@
           class="row justify-content-center banner-section"
         >
         <div class="col-md-6 intro-img order-md-first order-first">
-            <img src="img/service.png" alt="" class="img-fluid" style="margin-top: 150px"/>
+            <img src="img/service.png" alt="" class="img-fluid service-banner-img"/>
           </div>
           <div class="col-md-6 intro-info intro-title order-md-last order-last">
-            <h2 class="banner-title" style="text-align: center; margin-top: 90px">Service</h2>
+            <h2 class="banner-title service-top-title">Service</h2>
           </div>
 
         </div>

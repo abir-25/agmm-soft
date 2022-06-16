@@ -21,7 +21,7 @@
             <img src="img/team.png" alt="" class="img-fluid" />
           </div>
           <div class="col-md-6 intro-info intro-title order-md-last order-last">
-            <h2 class="banner-title">Team Members</h2>
+            <h2 class="banner-title team-top-title">Team Members</h2>
           </div> 
         </div>
       </div>
@@ -35,7 +35,7 @@
     ============================-->
       <section id="team" class="section-bg">
         <div class="container mb-5">
-          <div class="section-header">
+          <div class="section-header team-section-header">
             <h3>Management Profile</h3>
           </div>
 
@@ -50,7 +50,7 @@
         {
           $delay = $delay+0.1;
 ?>
-            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="<?php echo $delay; ?>s">
+            <div class="col-12 col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="<?php echo $delay; ?>s">
               <div class="member"> 
                 <img src="admin/<?php echo $result['image'];?>" class="img-fluid member-img" alt="" />
                 <div class="member-info">
@@ -83,7 +83,7 @@
         </div>
 
         <div class="container mt-5 pt-5">
-          <div class="section-header">
+          <div class="section-header team-section-header">
             <h3>Who Work with us</h3>
             <p>
               Meet the most awesome people who have taken the responsibilities of clients

@@ -903,7 +903,7 @@
                 </form>
               </div>
             </div>
-            <div class="col-lg-6 mt-5 mt-md-0">
+            <div class="col-lg-6 pt-5 pt-md-0 mt-5 mt-md-0">
               <header class="section-header">
                 <h3>Testimonials</h3>
               </header>

@@ -18,7 +18,7 @@
           class="row justify-content-center align-self-center banner-section"
         >
         <div class="col-md-6 intro-img order-md-first order-first">
-            <img src="img/about.jpg" alt="" class="img-fluid" />
+            <img src="img/about.png" alt="" class="img-fluid" />
           </div>
           <div class="mt-5 mt-md-0 col-md-6 intro-info intro-title order-md-last order-last">
             <h2 class="banner-title">About Us</h2>

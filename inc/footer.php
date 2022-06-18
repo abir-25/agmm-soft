@@ -45,7 +45,7 @@
 <?php } } ?>
               </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-4 mt-5 mt-md-0">
               <div class="footer-links">
                 <h4>Useful Links</h4>
                 <hr class="border-1" />

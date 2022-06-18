@@ -62,7 +62,7 @@
               </div>
             </div>
 
-            <div class="col-lg-8 col-12">
+            <div class="col-lg-8 col-12 mt-3 mt-md-0">
               <div class="tech-details">
                 <h2><?php echo $result['title']; ?></h2>
                 <p><?php echo $result['short']; ?></p>

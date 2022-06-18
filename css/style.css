@@ -1647,6 +1647,10 @@ nav.stroke ul li a:hover:after,
   padding: 60px 0;
 }
 
+.client-top-img {
+  margin-top: 100px;
+}
+
 #clients img {
   /* max-width: 80%; */
   opacity: 0.8;
@@ -2138,7 +2142,7 @@ nav.stroke ul li a:hover:after,
   padding: 20px 0px 80px !important;
 }
 .language-details {
-  width: 255px;
+  width: 100%;
   height: 115px;
   padding: 10px 10px;
   overflow: hidden;
@@ -2346,6 +2350,14 @@ nav.stroke ul li a:hover:after,
 --------------------------------------------------------------*/
 .gallery-section {
   padding: 60px 0px !important;
+}
+.gallery-top-section {
+  text-align: center;
+}
+
+.gallery-top-img {
+  margin-top: 130px;
+  margin-bottom: 20px;
 }
 .gallery-item .box {
   box-shadow: none !important;
@@ -2581,7 +2593,7 @@ nav.stroke ul li a:hover:after,
     overflow: hidden;
   }
   #about_page .intro-info h2 {
-    font-size: 43px;
+    font-size: 37px;
   }
   .product-title {
     font-size: 29px !important;
@@ -2605,7 +2617,7 @@ nav.stroke ul li a:hover:after,
   .service-div {
     margin: 0px;
   }
-  .list-mpoint li span::before {
+  .list-spoint li span::before {
     left: 43px !important;
   }
   .team-top-title {
@@ -2614,5 +2626,52 @@ nav.stroke ul li a:hover:after,
   .team-section-header h3 {
     font-size: 30px;
     margin-bottom: 25px;
+  }
+  .tech-img {
+    text-align: center;
+  }
+  .tech-img img {
+    width: 90%;
+  }
+  .language-details {
+    width: 100%;
+  }
+  .button-read-more {
+    width: 150px;
+  }
+  .tech-image img {
+    width: 100%;
+  }
+  .client-top-img {
+    margin-top: 50px;
+  }
+  .client-section {
+    padding: 100px 0px 0px !important;
+  }
+  .gallery-top-img {
+    margin-top: 100px;
+    width: 85%;
+  }
+  .gallery-item .box {
+    height: 460px;
+  }
+  .gallery-item .box .inner-box .frame img {
+    height: 360px !important;
+    width: 100%;
+  }
+  .gallery-section {
+    padding: 60px 0px !important;
+  }
+  #footer .footer-top {
+    padding: 50px 0 30px 0;
+  }
+  #about {
+    padding: 40px 0;
+  }
+  .team-top-title {
+    margin-top: 60px;
+  }
+  .tech-details h2 {
+    font-size: 26px;
   }
 }

@@ -17,11 +17,11 @@
         <div
           class="row justify-content-center align-self-center banner-section"
         >
-        <div class="col-md-6 intro-img order-md-first order-first">
-            <img src="img/tech.jpg" alt="" class="img-fluid" />
+        <div class="col-md-6 intro-img order-md-first order-first tech-img">
+            <img src="img/tech.png" alt="" class="img-fluid" />
           </div>
           <div class="col-md-6 intro-info intro-title order-md-last order-last">
-            <h2 class="banner-title">Technology</h2>
+            <h2 class="banner-title team-top-title">Technology</h2>
           </div>
 
         </div>

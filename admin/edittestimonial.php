@@ -51,11 +51,14 @@
     $service = $fm->validation($_POST['service']);
     $client = $fm->validation($_POST['client']);
     $address = $fm->validation($_POST['address']);
+    $priority = $fm->validation($_POST['priority']);
+
 
 		$product  = mysqli_real_escape_string($db->link1, $product);
 		$service  = mysqli_real_escape_string($db->link1, $service);
     $client  = mysqli_real_escape_string($db->link1, $client);
     $address  = mysqli_real_escape_string($db->link1, $address);
+    $priority  = mysqli_real_escape_string($db->link1, $priority);
 		 
 		$permitted  = array('jpg', 'jpeg', 'png', 'gif');
 		$file_name = $_FILES['logo']['name'];
@@ -82,7 +85,8 @@
                         service = '$service',
                         client = '$client',
                         logo = '$uploaded_image',
-                        address = '$address'        
+                        address = '$address',
+                        priority = '$priority'        
                         where id='$testId'";
             
                 $updated_rows = $db->update($query);
@@ -105,7 +109,8 @@
                         product = '$product',
                         service = '$service',
                         client = '$client',
-                        address = '$address'        
+                        address = '$address',
+                        priority = '$priority'        
                         where id='$testId'";
             
                 $updated_rows = $db->update($query);
@@ -163,6 +168,16 @@
                           <label class="col-sm-3 form-control-label">Client Address</label>
                           <div class="col-sm-9">
                             <input type="text" name="address" class="form-control" value="<?php echo $postresult['address'];?>">
+                          </div>
+            </div>
+      
+        <div class="line"></div>
+						<div class="form-group row">
+                          <label class="col-sm-3 form-control-label">Client Priority</label>
+                          <div class="col-sm-9">
+                            <input type="number" name="priority" 
+                            min=0
+                            class="form-control" value="<?php echo $postresult['priority'];?>">
                           </div>
                         </div>
 

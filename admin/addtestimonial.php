@@ -41,11 +41,13 @@
     $service = $fm->validation($_POST['service']);
     $client = $fm->validation($_POST['client']);
     $address = $fm->validation($_POST['address']);
+    $priority = $fm->validation($_POST['priority']);
 
 		$product  = mysqli_real_escape_string($db->link1, $product);
 		$service  = mysqli_real_escape_string($db->link1, $service);
     $client  = mysqli_real_escape_string($db->link1, $client);
     $address  = mysqli_real_escape_string($db->link1, $address);
+    $priority  = mysqli_real_escape_string($db->link1, $priority);
 		 
 		$permitted  = array('jpg', 'jpeg', 'png', 'gif');
 		$file_name = $_FILES['logo']['name'];
@@ -64,7 +66,7 @@
         else
         {	
             move_uploaded_file($file_temp, $uploaded_image);
-            $query = "INSERT INTO tbl_testimonial(product, service, client, logo, address) VALUES('$product','$service','$client','$uploaded_image','$address')";
+            $query = "INSERT INTO tbl_testimonial(product, service, client, logo, address, priority) VALUES('$product','$service','$client','$uploaded_image','$address', '$priority')";
             $inserted_rows = $db->insert($query);
             if ($inserted_rows) 
             {
@@ -111,6 +113,16 @@
                           <label class="col-sm-3 form-control-label">Client Address</label>
                           <div class="col-sm-9">
                             <input type="text" name="address" class="form-control" placeholder="Enter Client Address">
+                          </div>
+                        </div>
+						<div class="line"></div>
+
+                        <div class="form-group row">
+                          <label class="col-sm-3 form-control-label">Client Priority</label>
+                          <div class="col-sm-9">
+                            <input type="number" name="priority" 
+                            min=0
+                            class="form-control" value="0">
                           </div>
                         </div>
 						<div class="form-group row">

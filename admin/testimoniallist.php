@@ -27,8 +27,11 @@
                                             <div aria-labelledby="closeCard1" class="dropdown-menu dropdown-menu-right has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a></div>
                                         </div>
                                     </div>
-                                    <div class="card-header d-flex align-items-center">
+                                    <div class="card-header d-flex flex-column align-items-start">
                                         <h3 class="h4">Testimonial List</h3>
+                                        <p class="p-0 m-0 mt-2" style="color: #222; font-size: 15px">Priority must be started from <span style="color: #796aee; font-size: 18px"><b>1</b></span> will be counted to sort your clients data into your website.</p>
+                                        <span style="color: #333; font-size: 14px">Client of priority <span style="color: #796aee;"><b>1</b></span> will be displayed at first position, Client of priority <span style="color: #796aee;"><b>2</b></span> will be displayed at second position and so on.</span>
+                                        <span style="color: #333; font-size: 14px">Client of priority <span style="color: #796aee;"><b>0</b></span> will be displayed at last position. So the clients you want to show last, set their priority to <span style="color: #796aee;"><b>0</b></span>.</span>
                                     </div>
                                     <div class="card-body">
 <?php
@@ -68,11 +71,12 @@
                                             <thead>
                                                 <tr>
                                                     <th width="8%">No.</th>
-                                                    <th width="20%">Product</th>
-                                                    <th width="19%">Service</th>
-                                                    <th width="18%">Client</th>
-                                                    <th width="15%">Logo</th>
-                                                    <th width="20%">Action</th>
+                                                    <th width="17%">Product</th>
+                                                    <th width="17%">Service</th>
+                                                    <th width="16%">Client</th>
+                                                    <th width="14%">Logo</th>
+                                                    <th width="10%">Priority</th>
+                                                    <th width="18%" align="center">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -97,7 +101,7 @@
 
                                                     <td style="vertical-align:middle"><img  src="<?php echo $result['logo']; ?>" alt="" style="height: 75px;"/></td>
 													
-													
+													<td align="center" scope="row" style="vertical-align:middle"><?php echo $result['priority'];; ?></td>
                                                     <td style="vertical-align:middle"><a class="actionLink" href="edittestimonial.php?testId=<?php echo $result['id']; ?>">Update</a>  || <a class="actionLink" onclick= "return confirm('Are you sure to Delete This Testimonial?');" href="?delid=<?php echo $result['id'];?>">Delete</a></td>
                                                 </tr>
 <?php } } ?>

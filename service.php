@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>AGMM Soft | Service</title>
+    <title>AGMM SOFT | Service</title>
     <!--==========================
     Header
     ============================-->
